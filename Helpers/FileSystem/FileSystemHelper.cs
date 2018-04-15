@@ -18,7 +18,7 @@ namespace Ben.Tools.Helpers.FileSystem
         public static string SafeGetFileContent(string path) => 
             File.Exists(@path) ?
             File.ReadAllText(@path) :
-            "";
+            string.Empty;
 
         public static void ShowFileContent(string path)
         {
