@@ -16,10 +16,8 @@ namespace Ben.Tools.Extensions.Streams
             var newBitmap = new Bitmap(bitmap.Width, bitmap.Height, pixelFormat);
             newBitmap.SetResolution(bitmap.HorizontalResolution, bitmap.VerticalResolution);
 
-            var graphics = Graphics.FromImage(newBitmap);
-
-            graphics.DrawImage(bitmap, 0, 0);
-            graphics.Dispose();
+            using (var graphics = Graphics.FromImage(newBitmap))
+                graphics.DrawImage(bitmap, 0, 0);
 
             if (disposeBitmap)
                 bitmap.Dispose();
