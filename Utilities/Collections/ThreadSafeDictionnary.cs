@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Utiliser ConcurentDictionnary à la place de cette merde.
 namespace Ben.Tools.Utilities.Collections
 {
     /// <summary>
