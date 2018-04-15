@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39026DDE-083C-419D-B352-B2F462E4246F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ben.Tools</RootNamespace>
+    <AssemblyName>Ben.Tools</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Diagnostics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Diagnostics.4.0.0\lib\net451\Microsoft.Owin.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\40-System.IO.Compression.FileSystem.1.0.0.2\lib\net40-client\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Shim, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Shim.1.0.0.1\lib\net40-client\System.Shim.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\BaseTypes\BooleanExtension.cs" />
+    <Compile Include="Extensions\BaseTypes\FloatExtension.cs" />
+    <Compile Include="Extensions\BaseTypes\IntExtension.cs" />
+    <Compile Include="Extensions\BaseTypes\StringExtension.cs" />
+    <Compile Include="Extensions\Collections\CollectionExtension.cs" />
+    <Compile Include="Extensions\Collections\EnumerableExtension.cs" />
+    <Compile Include="Extensions\Date\DateTimeExtension.cs" />
+    <Compile Include="Extensions\Date\DayOfWeekExtension.cs" />
+    <Compile Include="Extensions\Delegates\ActionExtension.cs" />
+    <Compile Include="Extensions\BaseTypes\ObjectExtension.cs" />
+    <Compile Include="Extensions\Enumerations\EnumerationFlagsExtension.cs" />
+    <Compile Include="Extensions\Streams\BitmapExtension.cs" />
+    <Compile Include="Extensions\Streams\ImageExtension.cs" />
+    <Compile Include="Extensions\Streams\StreamExtension.cs" />
+    <Compile Include="Helpers\BaseTypes\IntHelper.cs" />
+    <Compile Include="Helpers\Collections\MultidimensionalEnumerableHelper.cs" />
+    <Compile Include="Helpers\Communications\InterProcessCommunicationHelper.cs" />
+    <Compile Include="Helpers\Collections\ListHelper.cs" />
+    <Compile Include="Helpers\Collections\SortHelper.cs" />
+    <Compile Include="Helpers\Date\DaysOfWeekHelper.cs" />
+    <Compile Include="Helpers\Date\MonthsOfYearHelper.cs" />
+    <Compile Include="Helpers\BaseTypes\DynamicHelper.cs" />
+    <Compile Include="Helpers\Enumerations\EnumerationBitMaskHelper.cs" />
+    <Compile Include="Helpers\Enumerations\EnumerationHelper.cs" />
+    <Compile Include="Helpers\FileSystem\CompressionHelper.cs" />
+    <Compile Include="Helpers\FileSystem\DirectoryHelper.cs" />
+    <Compile Include="Helpers\FileSystem\EFileExtension.cs" />
+    <Compile Include="Helpers\FileSystem\EncryptionHelper.cs" />
+    <Compile Include="Helpers\FileSystem\FileSystemHelper.cs" />
+    <Compile Include="Helpers\FileSystem\JsonSerializerHelper.cs" />
+    <Compile Include="Helpers\FileSystem\PathHelper.cs" />
+    <Compile Include="Helpers\Mathematic\StatisticsHelper.cs" />
+    <Compile Include="Helpers\RestWebService\RestRequestHelper.cs" />
+    <Compile Include="Helpers\RestWebService\RestSharpHelper.cs" />
+    <Compile Include="Helpers\Streams\BytesHelper.cs" />
+    <Compile Include="Helpers\Streams\ImageHelper.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Helpers\VideoHelper.cs" />
+    <Compile Include="Services\DebugService.cs" />
+    <Compile Include="Services\RandomService.cs" />
+    <Compile Include="Utilities\Architecture\ASingleton.cs" />
+    <Compile Include="Utilities\Collections\ThreadSafeDictionnary.cs" />
+    <Compile Include="Utilities\Date\DateInterval\ADateIntervals.cs" />
+    <Compile Include="Utilities\Date\DateInterval\DateIntervals.cs" />
+    <Compile Include="Utilities\Date\DateInterval\EGrouppedTimeInterval.cs" />
+    <Compile Include="Utilities\Date\DateInterval\ETimeInterval.cs" />
+    <Compile Include="Utilities\Date\DateInterval\GrouppedDateIntervals.cs" />
+    <Compile Include="Utilities\Date\DateInterval\GrouppedTimeIntervalHelper.cs" />
+    <Compile Include="Utilities\Date\DateInterval\TimeIntervalHelper.cs" />
+    <Compile Include="Utilities\Network\HttpFileServer.cs" />
+    <Compile Include="Utilities\Network\HttpServer.cs" />
+    <Compile Include="Utilities\Network\Http\HttpHeadersParser.cs" />
+    <Compile Include="Utilities\Network\Packet\CommandJsNetworkPacket.cs" />
+    <Compile Include="Utilities\Network\Packet\ENetworkPacketFunctionId.cs" />
+    <Compile Include="Utilities\Network\Packet\NetworkPacket.cs" />
+    <Compile Include="Utilities\Network\UrlListener.cs" />
+    <Compile Include="Utilities\Simplify\Timer.cs" />
+    <Compile Include="Utilities\Simplify\Utilities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ionic.Zip.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
