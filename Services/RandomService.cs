@@ -25,6 +25,5 @@ namespace Ben.Tools.Services
             random.Next(256),
             random.Next(256),
             random.Next(256));
-        
     }
 }
