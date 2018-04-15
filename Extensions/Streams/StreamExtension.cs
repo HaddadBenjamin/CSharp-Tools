@@ -9,12 +9,7 @@ namespace Ben.Tools.Extensions.Streams
             string filePath)
         {
             using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-            {
-                var buffer = new byte[1024];
-                int len;
-
-                while ((len = stream.Read(buffer, 0, buffer.Length)) > 0) fileStream.Write(buffer, 0, len);
-            }
+                stream.CopyTo(fileStream);
 
             stream.Seek(0, SeekOrigin.Begin);
         }
