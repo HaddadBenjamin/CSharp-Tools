@@ -17,7 +17,7 @@ namespace Ben.Tools.Helpers.FileSystem
             TypeNameHandling = TypeNameHandling.All // Permet de désérialiser les interfaces.
         };
 
-        public static void SaveInFile<TDataType>(
+        public static void ToFile<TDataType>(
             TDataType dataType,
             string path,
             bool indent = true)
@@ -35,7 +35,7 @@ namespace Ben.Tools.Helpers.FileSystem
             indent ? Formatting.Indented : Formatting.None,
             SerializeEverythingSettings);
 
-        public static TDataType LoadFromFile<TDataType>(string path) => ToType<TDataType>(File.ReadAllText(path));
+        public static TDataType FromFile<TDataType>(string path) => ToType<TDataType>(File.ReadAllText(path));
 
         public static TDataType ToType<TDataType>(byte[] byteArray)
                 where TDataType : class
