@@ -75,5 +75,14 @@ namespace Ben.Tools.Extensions.Collections
             foreach (TDataType element in collection)
                 callback?.Invoke(element);
         }
+        
+        // [a1, a2, a3]         [a1, b1, c1]
+        // [b1, b2, b3]   ==>   [a2, b2, c2]
+        // [c1, c2, c3]         [a3, b3, c3]
+        public static IEnumerable<IEnumerable<TElementType>> Transpose<TElementType>(
+            this IEnumerable<IEnumerable<TElementType>> jaggedArray) => 
+            jaggedArray
+            .SelectMany(row => row.Select((element, index) => new { value = element, index = index }))
+            .GroupBy(element => element.index, element => element.value, (index, value) => value);
     }
 }
