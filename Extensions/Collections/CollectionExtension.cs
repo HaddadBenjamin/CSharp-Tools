@@ -6,7 +6,7 @@ namespace Ben.Tools.Extensions.Collections
 {
     public static class CollectionExtension
     {
-        public static ICollection<TElementType> RemoveAll<TElementType>(
+        public static ICollection<TElementType> RemoveElements<TElementType>(
             this ICollection<TElementType> collection,
             Func<TElementType, bool> predicate)
         {
@@ -19,7 +19,7 @@ namespace Ben.Tools.Extensions.Collections
         public static ICollection<TElementType> RemoveElements<TElementType>(
             this ICollection<TElementType> collection,
             IEnumerable<TElementType> collectionToDelete) =>
-            collection.RemoveAll(collectionToDelete.Contains);
+            collection.RemoveElements(collectionToDelete.Contains);
 
         public static IEnumerable<TElementType> AddElements<TElementType>(
             this IEnumerable<TElementType> collection,
