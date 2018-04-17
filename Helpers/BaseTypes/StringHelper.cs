@@ -8,10 +8,9 @@ namespace Ben.Tools.Helpers.BaseTypes
         public static string GenerateRandomString(int length = 6)
         {
             var random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(@char => @char[random.Next(@char.Length)])
+            return new string(Enumerable.Repeat("abcdefghijklmnopqrstuvwxyz0123456789", length)
+                .Select(chars => chars[random.Next(chars.Length)])
                 .ToArray());
         }
     }
