@@ -34,6 +34,17 @@ namespace Ben.Tools.Extensions.Collections
         public static TElementType RandomElement<TElementType>(this IEnumerable<TElementType> collection) =>
             collection.Shuffle()
                       .FirstOrDefault();
+        
+        public static IEnumerable<TElementType> RandomElements<TElementType>(
+            this IEnumerable<TElementType> collection,
+            int numbersOfElementsToGenerate = 10)
+        {
+            var random = new Random();
+            var collectionCount = collection.Count();
+
+            return Enumerable.Repeat(collection, numbersOfElementsToGenerate)
+                             .Select(element => collection.ElementAt(random.Next(collectionCount)));
+        }
 
         /// <summary>
         /// GroupByColumns(3) : 
