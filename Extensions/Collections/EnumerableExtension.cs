@@ -59,7 +59,7 @@ namespace Ben.Tools.Extensions.Collections
             .Select((value, columnIndex) =>
                 columnIndex <= collection.Count() / numberOfColumns ?
                     collection.Where((resourceGroup, index) => index >= columnIndex * numberOfColumns &&
-                                                                index < (columnIndex + 1) * numberOfColumns)
+                                                               index < (columnIndex + 1) * numberOfColumns)
                     : null)
             .Take(numberOfColumns);
 
