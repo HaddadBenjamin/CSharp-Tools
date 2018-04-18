@@ -35,5 +35,11 @@ namespace Ben.Tools.Helpers.BaseTypes
 
             return ordonedValues.Any() ? ordonedValues.Length : 0;
         }
+        
+        /// <summary>
+        /// - { 5, 4, 3, 2, 1, 0, } => 6
+        /// - { } => 1
+        /// </summary>
+        public static int IncrementKey(IEnumerable<int> values) => values.Any() ? values.Max() + 1 : 1;
     }
 }
