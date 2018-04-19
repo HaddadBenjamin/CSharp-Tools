@@ -1,14 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ben.Tools.Extensions.Collections;
 
 namespace Ben.Tools.Helpers.Enumerations
 {
     public static class EnumerationHelper
     {
-         
         public static int Count<EnumerationType>() where EnumerationType : struct, IConvertible => 
             Enum.GetValues(typeof(EnumerationType)).Length;
+        
+        public static void Foreach<EnumerationType>(Action<EnumerationType> callback)
+            where EnumerationType : struct, IConvertible
+        {
+            ToEnumerations<EnumerationType>().Foreach(callback);
+        }
 
         public static IEnumerable<EnumerationType> ToEnumerations<EnumerationType>()
             where EnumerationType : struct, IConvertible => 
