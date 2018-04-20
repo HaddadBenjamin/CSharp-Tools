@@ -33,5 +33,8 @@ namespace Ben.Tools.Extensions.BaseTypes
         public static ElementType[] AsArray<ElementType>(this ElementType element) => 
             element.ToEnumerable()
             .ToArray();
+        
+        public static Nullable<TType> AsNullable<TType>(this TType type)
+            where TType : struct => type as TType?;
     }
 }
