@@ -34,7 +34,12 @@ namespace Ben.Tools.Extensions.BaseTypes
             element.ToEnumerable()
             .ToArray();
         
-        public static Nullable<TType> AsNullable<TType>(this TType type)
-            where TType : struct => type as TType?;
+        public static Nullable<ValueType> AsNullable<ValueType>(this ValueType type)
+            where ValueType : struct => 
+            type as ValueType?;
+
+        public static ValueType AsValueType<ValueType>(this Nullable<ValueType> nullable)
+            where ValueType : struct =>
+            nullable.HasValue ? nullable.Value : default(ValueType);
     }
 }
