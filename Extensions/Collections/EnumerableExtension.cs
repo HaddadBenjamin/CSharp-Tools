@@ -25,7 +25,12 @@ namespace Ben.Tools.Extensions.Collections
         /// </summary>
         public static IEnumerable<TElement> Shuffle<TElement>(this IEnumerable<TElement> collection) =>
             collection.OrderBy(element => Guid.NewGuid());
-         
+
+        public static bool ContainsAll<TElementType>(
+            this IEnumerable<TElementType> collection,
+            IEnumerable<TElementType> elements) =>
+            collection.All(elements.Contains);
+
         public static bool ContainsAny<TElementType>(
             this IEnumerable<TElementType> collection,
             IEnumerable<TElementType> elements) =>

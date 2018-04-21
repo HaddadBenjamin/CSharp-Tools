@@ -372,9 +372,9 @@ namespace Ben.Tools.Helpers.Collections
             }
 
             sortHistory += string.Format("Selection Sort Time : {0} ticks\n", stopwatch.ElapsedTicks);
-            DebugService.Instance.Log(string.Format(
+            Console.WriteLine(
                 "The fastest sort is {0} and cost {1} ticks.\n*****History*****\n{2}", fastestSort, ticks,
-                sortHistory));
+                sortHistory);
             stopwatch.Reset();
         }
 
@@ -493,7 +493,7 @@ namespace Ben.Tools.Helpers.Collections
             }
 
             sortHistory += string.Format("{0} Sort Time : {1} ticks\n", sortName, stopwatch.ElapsedTicks);
-            DebugService.Instance.Log(sortHistory);
+            Console.WriteLine(sortHistory);
             stopwatch.Reset();
         }
 

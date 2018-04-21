@@ -26,14 +26,16 @@ namespace Ben.Tools.Utilities.Architecture
         protected ASingleton()
         {
             if (null != instance)
-                DebugService.Instance.LogErrorFormat("[ASingleton] : le singleton de type {0} éxiste en plusieurs éxemplaires ce qui n'est pas logique.",
+                Console.WriteLine(
+                    "[ASingleton] : le singleton de type {0} éxiste en plusieurs éxemplaires ce qui n'est pas logique.",
                     typeof(TSingletonType).Name);
         }
             
         public virtual void Initialize()
         {
             if (haveBeenInitialized)
-                DebugService.Instance.LogErrorFormat("[ASingletonMonoBehaviour] : le singleton de type {0} a une instance déjà initialisée.",
+                Console.WriteLine(
+                    "[ASingletonMonoBehaviour] : le singleton de type {0} a une instance déjà initialisée.",
                     typeof(TSingletonType).Name);
 
             haveBeenInitialized = true;

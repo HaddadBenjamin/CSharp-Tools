@@ -7,6 +7,8 @@ using Ben.Tools.Services;
 
 namespace Ben.Tools.Helpers.FileSystem
 {
+    public static class FileSystemHelper
+    { 
         public static string SafeGetFileContent(string path) => 
                 File.Exists(@path) ?
                 File.ReadAllText(@path) :
@@ -35,9 +37,9 @@ namespace Ben.Tools.Helpers.FileSystem
             }
             catch (Exception exception)
             {
-                DebugService.Instance.Log(string.Format("Exception lancé durant la création d'un chemin : {0} au chemin {1}",
+                Console.WriteLine("Exception lancé durant la création d'un chemin : {0} au chemin {1}",
                     exception.Message,
-                    path));
+                    path);
 
                 throw;
             }
