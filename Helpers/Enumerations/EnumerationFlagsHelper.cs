@@ -103,17 +103,17 @@ namespace Ben.Tools.Helpers.Enumerations
             where EnumerationType : struct, IConvertible =>
             DoesFlagIsEnable(ToInteger(enumerationFlags), EnumerationHelper.ToInteger<EnumerationType>(flagToTestText));
 
-        public static bool DoesFlagAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<int> flagsToTestsValues)
+        public static bool DoesFlagsAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<int> flagsToTestsValues)
             where EnumerationType : struct, IConvertible =>
             flagsToTestsValues.All(flagToTestValue => DoesFlagIsEnable(ToInteger(enumerationFlags), flagToTestValue));
 
-        public static bool DoesFlagAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<EnumerationType> flagsToTests)
+        public static bool DoesFlagsAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<EnumerationType> flagsToTests)
             where EnumerationType : struct, IConvertible =>
             flagsToTests.All(flagToTest => DoesFlagIsEnable(enumerationFlags, flagToTest));
 
-        public static bool DoesFlagAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<string> flagsToTestsTexts)
+        public static bool DoesFlagsAreEnable<EnumerationType>(EnumerationType enumerationFlags, IEnumerable<string> flagsToTestsTexts)
             where EnumerationType : struct, IConvertible =>
-            DoesFlagAreEnable(enumerationFlags, ToEnumerations<EnumerationType>(flagsToTestsTexts));
+            DoesFlagsAreEnable(enumerationFlags, ToEnumerations<EnumerationType>(flagsToTestsTexts));
         #endregion
 
         #region AddFlag(s)
