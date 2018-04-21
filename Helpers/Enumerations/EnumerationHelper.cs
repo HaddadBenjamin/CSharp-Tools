@@ -11,10 +11,8 @@ namespace Ben.Tools.Helpers.Enumerations
             Enum.GetValues(typeof(EnumerationType)).Length;
         
         public static void Foreach<EnumerationType>(Action<EnumerationType> callback)
-            where EnumerationType : struct, IConvertible
-        {
+            where EnumerationType : struct, IConvertible => 
             ToEnumerations<EnumerationType>().Foreach(callback);
-        }
 
         public static IEnumerable<EnumerationType> ToEnumerations<EnumerationType>()
             where EnumerationType : struct, IConvertible => 
@@ -74,12 +72,8 @@ namespace Ben.Tools.Helpers.Enumerations
             enumeration.ToString();
 
         public static string ToString<EnumerationType>(int enumerationIndex)
-            where EnumerationType : struct, IConvertible
-        {
-            var enumeration = ToEnumeration<EnumerationType>(enumerationIndex);
-
-            return ToString(enumeration);
-        }
+            where EnumerationType : struct, IConvertible => 
+            ToString(ToEnumeration<EnumerationType>(enumerationIndex));
 
         public static IEnumerable<int> ToIntegers<EnumerationType>()
             where EnumerationType : struct, IConvertible => 
@@ -90,12 +84,8 @@ namespace Ben.Tools.Helpers.Enumerations
             (int) (object) enumeration;
 
         public static int ToInteger<EnumerationType>(string enumerationText)
-            where EnumerationType : struct, IConvertible
-        {
-            var enumeration = ToEnumeration<EnumerationType>(enumerationText);
-
-            return ToInteger(enumeration);
-        }
+            where EnumerationType : struct, IConvertible => 
+            ToInteger(ToEnumeration<EnumerationType>(enumerationText));
         
 
         // 
