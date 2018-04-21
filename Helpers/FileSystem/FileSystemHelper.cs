@@ -7,10 +7,10 @@ using Ben.Tools.Services;
 
 namespace Ben.Tools.Helpers.FileSystem
 {
-    public static string SafeGetFileContent(string path) => 
-            File.Exists(@path) ?
-            File.ReadAllText(@path) :
-            "";
+        public static string SafeGetFileContent(string path) => 
+                File.Exists(@path) ?
+                File.ReadAllText(@path) :
+                string.Empty;
 
         public static bool IsOfExtension(string path, string[] extensions) => 
             extensions.Contains(Path.GetExtension(path));
