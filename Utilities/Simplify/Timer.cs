@@ -32,10 +32,7 @@
             //this.elapsedTime += TimeService.Instance.ElapsedTime;
         }
 
-        public void Reset()
-        {
-            ElapsedTime = 0.0f;
-        }
+        public void Reset() => ElapsedTime = 0.0f;
 
         public float Ratio() => ElapsedTime / Alarm;
 
