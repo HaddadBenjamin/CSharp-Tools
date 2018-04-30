@@ -14,7 +14,7 @@ namespace Ben.Tools.Helpers.BaseTypes
         }
         
         /// <summary>
-        /// Work like a unique constraint key in Sql :
+        /// If you use Sql, use @@Entity or Scope_entity() to generate a new unique Id.
         /// - { 5, 4, 3, 2, 1, 0 7, 7, 7 } => 6
         /// - { 5, 4, 3, 2, 1, 0 6, 7 } => 8
         /// </summary>
