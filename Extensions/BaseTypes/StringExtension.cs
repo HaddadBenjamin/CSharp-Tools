@@ -9,29 +9,24 @@ namespace Ben.Tools.Extensions.BaseTypes
 {
     public static class StringExtension
 	{
-        public static byte[] EncodedPngBase64StringToBytes(this string encodedPngBase64String) =>
-            Convert.FromBase64String(encodedPngBase64String.Replace("data:image/png;base64,", ""));
+        public static byte[] EncodedPngBase64StringToBytes(this string pngEncodedText) => Convert.FromBase64String(pngEncodedText.Replace("data:image/png;base64,", ""));
 
-        public static Bitmap EncodedPngBase64StringToBitmap(this string encodedPngBase64String) =>
-            BytesHelper.ToBitmap(encodedPngBase64String.EncodedPngBase64StringToBytes());
+        public static Bitmap EncodedPngBase64StringToBitmap(this string pngEncodedText) => BytesHelper.ToBitmap(pngEncodedText.EncodedPngBase64StringToBytes());
 
-        public static string FirstLetterToUppercase(this string input) =>
-            char.ToUpper(input[0]) + input.Substring(1);
-         
-        public static string RemoveTextOccurence(
-            this string text,
-            string textToRemove) => text.Replace(textToRemove, string.Empty);
+        public static string FirstLetterToUppercase(this string text) => char.ToUpper(text[0]) + text.Substring(1);
+
+        public static string RemoveTextOccurence(this string text, string textToRemove) => text.Replace(textToRemove, string.Empty);
 
         /// <summary>
-        /// "MyNameIsFrank" -> "My Name Is Frank"
+        /// "SalutCavaBienDeviendra" -> "Salut Cava Bien Deviendra"
         /// </summary>
-        public static string ReplaceUppercaseBySpaceAndUppercase(this string text) =>
-            Regex.Replace(text, @"\B[A-Z]", m => " " + m.ToString());
+        public static string AddSpaceBetweenUppercase(this string text) => Regex.Replace(text, @"\B[A-Z]", match => " " + match.ToString());
 
         /// <summary>
         /// "my name is pierre" => "My Name Is Pierre".
         /// </summary>
-        public static string FirstWordLetterToUppercase(this string text) =>
-            CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+        public static string FirstWordLetterToUppercase(this string text) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+
+        public static int ToInteger(this string text) => Int32.Parse(text);
     }
 }
