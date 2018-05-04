@@ -10,7 +10,7 @@ namespace Ben.Tools.Helpers.FileSystem
 
         public static string GeneratePath(string filename, string extension = ".txt") => $"{Path.GetTempPath()}{filename}{extension}";
 
-        public static string GetAppDataRoamingPath(params string[] subPaths)
+        public static string AppDataRoaming(params string[] subPaths)
         {
             var appDataRoamingPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
@@ -19,6 +19,7 @@ namespace Ben.Tools.Helpers.FileSystem
 
             return appDataRoamingPath;
         }
-        
+
+        public static string Desktop() => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
     }
 }
