@@ -29,11 +29,11 @@ namespace Ben.Tools.Extensions.BaseTypes
 
         public static List<ElementType> AsList<ElementType>(this ElementType element) => 
             element.ToEnumerable()
-            .ToList();
+                   .ToList();
 
         public static ElementType[] AsArray<ElementType>(this ElementType element) => 
             element.ToEnumerable()
-            .ToArray();
+                   .ToArray();
         
         public static Nullable<ValueType> AsNullable<ValueType>(this ValueType type)
             where ValueType : struct => 
