@@ -12,14 +12,15 @@ namespace Ben.Tools.Extensions.Collections
         {
             collection.Where(predicate)
                       .ToList()
-                      .ForEach(e => collection.Remove(e));
+                      .ForEach(element => collection.Remove(element));
 
             return collection;
         }
+
         public static ICollection<TElementType> RemoveElements<TElementType>(
             this ICollection<TElementType> collection,
-            IEnumerable<TElementType> collectionToDelete) =>
-            collection.RemoveElements(collectionToDelete.Contains);
+            IEnumerable<TElementType> collectionToRemove) =>
+            collection.RemoveElements(collectionToRemove.Contains);
 
         public static IEnumerable<TElementType> AddElements<TElementType>(
             this IEnumerable<TElementType> collection,
