@@ -88,9 +88,12 @@ namespace Ben.Tools.Extensions.Collections
                 callback?.Invoke(element);
         }
         
-        // [a1, a2, a3]         [a1, b1, c1]
-        // [b1, b2, b3]   ==>   [a2, b2, c2]
-        // [c1, c2, c3]         [a3, b3, c3]
+       
+        /// <summary>
+        /// [1, 2, 3]         [1, 4, 7]
+        /// [4, 5, 6]   ==>   [2, 5, 8]
+        /// [7, 8, 9]         [3, 6, 9]
+        /// </summary>
         public static IEnumerable<IEnumerable<TElementType>> Transpose<TElementType>(
             this IEnumerable<IEnumerable<TElementType>> jaggedArray) => 
             jaggedArray
