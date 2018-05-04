@@ -8,7 +8,7 @@ namespace Ben.Tools.Helpers.Date
      
     public static class DayOfWeeksHelper
     {
-        public static IEnumerable<DayOfWeek> GetDayOfWeeksSorted() => 
+        public static IEnumerable<DayOfWeek> SortedByIndex() => 
             EnumerationHelper.ToEnumerations<DayOfWeek>()
                              .OrderBy(dayOfWeek => dayOfWeek.ToIndex());
     }
