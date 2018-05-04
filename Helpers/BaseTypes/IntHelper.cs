@@ -6,17 +6,18 @@ namespace Ben.Tools.Helpers.BaseTypes
 {
     public static class IntHelper
     {
-        public static int GenerateUniqueInteger(bool striclyPositive = true)
+        public static int GenerateUniqueInteger(bool positive = true)
         {
             var uniqueInteger = Guid.NewGuid().GetHashCode();
 
-            return striclyPositive ? Math.Abs(uniqueInteger) : uniqueInteger;
+            return positive ? Math.Abs(uniqueInteger) : uniqueInteger;
         }
-        
+
         /// <summary>
         /// If you use Sql, use @@Entity or Scope_entity() to generate a new unique Id.
         /// - { 5, 4, 3, 2, 1, 0 7, 7, 7 } => 6
         /// - { 5, 4, 3, 2, 1, 0 6, 7 } => 8
+        /// - { } => 0
         /// </summary>
         public static int GetUniqueKey(IEnumerable<int> values)
         {
