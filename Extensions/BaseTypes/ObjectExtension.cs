@@ -6,21 +6,21 @@ namespace Ben.Tools.Extensions.BaseTypes
 {
     public static class ObjectExtension
     {
-        public static bool DefaultOverrideEquals<TTypeToCompare>(
-            this object thisObject,
-            object objectToCompare)
+        public static bool DefaultOverrideEquals<ComparedType>(
+            this object left,
+            object right)
         {
-            if (ReferenceEquals(null, objectToCompare))
-                return false;
-            if (ReferenceEquals(thisObject, objectToCompare))
-                return true;
-            if (thisObject.GetType() != objectToCompare.GetType())
+            if (ReferenceEquals(null, right) ||
+                left.GetType() != right.GetType())
                 return false;
 
-            return thisObject.Equals((TTypeToCompare) objectToCompare);
+            if (ReferenceEquals(left, right))
+                return true;
+
+            return left.Equals((ComparedType) right);
         }
 
-        public static bool IsNull(this object anObject) => null == anObject;
+        public static bool IsNull(this object anObject) => anObject is null;
 
         public static IEnumerable<ElementType> ToEnumerable<ElementType>(this ElementType element)
         {
