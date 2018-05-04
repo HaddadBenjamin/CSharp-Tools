@@ -13,11 +13,7 @@ namespace Ben.Tools.Extensions.Collections
             var index = 0;
 
             foreach (TDataType element in collection)
-            {
-                callback?.Invoke(element, index);
-
-                ++index;
-            }
+                callback?.Invoke(element, index++);
         }
 
         /// <summary>
