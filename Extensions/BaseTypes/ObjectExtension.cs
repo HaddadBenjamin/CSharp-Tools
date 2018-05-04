@@ -39,8 +39,8 @@ namespace Ben.Tools.Extensions.BaseTypes
             where ValueType : struct => 
             type as ValueType?;
 
-        public static ValueType AsValueType<ValueType>(this Nullable<ValueType> nullable)
+        public static ValueType AsValueType<ValueType>(this Nullable<ValueType> nullable, ValueType defaultValue = default(ValueType))
             where ValueType : struct =>
-            nullable.HasValue ? nullable.Value : default(ValueType);
+            nullable.HasValue ? nullable.Value : defaultValue;
     }
 }
