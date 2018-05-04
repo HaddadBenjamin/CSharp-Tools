@@ -10,9 +10,7 @@ namespace Ben.Tools.Helpers.FileSystem
     /// </summary>
     public static class EncryptionHelper
     {
-        private static readonly string
-            encryptionKey = "This Key Will Be Later On A Server, Thanks you to read my code.";
-        
+        private static readonly string encryptionKey = "Sample Key";
 
         public static string Md5Encrypt(string source)
         {
@@ -27,33 +25,28 @@ namespace Ben.Tools.Helpers.FileSystem
             DESCryptoProvider.Mode = CipherMode.ECB;
 
             return Convert.ToBase64String(DESCryptoProvider.CreateEncryptor()
-                .TransformFinalBlock(bufferBytes, 0, bufferBytes.Length));
+                          .TransformFinalBlock(bufferBytes, 0, bufferBytes.Length));
         }
 
         public static string Md5Decrypt(string encodedText)
         {
             byte[] hashBytes;
-            byte[] bufferBuffer;
             var DESCryptoProvider = new TripleDESCryptoServiceProvider();
             var MD5CryptoProvider = new MD5CryptoServiceProvider();
-            bufferBuffer = Convert.FromBase64String(encodedText);
+            var bufferBytes = Convert.FromBase64String(encodedText);
 
             hashBytes = MD5CryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(encryptionKey));
             DESCryptoProvider.Key = hashBytes;
             DESCryptoProvider.Mode = CipherMode.ECB;
 
             return Encoding.UTF8.GetString(DESCryptoProvider.CreateDecryptor()
-                .TransformFinalBlock(bufferBuffer, 0, bufferBuffer.Length));
+                                .TransformFinalBlock(bufferBytes, 0, bufferBytes.Length));
         }
 
-        public static string MD5(string data) => 
-            Encoding.ASCII.GetString(MD5hash(Encoding.ASCII.GetBytes(data)));
+        public static string MD5(string data) => Encoding.ASCII.GetString(MD5hash(Encoding.ASCII.GetBytes(data)));
 
-        private static byte[] MD5hash(byte[] data) => 
-            new MD5CryptoServiceProvider().ComputeHash(data);
+        private static byte[] MD5hash(byte[] data) => new MD5CryptoServiceProvider().ComputeHash(data);
 
-        
-        
         public static byte[] Md5EncryptWithoutKey(string textToEncrypt)
         {
             using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -71,40 +64,32 @@ namespace Ben.Tools.Helpers.FileSystem
             return stringBuilder.ToString();
         }
 
-        
-
-        public static byte[] AES256Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+        public static byte[] AES256Encrypt(byte[] bytesToEncrypt, byte[] passwordBytes)
         {
-            byte[] encryptedBytes = null;
-
             // Set your salt here, change it to meet your flavor:
             // The salt bytes must be at least 8 bytes.
             byte[] saltBytes = {1, 2, 3, 4, 5, 6, 7, 8};
 
-            using (var ms = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
+            using (var rijndaelManaged = new RijndaelManaged())
             {
-                using (var AES = new RijndaelManaged())
+                rijndaelManaged.KeySize = 256;
+                rijndaelManaged.BlockSize = 128;
+
+                var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+
+                rijndaelManaged.Key = key.GetBytes(rijndaelManaged.KeySize / 8);
+                rijndaelManaged.IV = key.GetBytes(rijndaelManaged.BlockSize / 8);
+                rijndaelManaged.Mode = CipherMode.CBC;
+
+                using (var cryptoStream = new CryptoStream(memoryStream, rijndaelManaged.CreateEncryptor(), CryptoStreamMode.Write))
                 {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
-                        cs.Close();
-                    }
-
-                    encryptedBytes = ms.ToArray();
+                    cryptoStream.Write(bytesToEncrypt, 0, bytesToEncrypt.Length);
+                    cryptoStream.Close();
                 }
-            }
 
-            return encryptedBytes;
+                return memoryStream.ToArray();
+            }
         }
 
         public static byte[] AES256Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
@@ -115,30 +100,26 @@ namespace Ben.Tools.Helpers.FileSystem
             // The salt bytes must be at least 8 bytes.
             byte[] saltBytes = {1, 2, 3, 4, 5, 6, 7, 8};
 
-            using (var ms = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
+            using (var rijndaelManaged = new RijndaelManaged())
             {
-                using (var AES = new RijndaelManaged())
+                rijndaelManaged.KeySize = 256;
+                rijndaelManaged.BlockSize = 128;
+
+                var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+
+                rijndaelManaged.Key = key.GetBytes(rijndaelManaged.KeySize / 8);
+                rijndaelManaged.IV = key.GetBytes(rijndaelManaged.BlockSize / 8);
+                rijndaelManaged.Mode = CipherMode.CBC;
+
+                using (var cryptoStream = new CryptoStream(memoryStream, rijndaelManaged.CreateDecryptor(), CryptoStreamMode.Write))
                 {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
-                        cs.Close();
-                    }
-
-                    decryptedBytes = ms.ToArray();
+                    cryptoStream.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                    cryptoStream.Close();
                 }
-            }
 
-            return decryptedBytes;
+                return memoryStream.ToArray();
+            }
         }
 
         public static string AES256Encrypt(string input, string password)
@@ -160,17 +141,10 @@ namespace Ben.Tools.Helpers.FileSystem
         {
             // Get the bytes of the string
             var bytesToBeDecrypted = Convert.FromBase64String(input);
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
+            var passwordBytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(password));
             var bytesDecrypted = AES256Decrypt(bytesToBeDecrypted, passwordBytes);
-            var result = Encoding.UTF8.GetString(bytesDecrypted);
 
-            return result;
+            return Encoding.UTF8.GetString(bytesDecrypted);
         }
-
-        
-
-        
     }
 }
