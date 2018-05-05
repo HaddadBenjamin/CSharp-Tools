@@ -4,8 +4,11 @@ namespace Ben.Tools.Extensions.BaseTypes
     {
         Less,
         LessOrEqual,
+        LessOrNearlyEqual,
         Equal,
+        NearlyEqual,
         MoreOrEqual,
+        MoreOrNearlyEqual,
         More,
     }
 }
