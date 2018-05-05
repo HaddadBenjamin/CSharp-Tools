@@ -1,0 +1,11 @@
+namespace Ben.Tools.Extensions.BaseTypes
+{
+    public enum EComparerOperator
+    {
+        Less,
+        LessOrEqual,
+        Equal,
+        MoreOrEqual,
+        More,
+    }
+}
