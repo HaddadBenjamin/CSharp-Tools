@@ -12,23 +12,25 @@ namespace Ben.Tools.Helpers.BaseTypes
 
             return positive ? Math.Abs(uniqueInteger) : uniqueInteger;
         }
-        
-        public static Func<int, int, bool> OperatorComparerFunction(EComparerOperator comparerOperator)
+
+        public static Func<int, int, bool> OperatorComparerFunction(EComparerOperator comparerOperator, int epsilon = default(int))
         {
             Func<int, int, bool> comparer;
 
             switch (comparerOperator)
             {
-                case EComparerOperator.Less:        comparer = ((left, right) => left < right);  break;
-                case EComparerOperator.LessOrEqual: comparer = ((left, right) => left <= right); break;
-                case EComparerOperator.Equal:       comparer = ((left, right) => left == right); break;
-                case EComparerOperator.MoreOrEqual: comparer = ((left, right) => left >= right); break;
-                default:                            comparer = ((left, right) => left > right);  break;
+                case EComparerOperator.Less:              comparer = ((left, right) => left < right);  break;
+                case EComparerOperator.LessOrEqual:       comparer = ((left, right) => left <= right); break;
+                case EComparerOperator.LessOrNearlyEqual: comparer = ((left, right) => left < right || left.NearlyEqual(right, epsilon)); break;
+                case EComparerOperator.Equal:             comparer = ((left, right) => left == right); break;
+                case EComparerOperator.NearlyEqual:       comparer = ((left, right) => left.NearlyEqual(right, epsilon)); break;
+                case EComparerOperator.MoreOrEqual:       comparer = ((left, right) => left >= right); break;
+                case EComparerOperator.MoreOrNearlyEqual: comparer = ((left, right) => left > right || left.NearlyEqual(right, epsilon)); break;
+                default:                                  comparer = ((left, right) => left > right);  break;
             }
 
             return comparer;
         }
-
         /// <summary>
         /// If you use Sql, use @@Entity or Scope_entity() to generate a new unique Id.
         /// - { 5, 4, 3, 2, 1, 0 7, 7, 7 } => 6
