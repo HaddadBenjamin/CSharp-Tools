@@ -21,6 +21,13 @@ namespace Ben.Tools.Extensions.BaseTypes
         }
 
         public static bool IsNull(this object anObject) => anObject is null;
+        
+        /// <summary>
+        /// ISNULL like Sql, return and set a value if an the object is null.
+        /// </summary>
+        public static ObjectType IsNullGetSpecifiedValueIfNull<ObjectType>(this ObjectType anyObject, ObjectType valueIfNull)
+            where ObjectType : class =>
+            anyObject ?? valueIfNull;
 
         public static IEnumerable<ElementType> ToEnumerable<ElementType>(this ElementType element)
         {
