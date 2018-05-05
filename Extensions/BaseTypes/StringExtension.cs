@@ -28,5 +28,7 @@ namespace Ben.Tools.Extensions.BaseTypes
         public static string FirstWordLetterToUppercase(this string text) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
 
         public static int ToInteger(this string text) => Int32.Parse(text);
+	    
+	public static bool In(this string text, IEnumerable<string> collection) => collection.Contains(text);
     }
 }
