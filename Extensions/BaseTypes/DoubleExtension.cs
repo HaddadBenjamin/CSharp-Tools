@@ -7,7 +7,6 @@ namespace Ben.Tools.Extensions.BaseTypes
 {
     public static class DoubleExtension
     {
-        #region Maison
         public static bool NearlyEquals(this double left, double right, double epsilon = Double.Epsilon) => Math.Abs(left - right) <= epsilon;
 
         public static bool IsBetween(this double number, double minimum, double maximum) => number > minimum && number < maximum;
@@ -43,6 +42,5 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// IN like Sql, return true if one element of the values is equal to number.
         /// </summary>
         public static bool In(this double number, IEnumerable<double> values) => values.Contains(number);
-        #endregion
     }
 }
