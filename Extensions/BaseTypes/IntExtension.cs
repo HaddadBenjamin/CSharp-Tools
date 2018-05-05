@@ -36,6 +36,6 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// <summary>
         /// IN like Sql, return true if one element of the values is equal to number.
         /// </summary>
-        public static bool IsIn(this int number, IEnumerable<int> values) => values.Any(value => value == number);
+        public static bool In(this int number, IEnumerable<int> values) => values.Contains(number);
     }
 }
