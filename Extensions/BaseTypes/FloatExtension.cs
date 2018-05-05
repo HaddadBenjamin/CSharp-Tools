@@ -18,7 +18,7 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.
         /// </summary>
-        public static bool Some(this float number, IEnumerable<float> values, EComparerOperator comparerOperator, float epsilon = Single.Epsilon)
+        public static bool SomeAnyVerifyTheComparerCondition(this float number, IEnumerable<float> values, EComparerOperator comparerOperator, float epsilon = Single.Epsilon)
         {
             var comparerFunction = FloatHelper.OperatorComparerFunction(comparerOperator, epsilon);
 
@@ -28,7 +28,7 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// <summary>
         /// return true if all the values verify the comparerOperator comparaison with number.
         /// </summary>
-        public static bool SomeAll(this float number, IEnumerable<float> values, EComparerOperator comparerOperator, float epsilon = Single.Epsilon)
+        public static bool SomeAllVerifyTheComparerCondition(this float number, IEnumerable<float> values, EComparerOperator comparerOperator, float epsilon = Single.Epsilon)
         {
             var comparerFunction = FloatHelper.OperatorComparerFunction(comparerOperator, epsilon);
 
