@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,9 +6,9 @@ namespace Ben.Tools.Extensions.Collections
 {
     public static class CollectionExtension
     {
-        public static ICollection<TElementType> RemoveElements<TElementType>(
-            this ICollection<TElementType> collection,
-            Func<TElementType, bool> predicate)
+        public static ICollection<ElementType> RemoveElements<ElementType>(
+            this ICollection<ElementType> collection,
+            Func<ElementType, bool> predicate)
         {
             collection.Where(predicate)
                       .ToList()
@@ -17,16 +17,16 @@ namespace Ben.Tools.Extensions.Collections
             return collection;
         }
 
-        public static ICollection<TElementType> RemoveElements<TElementType>(
-            this ICollection<TElementType> collection,
-            IEnumerable<TElementType> collectionToRemove) =>
+        public static ICollection<ElementType> RemoveElements<ElementType>(
+            this ICollection<ElementType> collection,
+            IEnumerable<ElementType> collectionToRemove) =>
             collection.RemoveElements(collectionToRemove.Contains);
 
-        public static IEnumerable<TElementType> AddElements<TElementType>(
-            this IEnumerable<TElementType> collection,
-            IEnumerable<TElementType> elementsToAdd)
+        public static IEnumerable<ElementType> AddElements<ElementType>(
+            this IEnumerable<ElementType> collection,
+            IEnumerable<ElementType> elementsToAdd)
         {
-            if (collection is List<TElementType> list)
+            if (collection is List<ElementType> list)
             {
                 list.AddRange(elementsToAdd);
                 return list;
