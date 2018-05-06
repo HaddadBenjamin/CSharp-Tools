@@ -13,25 +13,6 @@ namespace Ben.Tools.Helpers.FileSystem
 
         public static bool IsOfExtension(string path, string[] extensions) =>  extensions.Contains(Path.GetExtension(path));
 
-        public static void SafeCreatePath(string path)
-        {
-            try
-            {
-                var pathDirectory = Path.GetDirectoryName(path);
-
-                if (!string.IsNullOrEmpty(pathDirectory) &&
-                    !Directory.Exists(pathDirectory))
-
-                if (!string.IsNullOrEmpty(path) &&
-                    !File.Exists(path))
-                    using (var fileStream = System.IO.File.Create(path));
-            }
-            catch (Exception exception)
-            {
-                throw new Exception(string.Format("Exception lancé durant la création d'un chemin : {0} au chemin {1}", exception.Message, path));
-            }
-        }
-
         public static IEnumerable<string> EnumerateFiles(
             string directoryPath,
             string[] extensions,
