@@ -73,7 +73,7 @@ namespace Ben.Tools.Extensions.Collections
             .Take(numberOfColumns);
 
         /// <summary>
-        /// GroupByLines :
+        /// GroupByLines(3) :
         ///                             [1, 4, 7]
         /// [1, 2, 3, 4, 5, 6, 7]  =>   [2, 5,  ]
         ///                             [3, 6,  ]
