@@ -67,8 +67,8 @@ namespace Ben.Tools.Extensions.Collections
             collection
             .Select((value, columnIndex) =>
                 columnIndex <= collection.Count() / numberOfColumns ?
-                    collection.Where((resourceGroup, index) => index >= columnIndex * numberOfColumns &&
-                                                               index < (columnIndex + 1) * numberOfColumns)
+                    collection.Where((element, index) => index >= columnIndex * numberOfColumns &&
+                                                         index < (columnIndex + 1) * numberOfColumns)
                     : null)
             .Take(numberOfColumns);
 
@@ -84,7 +84,7 @@ namespace Ben.Tools.Extensions.Collections
             collection
             .Select((value, lineIndex) =>
                 lineIndex < numberOfLines ?
-                    collection.Where((resourceGroup, index) => index % numberOfLines == lineIndex) :
+                    collection.Where((element, index) => index % numberOfLines == lineIndex) :
                     null)
             .Take(numberOfLines);
 
