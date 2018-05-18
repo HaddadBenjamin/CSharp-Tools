@@ -118,5 +118,11 @@ namespace Ben.Tools.Extensions.Collections
         public static IEnumerable<ElementType> RemoveNullElements<ElementType>(this IEnumerable<ElementType> collection)
             where ElementType : class =>
             collection.Where(element => element != null);
+        
+        public static IEnumerable<ElementType> DistinctBy<ElementType, PredicateKey>(
+            this IEnumerable<ElementType> collection,
+            Func<ElementType, PredicateKey> predicate) =>
+                collection.GroupBy(predicate)
+                          .Select(element => element.First());
     }
 }
