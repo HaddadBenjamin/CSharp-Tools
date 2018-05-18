@@ -119,7 +119,7 @@ namespace Ben.Tools.Extensions.Collections
             where ElementType : class =>
             collection.Where(element => element != null);
         
-        public static IEnumerable<ElementType> DistinctBy<ElementType, PredicateKey>(
+        public static IEnumerable<ElementType> DistinctByColumn<ElementType, PredicateKey>(
             this IEnumerable<ElementType> collection,
             Func<ElementType, PredicateKey> predicate) =>
                 collection.GroupBy(predicate)
