@@ -13,10 +13,10 @@ namespace Ben.Tools.Extensions.Collections
         
         public static void Foreach<ElementType>(
             this IEnumerable<ElementType> collection,
-            Action<ElementType> callback)
+            Action<ElementType> action)
         {
             foreach (ElementType element in collection)
-                callback?.Invoke(element);
+                action(element);
         }
 
         public static void Foreach<ElementType>(
@@ -26,7 +26,7 @@ namespace Ben.Tools.Extensions.Collections
             var index = 0;
 
             foreach (ElementType element in collection)
-                callback?.Invoke(element, index++);
+                callback(element, index++);
         }
 
         /// <summary>
