@@ -21,12 +21,12 @@ namespace Ben.Tools.Extensions.Collections
 
         public static void Foreach<ElementType>(
             this IEnumerable<ElementType> collection,
-            Action<ElementType, int> callback)
+            Action<ElementType, int> action)
         {
             var index = 0;
 
             foreach (ElementType element in collection)
-                callback(element, index++);
+                action(element, index++);
         }
 
         /// <summary>
