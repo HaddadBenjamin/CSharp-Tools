@@ -6,6 +6,11 @@ namespace Ben.Tools.Extensions.Collections
 {
     public static class EnumerableExtension
     {
+        public static void Consume<ElementType>(this IEnumerable<ElementType> sequence)
+        {
+            foreach (var element in sequence);
+        }
+        
         public static void Foreach<ElementType>(
             this IEnumerable<ElementType> collection,
             Action<ElementType> callback)
@@ -14,7 +19,7 @@ namespace Ben.Tools.Extensions.Collections
                 callback?.Invoke(element);
         }
 
-        public static void ForEachWithIndex<ElementType>(
+        public static void Foreach<ElementType>(
             this IEnumerable<ElementType> collection,
             Action<ElementType, int> callback)
         {
