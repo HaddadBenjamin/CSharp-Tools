@@ -84,6 +84,9 @@ namespace Ben.Tools.Extensions.Sequences
         public static IEnumerable<ElementType> RemoveNullElements<ElementType>(this IEnumerable<ElementType> sequence)
             where ElementType : class =>
             sequence.Where(element => element != null);
+
+        public static IEnumerable<ElementType> RemoveElements<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate) =>
+            sequence.Except(sequence.Where(predicate));
         #endregion
 
         #region Predicate

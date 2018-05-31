@@ -57,7 +57,6 @@
     <Compile Include="Extensions\BaseTypes\FloatExtension.cs" />
     <Compile Include="Extensions\BaseTypes\IntExtension.cs" />
     <Compile Include="Extensions\BaseTypes\StringExtension.cs" />
-    <Compile Include="Extensions\Sequences\CollectionExtension.cs" />
     <Compile Include="Extensions\Sequences\EnumerableExtension.cs" />
     <Compile Include="Extensions\Date\DateTimeExtension.cs" />
     <Compile Include="Extensions\Date\DayOfWeekExtension.cs" />
