@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Ben.Tools.Extensions.Collections;
 using Ben.Tools.Services;
 
 namespace Ben.Tools.Helpers.FileSystem

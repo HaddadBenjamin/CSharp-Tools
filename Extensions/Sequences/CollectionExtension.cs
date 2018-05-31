@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Ben.Tools.Extensions.Collections
+namespace Ben.Tools.Extensions.Sequences
 {
     public static class CollectionExtension
     {
+        #region Add & Remove Element(s)
         public static ICollection<ElementType> RemoveElements<ElementType>(
             this ICollection<ElementType> collection,
             Func<ElementType, bool> predicate)
@@ -21,18 +22,6 @@ namespace Ben.Tools.Extensions.Collections
             this ICollection<ElementType> collection,
             IEnumerable<ElementType> collectionToRemove) =>
             collection.RemoveElements(collectionToRemove.Contains);
-
-        public static IEnumerable<ElementType> AddElements<ElementType>(
-            this IEnumerable<ElementType> collection,
-            IEnumerable<ElementType> elementsToAdd)
-        {
-            if (collection is List<ElementType> list)
-            {
-                list.AddRange(elementsToAdd);
-                return list;
-            }
-
-            return collection.Concat(elementsToAdd);
-        }
+        #endregion
     }
 }

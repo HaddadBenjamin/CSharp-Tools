@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Ben.Tools.Services;
 
-namespace Ben.Tools.Helpers.Collections
+namespace Ben.Tools.Helpers.Sequences
 {
     /* Note personnels :
     Trees VS Hasmap

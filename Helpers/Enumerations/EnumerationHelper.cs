@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Extensions.Collections;
+using Ben.Tools.Extensions.Sequences;
 
 namespace Ben.Tools.Helpers.Enumerations
 {
