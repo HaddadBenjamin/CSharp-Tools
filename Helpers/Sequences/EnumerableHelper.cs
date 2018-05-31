@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Ben.Tools.Helpers.Sequences
-{
+{ 
     public static class EnumerableHelper
     {
         public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
