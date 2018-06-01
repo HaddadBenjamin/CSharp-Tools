@@ -10,22 +10,6 @@ namespace Ben.Tools.Extensions.Sequences
         public static bool FastContains<ElementType>(this List<ElementType> list, ElementType elementToSearch) =>
            list.BinarySearch(elementToSearch) >= 0;
         #endregion
-            
-        #region Intern Behaviour(s)
-        private static int GetElementIndexOrMaxIntValue<ElementType>(this List<ElementType> list, Func<ElementType, bool> predicate)
-        {
-            var elementRetrieved = list.FirstOrDefault(predicate);
-
-            return elementRetrieved != null ? list.IndexOf(elementRetrieved) : int.MaxValue;
-        }
-
-        private static int GetElementIndexOrMaxIntValue<ElementType>(this List<ElementType> list, ElementType element)
-        {
-            var index = list.IndexOf(element);
-
-            return index != -1 ? index : int.MaxValue;
-        }
-        #endregion
 
         #region Element(s) insertion
         #region AddElement(s)AtBegin
@@ -141,6 +125,22 @@ namespace Ben.Tools.Extensions.Sequences
         public static List<ElementType> AddElementsAtEnd<ElementType>(this List<ElementType> list, List<ElementType> listToAdd)
             => list.AddElementsAt(listToAdd, int.MaxValue);
         #endregion
+        #endregion
+            
+        #region Intern Behaviour(s)
+        private static int GetElementIndexOrMaxIntValue<ElementType>(this List<ElementType> list, Func<ElementType, bool> predicate)
+        {
+            var elementRetrieved = list.FirstOrDefault(predicate);
+
+            return elementRetrieved != null ? list.IndexOf(elementRetrieved) : int.MaxValue;
+        }
+
+        private static int GetElementIndexOrMaxIntValue<ElementType>(this List<ElementType> list, ElementType element)
+        {
+            var index = list.IndexOf(element);
+
+            return index != -1 ? index : int.MaxValue;
+        }
         #endregion
     }
 }
