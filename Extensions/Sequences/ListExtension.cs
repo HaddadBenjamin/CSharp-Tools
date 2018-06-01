@@ -6,7 +6,12 @@ namespace Ben.Tools.Extensions.Sequences
 {
     public static class ListExtension
     {
-         #region Intern Behaviour(s)
+        #region Utilities
+        public static bool FastContains<ElementType>(this List<ElementType> list, ElementType elementToSearch) =>
+           list.BinarySearch(elementToSearch) >= 0;
+        #endregion
+            
+        #region Intern Behaviour(s)
         private static int GetElementIndexOrMaxIntValue<ElementType>(this List<ElementType> list, Func<ElementType, bool> predicate)
         {
             var elementRetrieved = list.FirstOrDefault(predicate);
