@@ -80,8 +80,7 @@ namespace Ben.Tools.Extensions.Sequences
         public static int IndexOf<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate, IEqualityComparer<ElementType> comparer = default(IEqualityComparer<ElementType>)) =>
             sequence.IndexOf(sequence.FirstOrDefault(predicate), comparer);
         
-        public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence)
-            where ElementType : new() =>
+        public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence) =>
             sequence.DeepCopy();
         #endregion
 
