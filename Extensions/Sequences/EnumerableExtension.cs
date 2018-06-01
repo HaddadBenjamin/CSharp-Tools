@@ -82,7 +82,7 @@ namespace Ben.Tools.Extensions.Sequences
         
         public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence)
             where ElementType : new() =>
-            sequence.Select(element => element.CopyObject());
+            sequence.DeepCopy();
         #endregion
 
         #region Element(s) Insert & Remove
