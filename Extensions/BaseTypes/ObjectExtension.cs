@@ -26,8 +26,8 @@ namespace Ben.Tools.Extensions.BaseTypes
             var newInstance = Activator.CreateInstance<ObjectType>();
 
             @object.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
-                  .ToList()
-                  .ForEach(field => field.SetValue(newInstance, field.GetValue(@object)));
+                   .ToList()
+                   .ForEach(field => field.SetValue(newInstance, field.GetValue(@object)));
 
             return newInstance;
         }
