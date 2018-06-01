@@ -20,17 +20,50 @@ namespace Ben.Tools.Extensions.BaseTypes
             return left.Equals((ComparedType) right);
         }
         
-        public static ObjectType CopyObject<ObjectType>(this ObjectType @object) 
-            where ObjectType : new()
+        public static ObjectType DeepCopy<ObjectType>(this ObjectType objectToCopy) =>
+            (ObjectType)DeepCopyAlgorithm(objectToCopy);
+
+        private static object DeepCopyAlgorithm(object objectToCopy)
         {
-            var newInstance = Activator.CreateInstance<ObjectType>();
+            if (objectToCopy == null)
+                return null;
 
-            @object.GetType()
-                   .GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
-                   .ToList()
-                   .ForEach(field => field.SetValue(newInstance, field.GetValue(@object)));
+            var objectType = objectToCopy.GetType();
 
-            return newInstance;
+            if (objectType.IsValueType || objectType == typeof(string))
+                return objectToCopy;
+
+            else if (objectType.IsArray)
+            {
+                var elementType = Type.GetType(objectType.FullName.Replace("[]", string.Empty));
+                var arrayToCopy = objectToCopy as Array;
+                var arrayNewInstance = Array.CreateInstance(elementType, arrayToCopy.Length);
+
+                for (int arrayIndex = 0; arrayIndex < arrayToCopy.Length; arrayIndex++)
+                    arrayNewInstance.SetValue(DeepCopyAlgorithm(arrayToCopy.GetValue(arrayIndex)), arrayIndex);
+
+                return Convert.ChangeType(arrayNewInstance, objectToCopy.GetType());
+            }
+
+            else if (objectType.IsClass)
+            {
+                var classType = Activator.CreateInstance(objectToCopy.GetType());
+                var classFields = objectType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (var classField in classFields)
+                {
+                    var fieldValue = classField.GetValue(objectToCopy);
+
+                    if (fieldValue == null)
+                        continue;
+
+                    classField.SetValue(classType, DeepCopyAlgorithm(fieldValue));
+                }
+
+                return classType;
+            }
+            else
+                throw new ArgumentException("Unknown type");
         }
 
         public static bool IsNull(this object anObject) => anObject is null;
