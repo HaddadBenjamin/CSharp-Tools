@@ -65,6 +65,19 @@ namespace Ben.Tools.Extensions.Sequences
             foreach (var element in sequence)
                 action(element, index++);
         }
+        
+        public static int IndexOf<ElementType>(this IEnumerable<ElementType> sequence, ElementType elementToSearch, IEqualityComparer<ElementType> comparer = default(IEqualityComparer<ElementType>))
+        {
+            comparer = comparer ?? EqualityComparer<ElementType>.Default;
+
+            var elementFound = sequence.Select((element, index) => new { element, index })
+                                       .FirstOrDefault(elementWithIndex => comparer.Equals(elementWithIndex.element, elementToSearch));
+
+            return elementFound == null ? -1 : elementFound.index;
+        }
+
+        public static int IndexOf<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate, IEqualityComparer<ElementType> comparer = default(IEqualityComparer<ElementType>)) =>
+            sequence.IndexOf(sequence.FirstOrDefault(predicate), comparer);
         #endregion
 
         #region Element(s) Insert & Remove
