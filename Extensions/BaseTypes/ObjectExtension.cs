@@ -19,6 +19,18 @@ namespace Ben.Tools.Extensions.BaseTypes
 
             return left.Equals((ComparedType) right);
         }
+        
+        public static ObjectType CopyObject<ObjectType>(this ObjectType @object) 
+            where ObjectType : new()
+        {
+            var newInstance = Activator.CreateInstance<ObjectType>();
+
+            @object.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
+                  .ToList()
+                  .ForEach(field => field.SetValue(newInstance, field.GetValue(@object)));
+
+            return newInstance;
+        }
 
         public static bool IsNull(this object anObject) => anObject is null;
         
