@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ben.Tools.Extensions.BaseTypes;
 
 namespace Ben.Tools.Extensions.Sequences
 {
@@ -78,6 +79,10 @@ namespace Ben.Tools.Extensions.Sequences
 
         public static int IndexOf<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate, IEqualityComparer<ElementType> comparer = default(IEqualityComparer<ElementType>)) =>
             sequence.IndexOf(sequence.FirstOrDefault(predicate), comparer);
+        
+        public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence)
+            where ElementType : new() =>
+            sequence.Select(element => element.CopyObject());
         #endregion
 
         #region Element(s) Insert & Remove
