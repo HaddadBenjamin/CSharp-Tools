@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Ben.Tools.Extensions.BaseTypes;
 
 namespace Ben.Tools.Helpers.BaseTypes
@@ -26,5 +28,9 @@ namespace Ben.Tools.Helpers.BaseTypes
 
             return comparer;
         }
+        
+        public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
+            Enumerable.Repeat<Func<double>>(new Random().NextDouble, numberOfElements)
+                      .Select(generateValueFunction => generateValueFunction());
     }
 }
