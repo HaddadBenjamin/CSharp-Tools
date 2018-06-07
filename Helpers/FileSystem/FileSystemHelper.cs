@@ -12,10 +12,7 @@ namespace Ben.Tools.Helpers.FileSystem
 
         public static bool IsOfExtension(string path, string[] extensions) =>  extensions.Contains(Path.GetExtension(path));
 
-        public static IEnumerable<string> EnumerateFiles(
-            string directoryPath,
-            IEnumerable<string> extensions,
-            params string[] ignoreFilters) =>
+        public static IEnumerable<string> EnumerateFiles(string directoryPath, IEnumerable<string> extensions, params string[] ignoreFilters) =>
                 Directory.EnumerateFiles(directoryPath, "*", SearchOption.AllDirectories)
                          .AsParallel()
                          .Where(filePath => extensions.Contains(Path.GetExtension(filePath)) &&
