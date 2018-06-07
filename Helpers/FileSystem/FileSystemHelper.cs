@@ -14,12 +14,12 @@ namespace Ben.Tools.Helpers.FileSystem
 
         public static IEnumerable<string> EnumerateFiles(
             string directoryPath,
-            string[] extensions,
-            params string[] ignoreFilters) => 
-            extensions.SelectMany(extension =>
+            IEnumerable<string> extensions,
+            params string[] ignoreFilters) =>
                 Directory.EnumerateFiles(directoryPath, "*", SearchOption.AllDirectories)
+                         .AsParallel()
                          .Where(filePath => extensions.Contains(Path.GetExtension(filePath)) &&
-                                            !ignoreFilters.Contains(filePath)));
+                                            !ignoreFilters.Any(ignoreFilter => filePath.Contains(ignoreFilter)));
 
         public static string TakeOutExtension(string fileName) => Path.GetFileNameWithoutExtension(@fileName);
     }
