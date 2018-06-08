@@ -6,7 +6,7 @@ namespace Ben.Tools.Extensions.BaseTypes
 {
     public static class ObjectExtension
     {
-        public static bool DefaultOverrideEquals<ComparedType>(
+        public static bool DefaulEquals<ComparedType>(
             this object left,
             object right)
         {
