@@ -19,13 +19,13 @@ namespace Ben.Tools.Extensions.Date
         public static DateTime ResetMonths(this DateTime dateTime) => dateTime.AddMonths(-dateTime.Month);
 
         /// <summary>
-        /// Exemple : Paris => 1 because GMT+1.
+        /// Paris => 1 because GMT+1.
         /// </summary>
         public static DateTime ToLocalTime(this DateTime dateTime) => 
             dateTime.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
 
         /// <summary>
-        /// Exemple : Paris => -1 because GMT+1.
+        /// Paris => -1 because GMT+1.
         /// </summary>
         public static DateTime ToUtc(this DateTime dateTime) => 
             dateTime.AddHours(-TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
