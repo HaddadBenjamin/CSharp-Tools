@@ -187,7 +187,7 @@ namespace Ben.Tools.Extensions.Sequences
         public static IEnumerable<IEnumerable<ElementType>> Transpose<ElementType>(
             this IEnumerable<IEnumerable<ElementType>> jaggedArray) =>
             jaggedArray
-                .AsParallel() // à retirer si la séquence possède peu d'éléments.
+                .AsParallel() // à retirer si le tableau en escalier possède peu d'éléments.
                 .SelectMany(row => row.Select((element, index) => new { value = element, index = index }))
                 .GroupBy(element => element.index, element => element.value, (index, value) => value);
         #endregion
