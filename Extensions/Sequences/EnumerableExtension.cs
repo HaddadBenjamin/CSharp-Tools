@@ -154,6 +154,7 @@ namespace Ben.Tools.Extensions.Sequences
             this IEnumerable<ElementType> sequence,
             int numberOfColumns) =>
             sequence
+                .AsParallel() // à retirer si la séquence possède peu d'éléments.
                 .Select((value, columnIndex) =>
                     columnIndex <= sequence.Count() / numberOfColumns ?
                         sequence.Where((element, index) => index >= columnIndex * numberOfColumns &&
@@ -171,6 +172,7 @@ namespace Ben.Tools.Extensions.Sequences
             this IEnumerable<ElementType> sequence,
             int numberOfLines) =>
             sequence
+                .AsParallel() // à retirer si la séquence possède peu d'éléments.
                 .Select((value, lineIndex) =>
                     lineIndex < numberOfLines ?
                         sequence.Where((element, index) => index % numberOfLines == lineIndex) :
@@ -185,6 +187,7 @@ namespace Ben.Tools.Extensions.Sequences
         public static IEnumerable<IEnumerable<ElementType>> Transpose<ElementType>(
             this IEnumerable<IEnumerable<ElementType>> jaggedArray) =>
             jaggedArray
+                .AsParallel() // à retirer si la séquence possède peu d'éléments.
                 .SelectMany(row => row.Select((element, index) => new { value = element, index = index }))
                 .GroupBy(element => element.index, element => element.value, (index, value) => value);
         #endregion
