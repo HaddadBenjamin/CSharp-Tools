@@ -14,7 +14,7 @@ namespace Ben.Tools.Helpers.FileSystem
 
         public static IEnumerable<string> EnumerateFiles(string directoryPath, IEnumerable<string> extensions, params string[] ignoreFilters) =>
                 Directory.EnumerateFiles(directoryPath, "*", SearchOption.AllDirectories)
-                         .AsParallel()
+                         .AsParallel() // à retirer si vous estimiez que peu de fichiers seront récupérés.
                          .Where(filePath => extensions.Contains(Path.GetExtension(filePath)) &&
                                             !ignoreFilters.Any(ignoreFilter => filePath.Contains(ignoreFilter)));
 
