@@ -21,7 +21,7 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.
         /// </summary>
-        public static bool SomeAnyVerifyTheComparerCondition(this double number, IEnumerable<double> values, EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
+        public static bool DoesAnyVerifyTheComparerCondition(this double number, IEnumerable<double> values, EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
         {
             var comparerFunction = DoubleHelper.OperatorComparerFunction(comparerOperator, epsilon);
 
@@ -31,7 +31,7 @@ namespace Ben.Tools.Extensions.BaseTypes
         /// <summary>
         /// return true if all the values verify the comparerOperator comparaison with number.
         /// </summary>
-        public static bool SomeAllVerifyTheComparerCondition(this double number, IEnumerable<double> values, EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
+        public static bool DoesAllVerifyTheComparerCondition(this double number, IEnumerable<double> values, EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
         {
             var comparerFunction = DoubleHelper.OperatorComparerFunction(comparerOperator, epsilon);
 
