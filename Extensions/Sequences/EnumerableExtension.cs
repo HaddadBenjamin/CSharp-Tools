@@ -196,7 +196,7 @@ namespace Ben.Tools.Extensions.Sequences
         /// <summary>
         /// COLEASCE like Sql, return the firt element not null, if none are found return null.
         /// </summary>
-        public static ElementType ColeasceGetFirstElementNotNull<ElementType>(this IEnumerable<ElementType> sequence)
+        public static ElementType GetFirstElementNotNull<ElementType>(this IEnumerable<ElementType> sequence)
             where ElementType : class =>
             sequence.FirstOrDefault(element => element != null);
 
