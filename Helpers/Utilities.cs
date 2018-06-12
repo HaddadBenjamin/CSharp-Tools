@@ -6,21 +6,16 @@ namespace Ben.Tools.Helpers
     {
         public static void For(int length, Action<int> action)
         {
-            for (int index = 0; index < length; index++)
+            for (var index = 0; index < length; index++)
                 action(index);
         }
-        
-        public static void Do(int length, Action<int> action)
+
+        public static void Do(Action<int> action, Func<int, bool> condition)
         {
-            int index = 0;
+            var index = 0;
 
-            do
-            {
-                action(index);
-
-                index++;
-            }
-            while (index < length);
+            do      action(index++);
+            while   (condition(index));
         }
     }
 }
