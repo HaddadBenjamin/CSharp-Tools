@@ -70,6 +70,7 @@ namespace Ben.Tools.Extensions.Sequences
                 if (sequenceToAdd is List<ElementType> sequenceToAddList)
                 {
                     sequenceToAddList.AddRange(list);
+
                     return sequenceToAddList;
                 }
 
