@@ -12,7 +12,7 @@ namespace Ben.Tools.Helpers.BaseTypes
             Func<double, double, bool> comparer;
 
             switch (comparerOperator)
-            {
+            { 
                 case EComparerOperator.Less:        comparer = ((left, right) => left < right);  break;
                 case EComparerOperator.LessOrEqual:
                 case EComparerOperator.LessOrNearlyEqual:
