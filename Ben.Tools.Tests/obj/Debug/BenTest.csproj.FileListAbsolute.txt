@@ -1,0 +1,2 @@
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\BenTest\obj\Debug\BenTest.csprojResolveAssemblyReference.cache
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\BenTest\obj\Debug\BenTest.csproj.CoreCompileInputs.cache
