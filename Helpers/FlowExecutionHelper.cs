@@ -42,7 +42,6 @@ namespace Ben.Tools.Helpers
     public class IfTree
     {
         #region Fields
-        public IEnumerable<IfTree> Nodes = Enumerable.Empty<IfTree>();
         public IEnumerable<(bool condition, Action action, IfTree childNode)> IfElseIfs = Enumerable.Empty<(bool, Action, IfTree)>();
         public (Action action, IfTree childNode) Else;
         #endregion
