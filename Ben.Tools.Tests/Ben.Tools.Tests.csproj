@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\DateIntervalTests.cs" />
+    <Compile Include="Tests\FlowExecutionTests.cs" />
     <Compile Include="Tests\ShitTests.cs" />
     <Compile Include="Tests\NumberTests.cs" />
     <Compile Include="Tests\EnumerationFlagTest.cs" />
