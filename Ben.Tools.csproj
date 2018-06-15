@@ -89,6 +89,10 @@
     <Compile Include="Helpers\Streams\ImageHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\VideoHelper.cs" />
+    <Compile Include="Services\Configurations\AConfigurationService.cs" />
+    <Compile Include="Services\Configurations\EnvironmentSection.cs" />
+    <Compile Include="Services\Configurations\IConfigurationService.cs" />
+    <Compile Include="Services\Configurations\JsonConfigurationService.cs" />
     <Compile Include="Services\RandomService.cs" />
     <Compile Include="Utilities\Architecture\ASingleton.cs" />
     <Compile Include="Utilities\Collections\ThreadSafeDictionnary.cs" />
