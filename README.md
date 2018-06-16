@@ -1,5 +1,8 @@
 # BenTools
-Une partie de ma boîte à outils réalisée en C# que je réutilise de projet en projet afin de gagner du temps lorsque je développe.
+Voici une partie de ma boîte à outils qui permet d'étendre les fonctionnalités du langage C# tout en facilitant et réduisant son écriture. 
+
+Je réutilise les éléments dont j'ai besoin lorsque je développe de nouveaux projets pour gagner du temps et de la productivité.
+
 
 ![Alt text](https://i.imgur.com/JKA9kqS.png "Arborescence des fichiers de l'application.")
 ![Alt text](https://i.imgur.com/CnSYcRC.png "Codes utilitaires que l'on retrouve dans l'application : Les séquences.")

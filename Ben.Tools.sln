@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Tools", "Ben.Tools.csproj", "{39026DDE-083C-419D-B352-B2F462E4246F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Tools", "Ben.Tools\Ben.Tools.csproj", "{39026DDE-083C-419D-B352-B2F462E4246F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Tools.Tests", "Ben.Tools.Tests\Ben.Tools.Tests.csproj", "{B1C7D068-0C65-4835-9CCB-79646A619951}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{39026DDE-083C-419D-B352-B2F462E4246F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39026DDE-083C-419D-B352-B2F462E4246F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39026DDE-083C-419D-B352-B2F462E4246F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C7D068-0C65-4835-9CCB-79646A619951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C7D068-0C65-4835-9CCB-79646A619951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C7D068-0C65-4835-9CCB-79646A619951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C7D068-0C65-4835-9CCB-79646A619951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
