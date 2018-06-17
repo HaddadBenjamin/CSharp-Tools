@@ -103,12 +103,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Configurations\Development\configurationSample.json" />
-    <None Include="Configurations\Development\emptyConfigurationSample.json" />
-    <None Include="Configurations\Development\myconfiguration.config" />
-    <None Include="Configurations\environments.json" />
-    <None Include="Configurations\Test\configurationSample.json" />
-    <None Include="Configurations\Test\emptyConfigurationSample.json" />
+    <None Include="Configurations\Development\configurationSample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configurations\Development\emptyConfigurationSample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configurations\environments.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configurations\Test\configurationSample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Configurations\Test\emptyConfigurationSample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

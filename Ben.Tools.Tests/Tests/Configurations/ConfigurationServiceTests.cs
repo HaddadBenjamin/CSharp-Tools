@@ -9,10 +9,10 @@ namespace Ben.Tools.Tests.Configurations
     public class ConfigurationServiceTests
     {
         [TestMethod]
-        public void Configuration_Service_Complete_Test()
+        public void Light_Service_Complete_Test()
         {
             // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
-            var configurationClass = new JsonConfigurationService().ToClass<ConfigurationSample>("configurationSample");
+            var configurationClass = new JsonLightConfigurationService().ToClass<ConfigurationSample>("configurationSample");
 
             Assert.AreEqual("String", configurationClass.String);
             Assert.AreEqual(3, configurationClass.Number);
@@ -22,16 +22,20 @@ namespace Ben.Tools.Tests.Configurations
             Assert.AreEqual("PrivateSetter", configurationClass.PrivateSetter);
             Assert.AreEqual("String", configurationClass.Class.String);
             Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
-            Assert.AreEqual("overrided", configurationClass.OverrideField);
+            Assert.AreEqual("overrided", configurationClass.OverrideField);  
+        }
 
+        [TestMethod]
+        public void Normal_Service_Configuration_Root_Complete_Test()
+        {
             // La racine de configuration permet d'éviter de définir une classe de mappage à votre fichier de configuration pour utiliser votre configuration rapidement.
-            var configurationRoot = new JsonConfigurationService().ToConfigurationRoot("configurationSample");
+            var configurationRoot = new JsonConfigurationService().ToRoot("configurationSample");
 
             // Voici les différentes façons d'accéder à vos champs de configuration sans passer par une classe intermédiaire.
             Assert.AreEqual("String", configurationRoot["String"]);                 // Accèder à un champ.
-            Assert.AreEqual(3, Convert.ToInt32(configurationRoot["Number"]));                        
+            Assert.AreEqual(3, Convert.ToInt32(configurationRoot["Number"]));
             Assert.AreEqual(true, Convert.ToBoolean(configurationRoot["Boolean"]));
-            Assert.AreEqual(true, configurationRoot.GetSection("Array").Get<string[]>().Length.Equals(2));    
+            Assert.AreEqual(true, configurationRoot.GetSection("Array").Get<string[]>().Length.Equals(2));
             Assert.AreEqual("a", configurationRoot["Array:0"]);                     // Accéder à un élément d'un tableau à l'index n.
             Assert.AreEqual(true, configurationRoot["RequieredField"] != null);
             Assert.AreEqual("PrivateSetter", configurationRoot["PrivateSetter"]);

@@ -102,3 +102,8 @@ C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests
 C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CopyComplete
 C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.dll
 C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.pdb
+C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\configurationSample.json
+C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\emptyConfigurationSample.json
+C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\environments.json
+C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\configurationSample.json
+C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\emptyConfigurationSample.json
