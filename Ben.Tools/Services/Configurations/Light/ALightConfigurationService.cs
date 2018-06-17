@@ -11,10 +11,10 @@ namespace Ben.Tools.Services.Configurations
     public abstract class ALightConfigurationService : ILightConfigurationService
     {
         #region Field(s)
-        protected IMergedConfigurationBuilder MergedConfigurationBuilder { get; }
-        public ConfigurationEnvironments Environments { get; }
-        public string Directory { get; }
-        public string Path { get; }
+        protected readonly IMergedConfigurationBuilder MergedConfigurationBuilder;
+        public readonly ConfigurationEnvironments Environments;
+        public readonly string Directory;
+        public readonly string Path;
         #endregion
 
         #region Constructor(s)
