@@ -4,7 +4,7 @@
 	TestResults/
 	**/Properties/launchSettings.json			
 	**/bin/ 											# Le répertoire des binaires
-	**/obj/*												# Contient des .pdb et autres merdes.
+	**/obj/												# Contient des .pdb et autres merdes.
 	
 	
 # Les packets générés par NuGet.
@@ -14,6 +14,7 @@
 	*.nuget.props
 	*.nuget.targets
 
+	
 # Autres fichiers 
 	*.suo
 	*.user
