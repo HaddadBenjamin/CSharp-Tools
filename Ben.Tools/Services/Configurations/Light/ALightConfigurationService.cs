@@ -11,20 +11,38 @@ namespace Ben.Tools.Services.Configurations
     public abstract class ALightConfigurationService : ILightConfigurationService
     {
         #region Field(s)
-        protected readonly IMergedConfigurationBuilder MergedConfigurationBuilder;
+        protected readonly IConfigurationBuilder ConfigurationBuilder;
         public readonly ConfigurationEnvironments Environments;
         public readonly string Directory;
+        public readonly bool MergeConfiguration;
         public readonly string Path;
         #endregion
 
         #region Constructor(s)
-        public ALightConfigurationService(IMergedConfigurationBuilder mergedConfigurationBuilder, string directory = "Configurations")
+        public ALightConfigurationService(IConfigurationBuilder configurationBuilder, string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null)
         {
-            MergedConfigurationBuilder = mergedConfigurationBuilder;
+            ConfigurationBuilder = configurationBuilder;
 
             Directory = directory;
+            MergeConfiguration = mergeConfiguration;
             Path = System.IO.Path.Combine(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path), "..", Directory);
-            Environments = GetEnvironments();
+
+            bool forceEnvironment = !string.IsNullOrWhiteSpace(forcedCurrentEnvironment);
+
+            if (!forceEnvironment)
+                Environments = GetEnvironments();
+            else
+            {
+                // Il n'est pas nécéssaire de créer le fichiers d'environnement si vous l'option merge environment n'est pas activée et que vous forced le répertoire de l'environnement utilisé.
+                if (!mergeConfiguration)
+                    Environments = new ConfigurationEnvironments()
+                    {
+                        Current = forcedCurrentEnvironment,
+                        Default = forcedCurrentEnvironment
+                    };
+
+                Environments.Current = forcedCurrentEnvironment;
+            }
         }
         #endregion
 
@@ -33,7 +51,7 @@ namespace Ben.Tools.Services.Configurations
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
         public SectionType ToClass<SectionType>(string filename) =>
-            JsonConvert.DeserializeObject<SectionType>(MergedConfigurationBuilder.Build(this, filename).content);
+            ConfigurationBuilder.Deserialize<SectionType>(ConfigurationBuilder.Build(this, filename).content);
         #endregion
 
         #region Public Behaviour
@@ -53,8 +71,7 @@ namespace Ben.Tools.Services.Configurations
 
         #region Intern Behaviour(s)
         protected ConfigurationEnvironments GetEnvironments() =>
-            JsonConvert.DeserializeObject<ConfigurationEnvironments>(File.ReadAllText(System.IO.Path.Combine(Path, $"environments{Extension}")));
+            ConfigurationBuilder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(System.IO.Path.Combine(Path, $"environments{Extension}")));
         #endregion
     }
-
 }

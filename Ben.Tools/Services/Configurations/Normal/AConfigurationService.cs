@@ -12,7 +12,7 @@ namespace Ben.Tools.Services.Configurations
     public abstract class AConfigurationService : ALightConfigurationService, IConfigurationService
     {
         #region Constructor(s)
-        public AConfigurationService(IMergedConfigurationBuilder mergedConfigurationBuilder, string directory = "Configurations") : base(mergedConfigurationBuilder, directory) { }
+        public AConfigurationService(IConfigurationBuilder configurationBuilder, string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(configurationBuilder, directory, mergeConfiguration, forcedCurrentEnvironment) { }
         #endregion
 
         #region Public Behaviour(s)
@@ -21,7 +21,7 @@ namespace Ben.Tools.Services.Configurations
         /// </summary>
         public IConfigurationRoot ToRoot(string filename)
         {
-            var mergedConfiguration = MergedConfigurationBuilder.Build(this, filename);
+            var mergedConfiguration = ConfigurationBuilder.Build(this, filename);
 
             File.WriteAllText(mergedConfiguration.path, mergedConfiguration.content);
 
@@ -30,7 +30,7 @@ namespace Ben.Tools.Services.Configurations
         #endregion
 
         #region Abstract Behaviour(s)
-        protected abstract IConfigurationBuilder AddFile(IConfigurationBuilder builder, string path);
+        protected abstract Microsoft.Extensions.Configuration.IConfigurationBuilder AddFile(Microsoft.Extensions.Configuration.IConfigurationBuilder builder, string path);
         #endregion
     }
 }

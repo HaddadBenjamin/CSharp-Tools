@@ -26,4 +26,9 @@ namespace Ben.Tools.Tests.Configurations
     {
         public string String { get; set; }
     }
+
+    public class NotMergedConfigurationSample
+    {
+        public string OverrideField { get; set; }
+    }
 }

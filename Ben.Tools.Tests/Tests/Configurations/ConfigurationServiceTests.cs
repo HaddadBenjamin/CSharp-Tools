@@ -23,6 +23,13 @@ namespace Ben.Tools.Tests.Configurations
             Assert.AreEqual("String", configurationClass.Class.String);
             Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
             Assert.AreEqual("overrided", configurationClass.OverrideField);  
+
+            var configurationClassNotMerged = new JsonLightConfigurationService(mergeConfiguration: false).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+
+            Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
+
+            var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(mergeConfiguration: false, forcedCurrentEnvironment: "Development").ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+            Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
         }
 
         [TestMethod]

@@ -6,7 +6,7 @@ namespace Ben.Tools.Services.Configurations
     public class JsonLightConfigurationService : ALightConfigurationService
     {
         #region Constructor(s)
-        public JsonLightConfigurationService(string directory = "Configurations") : base(new JsonMergedConfigurationBuilder(), directory)
+        public JsonLightConfigurationService(string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(new JsonConfigurationBuilder(), directory, mergeConfiguration, forcedCurrentEnvironment)
         {
         }
         #endregion

@@ -166,8 +166,9 @@
     <Compile Include="Helpers\Streams\ImageHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\VideoHelper.cs" />
-    <Compile Include="Services\Configurations\Builder\IMergedConfigurationBuilder.cs" />
-    <Compile Include="Services\Configurations\Builder\JsonMergedConfigurationBuilder.cs" />
+    <Compile Include="Services\Configurations\Builder\AConfigurationBuilder.cs" />
+    <Compile Include="Services\Configurations\Builder\IConfigurationBuilder.cs" />
+    <Compile Include="Services\Configurations\Builder\JsonConfigurationBuilder.cs" />
     <Compile Include="Services\Configurations\ConfigurationEnvironments.cs" />
     <Compile Include="Services\Configurations\Light\ALightConfigurationService.cs" />
     <Compile Include="Services\Configurations\Light\ILightConfigurationService.cs" />

@@ -7,7 +7,7 @@ namespace Ben.Tools.Services.Configurations
     public class JsonConfigurationService : AConfigurationService
     {
         #region Constructor(s)
-        public JsonConfigurationService(string directory = "Configurations") : base(new JsonMergedConfigurationBuilder(), directory)
+        public JsonConfigurationService(string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(new JsonConfigurationBuilder(), directory, mergeConfiguration, forcedCurrentEnvironment)
         {
         }
         #endregion
@@ -15,7 +15,7 @@ namespace Ben.Tools.Services.Configurations
         #region Override Behaviour(s)
         public override string Extension => ".json";
 
-        protected override IConfigurationBuilder AddFile(IConfigurationBuilder builder, string path) =>
+        protected override Microsoft.Extensions.Configuration.IConfigurationBuilder AddFile(Microsoft.Extensions.Configuration.IConfigurationBuilder builder, string path) =>
             builder.AddJsonFile(path);
         #endregion
     }

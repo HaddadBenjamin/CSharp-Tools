@@ -1,109 +1,68 @@
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CoreCompileInputs.cache
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.pdb
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\RestSharp.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ionic.Zip.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ben.Tools.pdb
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll.config
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csprojResolveAssemblyReference.cache
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CopyComplete
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Bitbucket\BenTools\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.pdb
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\configurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\emptyConfigurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\environments.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\configurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\emptyConfigurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.dll.config
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.pdb
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Data.Common.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Diagnostics.StackTrace.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Diagnostics.Tracing.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Globalization.Extensions.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.IO.Compression.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Net.Http.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Net.Sockets.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.Serialization.Primitives.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Security.SecureString.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Threading.Overlapped.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Buffers.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Memory.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.ValueTuple.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\RestSharp.dll
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.pdb
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll.config
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Json.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Physical.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.ValueTuple.xml
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Buffers.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Memory.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\System.ValueTuple.xml
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CopyComplete
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.dll
 C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.pdb
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.dll.config
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.Tests.pdb
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Data.Common.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Diagnostics.StackTrace.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Diagnostics.Tracing.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Globalization.Extensions.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.IO.Compression.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Net.Http.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Net.Sockets.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.Serialization.Primitives.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Security.Cryptography.Algorithms.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Security.SecureString.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Threading.Overlapped.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Xml.XPath.XDocument.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Physical.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Primitives.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Buffers.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Memory.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.ValueTuple.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\RestSharp.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.pdb
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Ben.Tools.dll.config
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Configuration.Json.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileProviders.Physical.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.Extensions.Primitives.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Newtonsoft.Json.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Buffers.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Memory.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\System.ValueTuple.xml
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csprojResolveAssemblyReference.cache
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CoreCompileInputs.cache
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.csproj.CopyComplete
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.dll
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\obj\Debug\Ben.Tools.Tests.pdb
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\configurationSample.json
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\emptyConfigurationSample.json
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\environments.json
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\configurationSample.json
-C:\Users\hadda\Desktop\BenTools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\emptyConfigurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Test\notMergedConfigurationSample.json
+C:\Users\Wibilong\Desktop\Wibilong\Projets Personnels\Ben.Tools Github\Ben.Tools.Tests\bin\Debug\Configurations\Development\notMergedConfigurationSample.json
