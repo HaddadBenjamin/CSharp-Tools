@@ -28,8 +28,9 @@ namespace Ben.Tools.Services.Configurations
     /// Fonctionnalités :
     /// - Permet l'utilisation de champs requis avec [JsonProperty(Required = Required.Always)] pour que le programme compile et de champs privée avec [JsonProperty] pour ne pas autoriser la modification du champ de configuration.
     /// - Vous pouvez (service.ToClass) ou non (service.ToConfigurationRoot) définir une classe correspond à votre fichier de configuration pour faciliter et réduire l'écriture de son mappage (de vos classes de configurations).
-    /// - Base tous vos fichiers de configurations sur leurs versions de l'environnement par défault pour réduire et simplifier leur écriture.
+    /// - Base si vous le souhaitez tous vos fichiers de configurations sur leurs versions de l'environnement par défault pour réduire et simplifier leur écriture.
     /// - Vos fichiers de configurations sont mieux ordonnés et sont stockés dans un répertoire en fonction de leur environnement qu'ils définissent.
+    /// - Vous pouvez redéfinir le répertoire d'environnement courant utilisé afin de spécifier d'où vont être récupéré vos fichiers de configurations.
     /// 
     /// Prérequis :
     /// - Installer Newtonsoft.Json, System.Extensions.Configuration.Json et Microsoft.Extensions.Configuration.Binder via NuGet.
