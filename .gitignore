@@ -1,27 +1,33 @@
 ﻿# Des répertoires et des fichiers générés par VS.
-	.vs/												# Contient le db.lock, storage.ide et applicationhost.config.
-	.builds/
-	TestResults/
-	**/Properties/launchSettings.json			
-	**/bin/ 											# Le répertoire des binaires
-	**/obj/												# Contient des .pdb et autres merdes.
+/.vs/												# Contient le db.lock, storage.ide et applicationhost.config.
+/.builds/
+/TestResults/
+/**/Properties/launchSettings.json			
+/**/bin/ 											# Le répertoire des binaires
+/**/obj/												# Contient des .pdb et autres merdes.
 	
 	
 # Les packets générés par NuGet.
-	packages/											# Les packets NuGet.
-	!packages/build/	
-	*.nupkg
-	*.nuget.props
-	*.nuget.targets
+/packages											# Les packets NuGet.
+!/packages/build	
+*.nupkg
+*.nuget.props
+*.nuget.targets
 
 	
 # Autres fichiers 
-	*.suo
-	*.user
-	*.userosscache
-	*.sln.docstates
-	*.meta
-	*.obj
-	*.pch
-	*.pdb
-	*.log
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.meta
+*.obj
+*.pch
+*.pdb
+*.log
+/Ben.Tools/bin/Debug
+/Ben.Tools/obj/Debug
+/Ben.Tools/v15/Server/sqlite3
+/Ben.Tools.Tests/bin/Debug
+/Ben.Tools.Tests/obj/Debug
+/packages

@@ -1,37 +1,36 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Ben.Tools.Services.Configurations;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace Ben.Tools.Services.Configurations
 {
-    public abstract class AConfigurationBuilder : IConfigurationBuilder
+    /// <summary>
+    /// Cette version permet d'utiliser la racine de configuration pour utiliser votre fichier de configuration sans classe de mappage mais nécéssite 2 dépendances supplémentaires lourdes.
+    public abstract class AConfigurationService : ALightConfigurationService, IConfigurationService
     {
+        #region Constructor(s)
+        public AConfigurationService(IConfigurationBuilder configurationBuilder, string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(configurationBuilder, directory, mergeConfiguration, forcedCurrentEnvironment) { }
+        #endregion
+
         #region Public Behaviour(s)
-        public (string path, string content) Build(ALightConfigurationService configurationService, string filename)
+        /// <summary>
+        /// La racine de configuration permet d'éviter de définir une classe de mappage de votre fichier de configuration pour utiliser votre fichier de configuration tel quel et donc très rapidement.
+        /// </summary>
+        public IConfigurationRoot ToRoot(string filename)
         {
-            var configurationPaths = configurationService.BuildPaths(configurationService, filename);
+            var mergedConfiguration = ConfigurationBuilder.Build(this, filename);
 
-            if (!File.Exists(configurationPaths.current))
-                throw new FileNotFoundException(configurationPaths.current);
+            File.WriteAllText(mergedConfiguration.path, mergedConfiguration.content);
 
-            if (!configurationService.MergeConfiguration)
-                return (configurationPaths.current, File.ReadAllText(configurationPaths.current));
-
-            if (!File.Exists(configurationPaths.@default))
-                throw new FileNotFoundException(configurationPaths.@default);
-
-            var defaultFileContent = File.ReadAllText(configurationPaths.@default);
-
-            if (configurationPaths.@default == configurationPaths.current)
-                return (configurationPaths.@default, defaultFileContent);
-
-            var currentFileContent = File.ReadAllText(configurationPaths.current);
-
-            return Build(defaultFileContent, currentFileContent, configurationPaths.destination);
+            return AddFile(new ConfigurationBuilder(), mergedConfiguration.path).Build();
         }
         #endregion
 
         #region Abstract Behaviour(s)
-        public abstract (string path, string content) Build(string defaultFileContent, string currentFileContent, string destinationPath);
-        public abstract SectionType Deserialize<SectionType>(string fileContent);
+        protected abstract Microsoft.Extensions.Configuration.IConfigurationBuilder AddFile(Microsoft.Extensions.Configuration.IConfigurationBuilder builder, string path);
         #endregion
     }
 }
