@@ -16,7 +16,7 @@ namespace Ben.Tools.Services.Configurations
         #endregion
 
         #region Public Behaviour(s)
-        /// <summary>
+        /// <summary> 
         /// La racine de configuration permet d'éviter de définir une classe de mappage de votre fichier de configuration pour utiliser votre fichier de configuration tel quel et donc très rapidement.
         /// </summary>
         public IConfigurationRoot ToRoot(string filename)
