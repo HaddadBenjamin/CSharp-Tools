@@ -85,9 +85,7 @@ namespace Ben.Tools.Services.Configurations
         /// </summary>
         public SectionType ToClass<SectionType>(string filename) =>
             ConfigurationBuilder.Deserialize<SectionType>(ConfigurationBuilder.Build(this, filename).content);
-        #endregion
 
-        #region Public Behaviour
         public (string current, string @default, string destination) BuildPaths(ALightConfigurationService configurationService, string filename)
         {
             var destinationPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{Guid.NewGuid()}{configurationService.Extension}");
@@ -106,8 +104,16 @@ namespace Ben.Tools.Services.Configurations
         #endregion
 
         #region Intern Behaviour(s)
-        protected ConfigurationEnvironments GetEnvironments() =>
-            ConfigurationBuilder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(System.IO.Path.Combine(Path, $"environments{Extension}")));
+
+        protected ConfigurationEnvironments GetEnvironments()
+        {
+            var environmentsFilePath = System.IO.Path.Combine(Path, $"environments{Extension}");
+
+            if (!File.Exists(environmentsFilePath))
+                throw new FileNotFoundException(environmentsFilePath);
+
+            return ConfigurationBuilder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(environmentsFilePath));
+        }
         #endregion
     }
 }
