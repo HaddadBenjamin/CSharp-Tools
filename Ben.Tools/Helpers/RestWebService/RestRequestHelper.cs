@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 
-namespace Ben.Tools.Helpers.RestWebService
+namespace BenTools.Helpers.RestWebService
 {
     public static class RestRequestHelper
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Ben.Tools.Helpers.FileSystem
+namespace BenTools.Helpers.FileSystem
 {
     public static class DirectoryHelper
     {

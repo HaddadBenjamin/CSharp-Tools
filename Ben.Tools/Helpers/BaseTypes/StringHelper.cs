@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Ben.Tools.Helpers.BaseTypes
+namespace BenTools.Helpers.BaseTypes
 {
     public static class StringHelper
     {

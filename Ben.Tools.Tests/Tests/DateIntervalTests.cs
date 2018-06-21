@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
-using Ben.Tools.Utilities.Date.DateInterval;
-using Ben.Tools.Extensions.Sequences;
+using BenTools.Extensions.Sequences;
+using BenTools.Utilities.Date.DateInterval;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ben.Tools.Tests
+namespace BenTools.Tests.Tests
 {
     /// <summary>
     /// Attention pour que ces tests fonctionnent j'ai dû rajouter [assembly:InternalsVisibleTo("DynamicTest")]  

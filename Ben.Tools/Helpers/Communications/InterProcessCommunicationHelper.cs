@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using Ben.Tools.Helpers.FileSystem;
+using BenTools.Helpers.FileSystem;
 
-namespace Ben.Tools.Helpers.Communications
+namespace BenTools.Helpers.Communications
 {
     // A savoir :
     // - Lorsque l'on drag & drop un fichier ou un répertoire sur un éxécutable, 

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Extensions.BaseTypes;
+using BenTools.Extensions.BaseTypes;
 
-namespace Ben.Tools.Helpers.BaseTypes
+namespace BenTools.Helpers.BaseTypes
 {
     public static class DoubleHelper
     {

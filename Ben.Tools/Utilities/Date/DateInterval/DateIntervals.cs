@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ben.Tools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.Date.DateInterval
 {
     /// <summary>
     /// Permet de créer tous les intervales de temps entre 2 dates et de les utiliser pour grouper des données.

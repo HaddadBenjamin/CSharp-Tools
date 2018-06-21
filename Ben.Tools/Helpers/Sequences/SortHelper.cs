@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Ben.Tools.Helpers.Sequences
+namespace BenTools.Helpers.Sequences
 {
     /* Note personnels :
     Trees VS Hasmap

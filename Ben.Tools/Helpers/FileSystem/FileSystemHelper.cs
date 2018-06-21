@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Ben.Tools.Services;
 
-namespace Ben.Tools.Helpers.FileSystem
+namespace BenTools.Helpers.FileSystem
 {
     public static class FileSystemHelper
     { 

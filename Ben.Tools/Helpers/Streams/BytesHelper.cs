@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.IO;
 
-namespace Ben.Tools.Helpers.Streams
+namespace BenTools.Helpers.Streams
 {
     public static class BytesHelper
     {

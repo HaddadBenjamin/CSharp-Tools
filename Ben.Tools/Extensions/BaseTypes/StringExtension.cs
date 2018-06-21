@@ -4,9 +4,9 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Ben.Tools.Helpers.Streams;
+using BenTools.Helpers.Streams;
 
-namespace Ben.Tools.Extensions.BaseTypes
+namespace BenTools.Extensions.BaseTypes
 {
     public static class StringExtension
 	{

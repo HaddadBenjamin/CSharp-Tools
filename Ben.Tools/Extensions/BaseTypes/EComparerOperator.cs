@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Extensions.BaseTypes
+﻿namespace BenTools.Extensions.BaseTypes
 {
     public enum EComparerOperator
     {

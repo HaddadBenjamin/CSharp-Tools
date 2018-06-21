@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Ben.Tools.Helpers.Enumerations
+namespace BenTools.Helpers.Enumerations
 {
     /// <summary>
     /// All methods have been tested.

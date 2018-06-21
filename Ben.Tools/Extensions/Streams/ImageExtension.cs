@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Ben.Tools.Extensions.Streams
+namespace BenTools.Extensions.Streams
 {
     public static class ImageExtension
     {

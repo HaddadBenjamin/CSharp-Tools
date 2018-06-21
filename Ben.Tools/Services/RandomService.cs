@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using Ben.Tools.Extensions.BaseTypes;
-using Ben.Tools.Utilities.Architecture;
+using BenTools.Utilities.Architecture;
 
-namespace Ben.Tools.Services
+namespace BenTools.Services
 {
     public class RandomService : ASingleton<RandomService>
     {

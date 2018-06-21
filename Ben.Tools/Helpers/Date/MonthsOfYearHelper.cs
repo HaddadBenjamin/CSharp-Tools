@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Ben.Tools.Helpers.Enumerations;
+using BenTools.Helpers.Enumerations;
 
-namespace Ben.Tools.Helpers.Date
+namespace BenTools.Helpers.Date
 {
     public enum MonthsOfYear
     {

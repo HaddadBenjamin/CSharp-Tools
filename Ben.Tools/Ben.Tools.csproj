@@ -7,7 +7,7 @@
     <ProjectGuid>{39026DDE-083C-419D-B352-B2F462E4246F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ben.Tools</RootNamespace>
+    <RootNamespace>BenTools</RootNamespace>
     <AssemblyName>Ben.Tools</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -176,6 +176,8 @@
     <Compile Include="Services\Configurations\Normal\AConfigurationService.cs" />
     <Compile Include="Services\Configurations\Normal\IConfigurationService.cs" />
     <Compile Include="Services\Configurations\Normal\JsonConfigurationService.cs" />
+    <Compile Include="Services\Configurations\Options\ConfigurationOptions.cs" />
+    <Compile Include="Services\Configurations\Options\IConfigurationOptions.cs" />
     <Compile Include="Services\RandomService.cs" />
     <Compile Include="Utilities\Architecture\ASingleton.cs" />
     <Compile Include="Utilities\Date\DateInterval\ADateIntervals.cs" />

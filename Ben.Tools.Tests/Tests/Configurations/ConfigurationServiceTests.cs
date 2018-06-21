@@ -1,9 +1,12 @@
 ﻿using System;
-using Ben.Tools.Services.Configurations;
+using System.Threading.Tasks;
+using BenTools.Services.Configurations.Light;
+using BenTools.Services.Configurations.Normal;
+using BenTools.Services.Configurations.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ben.Tools.Tests.Configurations
+namespace Ben.Tools.Tests.Tests.Configurations
 {
     [TestClass]
     public class ConfigurationServiceTests
@@ -11,25 +14,30 @@ namespace Ben.Tools.Tests.Configurations
         [TestMethod]
         public void Light_Service_Complete_Test()
         {
-            // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
-            var configurationClass = new JsonLightConfigurationService().ToClass<ConfigurationSample>("configurationSample");
+            Parallel.For(0, 100, (i, state) =>
+            {
+                 // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
+                var configurationClass = new JsonLightConfigurationService().ToClass<ConfigurationSample>("configurationSample");
 
-            Assert.AreEqual("String", configurationClass.String);
-            Assert.AreEqual(3, configurationClass.Number);
-            Assert.AreEqual(true, configurationClass.Boolean);
-            Assert.AreEqual(true, configurationClass.Array.Length.Equals(2));
-            Assert.AreEqual(true, configurationClass.RequieredField != null);
-            Assert.AreEqual("PrivateSetter", configurationClass.PrivateSetter);
-            Assert.AreEqual("String", configurationClass.Class.String);
-            Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
-            Assert.AreEqual("overrided", configurationClass.OverrideField);  
+                Assert.AreEqual("String", configurationClass.String);
+                Assert.AreEqual(3, configurationClass.Number);
+                Assert.AreEqual(true, configurationClass.Boolean);
+                Assert.AreEqual(true, configurationClass.Array.Length.Equals(2));
+                Assert.AreEqual(true, configurationClass.RequieredField != null);
+                Assert.AreEqual("PrivateSetter", configurationClass.PrivateSetter);
+                Assert.AreEqual("String", configurationClass.Class.String);
+                Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
+                Assert.AreEqual("overrided", configurationClass.OverrideField);
 
-            var configurationClassNotMerged = new JsonLightConfigurationService(mergeConfiguration: false).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+                var optionsWithoutMerge = new ConfigurationOptions(mergeConfiguration: false);
+                var configurationClassNotMerged = new JsonLightConfigurationService(optionsWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
 
-            Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
+                Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
 
-            var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(mergeConfiguration: false, forcedCurrentEnvironment: "Development").ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
-            Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
+                var optionsForceEnvironmentWithoutMerge = new ConfigurationOptions(mergeConfiguration: false, forcedCurrentEnvironment: "Development");
+                var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(optionsForceEnvironmentWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+                Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
+            });
         }
 
         [TestMethod]

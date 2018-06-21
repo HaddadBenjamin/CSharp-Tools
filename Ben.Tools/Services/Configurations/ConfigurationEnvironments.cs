@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Services.Configurations
+﻿namespace BenTools.Services.Configurations
 {
     public class ConfigurationEnvironments
     {

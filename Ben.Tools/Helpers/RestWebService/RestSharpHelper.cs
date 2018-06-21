@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 
-namespace Ben.Tools.Helpers.RestWebService
+namespace BenTools.Helpers.RestWebService
 {
     public static class RestSharpHelper
     {

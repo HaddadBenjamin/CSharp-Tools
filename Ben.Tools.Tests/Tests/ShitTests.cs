@@ -1,9 +1,9 @@
-﻿using Ben.Tools.Extensions.BaseTypes;
-using Ben.Tools.Extensions.Sequences;
+﻿using System.Linq;
+using BenTools.Extensions.BaseTypes;
+using BenTools.Extensions.Sequences;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
 
-namespace Ben.Tools.Tests
+namespace BenTools.Tests.Tests
 {
     [TestClass]
     public class ShitTests

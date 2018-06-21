@@ -7,7 +7,7 @@
     <ProjectGuid>{B1C7D068-0C65-4835-9CCB-79646A619951}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ben.Tools.Tests</RootNamespace>
+    <RootNamespace>BenTools.Tests</RootNamespace>
     <AssemblyName>Ben.Tools.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,16 +1,23 @@
 ﻿using System.IO;
+using BenTools.Services.Configurations.Options;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Builder
 {
     public abstract class AConfigurationBuilder : IConfigurationBuilder
     {
         #region Public Behaviour(s)
-        public (string path, string content) Build(ALightConfigurationService configurationService, string filename)
+        public (string path, string content) Build(IConfigurationOptions configurationOptions, string filename, string extension)
         {
-            var configurationPaths = configurationService.BuildPaths(configurationService, filename);
+            var configurationPaths = configurationOptions.BuildPaths(filename, extension);
 
-            if (!configurationService.MergeConfiguration)
+            if (!File.Exists(configurationPaths.current))
+                throw new FileNotFoundException(configurationPaths.current);
+
+            if (!configurationOptions.MergeConfiguration)
                 return (configurationPaths.current, File.ReadAllText(configurationPaths.current));
+
+            if (!File.Exists(configurationPaths.@default))
+                throw new FileNotFoundException(configurationPaths.@default);
 
             var defaultFileContent = File.ReadAllText(configurationPaths.@default);
 

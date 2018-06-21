@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Ben.Tools.Helpers.FileSystem
+namespace BenTools.Helpers.FileSystem
 { 
     public static class PathHelper
     {

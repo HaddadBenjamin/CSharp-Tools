@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BenTools.Services.Configurations.Light;
+using Microsoft.Extensions.Configuration;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Normal
 {
     public interface IConfigurationService : ILightConfigurationService
     {

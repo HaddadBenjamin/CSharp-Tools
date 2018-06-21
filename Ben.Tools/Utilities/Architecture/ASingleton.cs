@@ -1,7 +1,6 @@
 using System;
-using Ben.Tools.Services;
 
-namespace Ben.Tools.Utilities.Architecture
+namespace BenTools.Utilities.Architecture
 {
     public class ASingleton<TSingletonType> 
         where TSingletonType : ASingleton<TSingletonType>, new()

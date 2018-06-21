@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Builder
 {
     public class JsonConfigurationBuilder : AConfigurationBuilder
     {
@@ -18,7 +18,6 @@ namespace Ben.Tools.Services.Configurations
 
         public override SectionType Deserialize<SectionType>(string fileContent) =>
             JsonConvert.DeserializeObject<SectionType>(fileContent);
-
         #endregion
     }
 }

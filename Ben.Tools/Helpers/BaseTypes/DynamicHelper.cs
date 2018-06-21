@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ben.Tools.Helpers.BaseTypes
+namespace BenTools.Helpers.BaseTypes
 {
     public static class DynamicHelper
     {

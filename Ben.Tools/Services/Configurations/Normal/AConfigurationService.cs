@@ -1,27 +1,26 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using Ben.Tools.Services.Configurations;
+﻿using System.IO;
+using BenTools.Services.Configurations.Light;
+using BenTools.Services.Configurations.Options;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+using IConfigurationBuilder = BenTools.Services.Configurations.Builder.IConfigurationBuilder;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Normal
 {
     /// <summary>
     /// Cette version permet d'utiliser la racine de configuration pour utiliser votre fichier de configuration sans classe de mappage mais nécéssite 2 dépendances supplémentaires lourdes.
     public abstract class AConfigurationService : ALightConfigurationService, IConfigurationService
     {
         #region Constructor(s)
-        public AConfigurationService(IConfigurationBuilder configurationBuilder, string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(configurationBuilder, directory, mergeConfiguration, forcedCurrentEnvironment) { }
+        public AConfigurationService(IConfigurationBuilder builder, IConfigurationOptions options) : base(builder, options) { }
         #endregion
 
         #region Public Behaviour(s)
-        /// <summary> 
+        /// <summary>
         /// La racine de configuration permet d'éviter de définir une classe de mappage de votre fichier de configuration pour utiliser votre fichier de configuration tel quel et donc très rapidement.
         /// </summary>
         public IConfigurationRoot ToRoot(string filename)
         {
-            var mergedConfiguration = ConfigurationBuilder.Build(this, filename);
+            var mergedConfiguration = Builder.Build(Options, filename, Extension);
 
             File.WriteAllText(mergedConfiguration.path, mergedConfiguration.content);
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Ben.Tools.Helpers
+namespace BenTools.Helpers
 {
     public static class ValidationHelper
     {

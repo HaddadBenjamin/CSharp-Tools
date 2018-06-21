@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Ben.Tools.Extensions.Sequences
+namespace BenTools.Extensions.Sequences
 {
     public static class ListExtension
     {

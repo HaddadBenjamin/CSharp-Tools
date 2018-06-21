@@ -1,8 +1,8 @@
-﻿using Ben.Tools.Extensions.BaseTypes;
-using Ben.Tools.Helpers.BaseTypes;
+﻿using BenTools.Extensions.BaseTypes;
+using BenTools.Helpers.BaseTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ben.Tools.Tests
+namespace BenTools.Tests.Tests
 {
     [TestClass]
     public class NumberTests

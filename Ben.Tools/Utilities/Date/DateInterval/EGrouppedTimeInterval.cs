@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Utilities.Date.DateInterval
+﻿namespace BenTools.Utilities.Date.DateInterval
 {
      
     public enum EGrouppedTimeInterval

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Ben.Tools.Extensions.Streams
+namespace BenTools.Extensions.Streams
 {
     public static class StreamExtension
     {

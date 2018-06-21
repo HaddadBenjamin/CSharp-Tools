@@ -1,8 +1,8 @@
 ﻿using System;
-using Ben.Tools.Extensions.Date;
-using Ben.Tools.Helpers.Enumerations;
+using BenTools.Extensions.Date;
+using BenTools.Helpers.Enumerations;
 
-namespace Ben.Tools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.Date.DateInterval
 {
      
     public static class GrouppedTimeIntervalHelper

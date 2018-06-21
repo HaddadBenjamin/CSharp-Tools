@@ -1,7 +1,7 @@
-﻿using Ben.Tools.Extensions.BaseTypes;
-using System;
+﻿using System;
+using BenTools.Extensions.BaseTypes;
 
-namespace Ben.Tools.Helpers.BaseTypes
+namespace BenTools.Helpers.BaseTypes
 {
     public static class FloatHelper
     {

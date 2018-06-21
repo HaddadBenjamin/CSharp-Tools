@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Utilities.Simplify
+﻿namespace BenTools.Utilities.Simplify
 {
      
     [System.Serializable]

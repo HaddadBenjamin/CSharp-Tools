@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Ben.Tools.Extensions.Streams
+namespace BenTools.Extensions.Streams
 {
     public static class BitmapExtension
     {

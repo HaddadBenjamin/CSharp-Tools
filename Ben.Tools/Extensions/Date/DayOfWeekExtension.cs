@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ben.Tools.Extensions.Date
+namespace BenTools.Extensions.Date
 {
     public static class DayOfWeekExtension
     {

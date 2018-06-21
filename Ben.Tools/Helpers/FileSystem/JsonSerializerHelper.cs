@@ -2,7 +2,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Ben.Tools.Helpers.FileSystem
+namespace BenTools.Helpers.FileSystem
 {
     public static class JsonSerializerHelper
     {

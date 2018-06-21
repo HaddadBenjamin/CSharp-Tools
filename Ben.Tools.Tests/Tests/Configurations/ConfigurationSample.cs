@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Ben.Tools.Tests.Configurations
+namespace Ben.Tools.Tests.Tests.Configurations
 {
     public class ConfigurationSample
     {

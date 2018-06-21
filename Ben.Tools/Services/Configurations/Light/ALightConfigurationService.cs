@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using Newtonsoft.Json;
+﻿using System.IO;
+using BenTools.Services.Configurations.Builder;
+using BenTools.Services.Configurations.Options;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Light
 {
     /// <summary>
     /// Cette version permet d'importer seulement Newtonsoft.json ce qui est beaucoup moins lourd.
@@ -44,38 +43,17 @@ namespace Ben.Tools.Services.Configurations
     public abstract class ALightConfigurationService : ILightConfigurationService
     {
         #region Field(s)
-        protected readonly IConfigurationBuilder ConfigurationBuilder;
-        public readonly ConfigurationEnvironments Environments;
-        public readonly string Directory;
-        public readonly bool MergeConfiguration;
-        public readonly string Path;
+        protected readonly IConfigurationBuilder Builder;
+        protected readonly IConfigurationOptions Options;
         #endregion
 
         #region Constructor(s)
-        public ALightConfigurationService(IConfigurationBuilder configurationBuilder, string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null)
+        public ALightConfigurationService(IConfigurationBuilder builder, IConfigurationOptions options)
         {
-            ConfigurationBuilder = configurationBuilder;
+            Builder = builder;
+            Options = options;
 
-            Directory = directory;
-            MergeConfiguration = mergeConfiguration;
-            Path = System.IO.Path.Combine(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path), "..", Directory);
-
-            bool forceEnvironment = !string.IsNullOrWhiteSpace(forcedCurrentEnvironment);
-
-            if (!forceEnvironment)
-                Environments = GetEnvironments();
-            else
-            {
-                // Il n'est pas nécéssaire de créer le fichiers d'environnement si vous l'option merge environment n'est pas activée et que vous forced le répertoire de l'environnement utilisé.
-                if (!mergeConfiguration)
-                    Environments = new ConfigurationEnvironments()
-                    {
-                        Current = forcedCurrentEnvironment,
-                        Default = forcedCurrentEnvironment
-                    };
-
-                UpdateCurrentEnvironment(forcedCurrentEnvironment);
-            }
+            Options.BuildOptions(GetEnvironments);
         }
         #endregion
 
@@ -84,19 +62,10 @@ namespace Ben.Tools.Services.Configurations
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
         public SectionType ToClass<SectionType>(string filename) =>
-            ConfigurationBuilder.Deserialize<SectionType>(ConfigurationBuilder.Build(this, filename).content);
-
-        public (string current, string @default, string destination) BuildPaths(ALightConfigurationService configurationService, string filename)
-        {
-            var destinationPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{Guid.NewGuid()}{configurationService.Extension}");
-            var currentPath = System.IO.Path.Combine(configurationService.Path, configurationService.Environments.Current, $"{filename}{configurationService.Extension}");
-            var defaultPath = System.IO.Path.Combine(configurationService.Path, configurationService.Environments.Default, $"{filename}{configurationService.Extension}");
-
-            return (currentPath, defaultPath, destinationPath);
-        }
+            Builder.Deserialize<SectionType>(Builder.Build(Options, filename, Extension).content);
 
         public void UpdateCurrentEnvironment(string currentEnvironment) =>
-            Environments.Current = currentEnvironment;
+            Options.Environments.Current = currentEnvironment;
         #endregion
 
         #region Abstract Behaviour(s)
@@ -104,15 +73,14 @@ namespace Ben.Tools.Services.Configurations
         #endregion
 
         #region Intern Behaviour(s)
-
         protected ConfigurationEnvironments GetEnvironments()
         {
-            var environmentsFilePath = System.IO.Path.Combine(Path, $"environments{Extension}");
+            var environmentsFilePath = Path.Combine(Options.Path, $"environments{Extension}");
 
             if (!File.Exists(environmentsFilePath))
                 throw new FileNotFoundException(environmentsFilePath);
-
-            return ConfigurationBuilder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(environmentsFilePath));
+           
+            return Builder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(environmentsFilePath));
         }
         #endregion
     }

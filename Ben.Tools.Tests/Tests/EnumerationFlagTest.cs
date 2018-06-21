@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Extensions.BaseTypes;
-using Ben.Tools.Extensions.Sequences;
-using Ben.Tools.Helpers.Enumerations;
+using BenTools.Extensions.BaseTypes;
+using BenTools.Extensions.Sequences;
+using BenTools.Helpers.Enumerations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ben.Tools.Tests
+namespace BenTools.Tests.Tests
 {
     [Flags]
     enum TestEnumeration

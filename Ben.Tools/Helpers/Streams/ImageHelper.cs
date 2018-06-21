@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using Ben.Tools.Services;
+using BenTools.Services;
 
-namespace Ben.Tools.Helpers.Streams
+namespace BenTools.Helpers.Streams
 {
     public static class ImageHelper
     {

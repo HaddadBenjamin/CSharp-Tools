@@ -10,9 +10,13 @@
 # Les packets générés par NuGet.
 /packages											## Les packets NuGet.
 
+/BenTools/Ben.Tools/bin/Debug
+/BenTools/Ben.Tools/obj/Debug
+/BenTools/Ben.Tools/v15
+/BenTools/Ben.Tools.Tests/bin/Debug
+/BenTools/Ben.Tools.Tests/obj/Debug
+/packages
 /Ben.Tools/bin/Debug
 /Ben.Tools/obj/Debug
-/Ben.Tools/v15
 /Ben.Tools.Tests/bin/Debug
 /Ben.Tools.Tests/obj/Debug
-/packages

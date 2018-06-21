@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Ben.Tools.Extensions.BaseTypes
+namespace BenTools.Extensions.BaseTypes
 {
     public static class BooleanExtension
     {

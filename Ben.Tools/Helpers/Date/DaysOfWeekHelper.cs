@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Extensions.Date;
-using Ben.Tools.Helpers.Enumerations;
+using BenTools.Extensions.Date;
+using BenTools.Helpers.Enumerations;
 
-namespace Ben.Tools.Helpers.Date
+namespace BenTools.Helpers.Date
 {
      
     public static class DayOfWeeksHelper

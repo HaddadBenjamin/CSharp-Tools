@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Extensions.Sequences;
+using BenTools.Extensions.Sequences;
 
-namespace Ben.Tools.Helpers.Enumerations
+namespace BenTools.Helpers.Enumerations
 {
     public static class EnumerationHelper
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ben.Tools.Helpers.BaseTypes;
+using BenTools.Helpers.BaseTypes;
 
-namespace Ben.Tools.Extensions.BaseTypes
+namespace BenTools.Extensions.BaseTypes
 {
     public static class FloatExtension
     {

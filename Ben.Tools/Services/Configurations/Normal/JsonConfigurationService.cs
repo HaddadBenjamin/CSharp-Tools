@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
-using System.IO;
+﻿using BenTools.Services.Configurations.Builder;
+using BenTools.Services.Configurations.Options;
+using Microsoft.Extensions.Configuration;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Normal
 {
     public class JsonConfigurationService : AConfigurationService
     {
         #region Constructor(s)
-        public JsonConfigurationService(string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(new JsonConfigurationBuilder(), directory, mergeConfiguration, forcedCurrentEnvironment)
-        {
-        }
+        public JsonConfigurationService() : base(new JsonConfigurationBuilder(), new ConfigurationOptions()) { }
+
+        public JsonConfigurationService(IConfigurationOptions options) : base(new JsonConfigurationBuilder(), options) { }
         #endregion
 
         #region Override Behaviour(s)

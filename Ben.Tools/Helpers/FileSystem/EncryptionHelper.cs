@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Ben.Tools.Helpers.FileSystem
+namespace BenTools.Helpers.FileSystem
 {
     /// <summary>
     /// This class should be remove and replace thank my news knowledge.

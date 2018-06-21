@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using System.Reflection;
 
-namespace Ben.Tools.Extensions.BaseTypes
+namespace BenTools.Extensions.BaseTypes
 {
     public static class ObjectExtension
     {

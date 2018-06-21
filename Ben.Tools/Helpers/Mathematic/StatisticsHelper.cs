@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Ben.Tools.Helpers.Mathematic
+namespace BenTools.Helpers.Mathematic
 {
     public class StatisticsAverageData
     {

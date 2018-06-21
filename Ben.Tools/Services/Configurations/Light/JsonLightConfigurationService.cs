@@ -1,14 +1,14 @@
-﻿using System.IO;
-using Newtonsoft.Json.Linq;
+﻿using BenTools.Services.Configurations.Builder;
+using BenTools.Services.Configurations.Options;
 
-namespace Ben.Tools.Services.Configurations
+namespace BenTools.Services.Configurations.Light
 {
     public class JsonLightConfigurationService : ALightConfigurationService
     {
         #region Constructor(s)
-        public JsonLightConfigurationService(string directory = "Configurations", bool mergeConfiguration = true, string forcedCurrentEnvironment = null) : base(new JsonConfigurationBuilder(), directory, mergeConfiguration, forcedCurrentEnvironment)
-        {
-        }
+        public JsonLightConfigurationService() : base(new JsonConfigurationBuilder(), new ConfigurationOptions()) { }
+
+        public JsonLightConfigurationService(IConfigurationOptions configurationOptions) : base(new JsonConfigurationBuilder(), configurationOptions) { }
         #endregion
 
         #region Override Behaviour(s)
