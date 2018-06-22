@@ -14,30 +14,30 @@ namespace Ben.Tools.Tests.Tests.Configurations
         [TestMethod]
         public void Light_Service_Complete_Test()
         {
-            Parallel.For(0, 100, (i, state) =>
-            {
-                 // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
-                var configurationClass = new JsonLightConfigurationService().ToClass<ConfigurationSample>("configurationSample");
+            // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
+            var configurationClass = new JsonLightConfigurationService().ToClass<ConfigurationSample>("configurationSample");
 
-                Assert.AreEqual("String", configurationClass.String);
-                Assert.AreEqual(3, configurationClass.Number);
-                Assert.AreEqual(true, configurationClass.Boolean);
-                Assert.AreEqual(true, configurationClass.Array.Length.Equals(2));
-                Assert.AreEqual(true, configurationClass.RequieredField != null);
-                Assert.AreEqual("PrivateSetter", configurationClass.PrivateSetter);
-                Assert.AreEqual("String", configurationClass.Class.String);
-                Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
-                Assert.AreEqual("overrided", configurationClass.OverrideField);
+            Assert.AreEqual("String", configurationClass.String);
+            Assert.AreEqual(3, configurationClass.Number);
+            Assert.AreEqual(true, configurationClass.Boolean);
+            Assert.AreEqual(true, configurationClass.Array.Length.Equals(2));
+            Assert.AreEqual(true, configurationClass.RequieredField != null);
+            Assert.AreEqual("PrivateSetter", configurationClass.PrivateSetter);
+            Assert.AreEqual("String", configurationClass.Class.String);
+            Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
+            Assert.AreEqual("overrided", configurationClass.OverrideField);
 
-                var optionsWithoutMerge = new ConfigurationOptions(mergeConfiguration: false);
-                var configurationClassNotMerged = new JsonLightConfigurationService(optionsWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+            var configurationSubSection = new JsonLightConfigurationService().ToClass<Class>("configurationSample", "SubSection", "Class");
+            Assert.AreEqual("String", configurationSubSection.String);
 
-                Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
+            var optionsWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false);
+            var configurationClassNotMerged = new JsonLightConfigurationService(optionsWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
 
-                var optionsForceEnvironmentWithoutMerge = new ConfigurationOptions(mergeConfiguration: false, forcedCurrentEnvironment: "Development");
-                var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(optionsForceEnvironmentWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
-                Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
-            });
+            Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
+
+            var optionsForceEnvironmentWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false, directoryEnvironment: "Development");
+            var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(optionsForceEnvironmentWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+            Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
         }
 
         [TestMethod]
@@ -57,6 +57,7 @@ namespace Ben.Tools.Tests.Tests.Configurations
             Assert.AreEqual("String", configurationRoot["Class:String"]);           // Accéder à un champ d'une classe. 
             Assert.AreEqual(true, configurationRoot["FieldThatDontExistInDefaultConfiguration"] != null);
             Assert.AreEqual(true, configurationRoot["OverrideField"] != "not overrided");
+            Assert.AreEqual(true, configurationRoot["SubSection:Class:String"] != "not overrided");
         }
 
         [TestMethod, ExpectedException(typeof(Newtonsoft.Json.JsonSerializationException))]

@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using BenTools.Services.Configurations.Builder;
 using BenTools.Services.Configurations.Options;
 
@@ -61,11 +64,11 @@ namespace BenTools.Services.Configurations.Light
         /// <summary>
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
-        public SectionType ToClass<SectionType>(string filename) =>
-            Builder.Deserialize<SectionType>(Builder.Build(Options, filename, Extension).content);
+        public SectionType ToClass<SectionType>(string filename, params string[] subSections) =>
+            Builder.Deserialize<SectionType>(Builder.Build(Options, filename, Extension, subSections).FileContent);
 
         public void UpdateCurrentEnvironment(string currentEnvironment) =>
-            Options.Environments.Current = currentEnvironment;
+            Options.ConfigurationEnvironments.Current = currentEnvironment;
         #endregion
 
         #region Abstract Behaviour(s)
@@ -75,7 +78,7 @@ namespace BenTools.Services.Configurations.Light
         #region Intern Behaviour(s)
         protected ConfigurationEnvironments GetEnvironments()
         {
-            var environmentsFilePath = Path.Combine(Options.Path, $"environments{Extension}");
+            var environmentsFilePath = Path.Combine(Options.ConfigurationPath, $"environments{Extension}");
 
             if (!File.Exists(environmentsFilePath))
                 throw new FileNotFoundException(environmentsFilePath);

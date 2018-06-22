@@ -10,6 +10,7 @@ namespace Ben.Tools.Tests.Tests.Configurations
         public string Null { get; set; }
         public string[] Array { get; set; }
         public Class Class { get; set; }
+        public SubSection SubSection { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public string RequieredField { get; set; }
@@ -29,5 +30,10 @@ namespace Ben.Tools.Tests.Tests.Configurations
     public class NotMergedConfigurationSample
     {
         public string OverrideField { get; set; }
+    }
+
+    public class SubSection
+    {
+        public Class Class { get; set; }
     }
 }

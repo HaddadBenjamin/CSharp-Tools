@@ -20,11 +20,11 @@ namespace BenTools.Services.Configurations.Normal
         /// </summary>
         public IConfigurationRoot ToRoot(string filename)
         {
-            var mergedConfiguration = Builder.Build(Options, filename, Extension);
+            var mergedConfiguration = Builder.Build(Options, filename, Extension, null);
 
-            File.WriteAllText(mergedConfiguration.path, mergedConfiguration.content);
+            File.WriteAllText(mergedConfiguration.FilePath, mergedConfiguration.FileContent);
 
-            return AddFile(new ConfigurationBuilder(), mergedConfiguration.path).Build();
+            return AddFile(new ConfigurationBuilder(), mergedConfiguration.FilePath).Build();
         }
         #endregion
 

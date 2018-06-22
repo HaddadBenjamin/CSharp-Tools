@@ -8,5 +8,6 @@
   "RequieredField": "RequieredField",
   "PrivateSetter": "PrivateSetter",
   "Class": { "String": "String" }, /* $"{Configuration["Class:String"]"} */
-  "OverrideField": "not overrided"
+  "OverrideField": "not overrided",
+  "SubSection": { "Class": { "String": "String" } } 
 }
