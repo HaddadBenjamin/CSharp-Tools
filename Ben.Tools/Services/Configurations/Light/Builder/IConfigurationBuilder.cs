@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BenTools.Services.Configurations.Options;
+﻿using BenTools.Services.Configurations.Options;
 
 namespace BenTools.Services.Configurations.Builder
 {

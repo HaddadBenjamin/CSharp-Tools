@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using BenTools.Services.Configurations.Light;
+﻿using BenTools.Services.Configurations.Light;
 using BenTools.Services.Configurations.Normal;
 using BenTools.Services.Configurations.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Ben.Tools.Tests.Tests.Configurations
 {

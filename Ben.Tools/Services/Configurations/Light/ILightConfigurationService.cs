@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace BenTools.Services.Configurations.Light
+﻿namespace BenTools.Services.Configurations.Light
 {
     public interface ILightConfigurationService
     {

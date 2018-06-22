@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BenTools.Services.Configurations.Options;
 using System.IO;
-using System.Linq;
-using BenTools.Services.Configurations.Options;
-using Newtonsoft.Json.Linq;
 
 namespace BenTools.Services.Configurations.Builder
 {
