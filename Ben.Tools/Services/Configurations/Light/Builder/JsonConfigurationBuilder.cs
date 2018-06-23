@@ -7,7 +7,7 @@ namespace BenTools.Services.Configurations.Builder
     public class JsonConfigurationBuilder : AConfigurationBuilder
     {
         #region Override Behaviour(s)
-        public override ConfigurationBuildResult Build(string defaultFileContent, string currentFileContent, string destinationPath)
+        public override ConfigurationBuildResult MergeConfiguration(string defaultFileContent, string currentFileContent, string destinationPath)
         {
             var defaultJObject = JObject.Parse(defaultFileContent);
             var currentJObject = JObject.Parse(currentFileContent);
@@ -17,7 +17,7 @@ namespace BenTools.Services.Configurations.Builder
             return new ConfigurationBuildResult(destinationPath, defaultJObject.ToString());
         }
 
-        public override string BuildRawSection(string fileContent, params string[] subSections)
+        public override string ToRawSection(string fileContent, params string[] subSections)
         {
             if (subSections == null || !subSections.Any())
                 return fileContent;

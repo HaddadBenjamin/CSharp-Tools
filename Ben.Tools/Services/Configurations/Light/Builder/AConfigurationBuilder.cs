@@ -6,7 +6,7 @@ namespace BenTools.Services.Configurations.Builder
     public abstract class AConfigurationBuilder : IConfigurationBuilder
     {
         #region Public Behaviour(s)
-        public ConfigurationBuildResult Build(IConfigurationOptions configurationOptions, string filename, string extension, params string[] subSections)
+        public ConfigurationBuildResult BuildConfiguration(IConfigurationOptions configurationOptions, string filename, string extension, params string[] subSections)
         {
             var configurationPaths = configurationOptions.BuildPaths(filename, extension);
 
@@ -26,14 +26,14 @@ namespace BenTools.Services.Configurations.Builder
 
             var currentFileContent = File.ReadAllText(configurationPaths.Current);
 
-            return Build(defaultFileContent, currentFileContent, configurationPaths.Destination);
+            return MergeConfiguration(defaultFileContent, currentFileContent, configurationPaths.Destination);
         }
         #endregion
 
         #region Abstract Behaviour(s)
-        public abstract ConfigurationBuildResult Build(string defaultFileContent, string currentFileContent, string destinationPath);
+        public abstract ConfigurationBuildResult MergeConfiguration(string defaultFileContent, string currentFileContent, string destinationPath);
         public abstract SectionType Deserialize<SectionType>(string fileContent);
-        public abstract string BuildRawSection(string fileContent, params string[] subSections);
+        public abstract string ToRawSection(string fileContent, params string[] subSections);
         #endregion
     }
 }

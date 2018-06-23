@@ -5,6 +5,6 @@ namespace BenTools.Services.Configurations.Normal
 {
     public interface IConfigurationService : ILightConfigurationService
     {
-        IConfigurationRoot ToRoot(string filename);
+        IConfigurationRoot ToConfigurationRoot(string filename);
     }
 }

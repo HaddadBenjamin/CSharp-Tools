@@ -18,9 +18,9 @@ namespace BenTools.Services.Configurations.Normal
         /// <summary>
         /// La racine de configuration permet d'éviter de définir une classe de mappage de votre fichier de configuration pour utiliser votre fichier de configuration tel quel et donc très rapidement.
         /// </summary>
-        public IConfigurationRoot ToRoot(string filename)
+        public IConfigurationRoot ToConfigurationRoot(string filename)
         {
-            var mergedConfiguration = Builder.Build(Options, filename, Extension, null);
+            var mergedConfiguration = Builder.BuildConfiguration(Options, filename, Extension, null);
 
             File.WriteAllText(mergedConfiguration.FilePath, mergedConfiguration.FileContent);
 

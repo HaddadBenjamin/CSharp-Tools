@@ -53,7 +53,7 @@ namespace BenTools.Services.Configurations.Light
             Builder = builder;
             Options = options;
 
-            Options.BuildOptions(GetEnvironments);
+            Options.BuildOptions(BuildEnvironments);
         }
         #endregion
 
@@ -62,7 +62,7 @@ namespace BenTools.Services.Configurations.Light
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
         public SectionType ToClass<SectionType>(string filename, params string[] subSections) =>
-            Builder.Deserialize<SectionType>(Builder.Build(Options, filename, Extension, subSections).FileContent);
+            Builder.Deserialize<SectionType>(Builder.BuildConfiguration(Options, filename, Extension, subSections).FileContent);
 
         public void UpdateCurrentEnvironment(string currentEnvironment) =>
             Options.ConfigurationEnvironments.Current = currentEnvironment;
@@ -73,7 +73,7 @@ namespace BenTools.Services.Configurations.Light
         #endregion
 
         #region Intern Behaviour(s)
-        protected ConfigurationEnvironments GetEnvironments()
+        protected ConfigurationEnvironments BuildEnvironments()
         {
             var environmentsFilePath = Path.Combine(Options.ConfigurationPath, $"environments{Extension}");
 

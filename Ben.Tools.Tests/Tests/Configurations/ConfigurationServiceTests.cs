@@ -43,7 +43,7 @@ namespace Ben.Tools.Tests.Tests.Configurations
         public void Normal_Service_Configuration_Root_Complete_Test()
         {
             // La racine de configuration permet d'éviter de définir une classe de mappage à votre fichier de configuration pour utiliser votre configuration rapidement.
-            var configurationRoot = new JsonConfigurationService().ToRoot("configurationSample");
+            var configurationRoot = new JsonConfigurationService().ToConfigurationRoot("configurationSample");
 
             // Voici les différentes façons d'accéder à vos champs de configuration sans passer par une classe intermédiaire.
             Assert.AreEqual("String", configurationRoot["String"]);                 // Accèder à un champ.

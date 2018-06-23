@@ -4,9 +4,9 @@ namespace BenTools.Services.Configurations.Builder
 {
     public interface IConfigurationBuilder
     {
-        ConfigurationBuildResult Build(IConfigurationOptions configurationOptions, string filename, string extension, params string[] subSections);
-        ConfigurationBuildResult Build(string defaultFileContent, string currentFileContent, string destinationPath);
+        ConfigurationBuildResult BuildConfiguration(IConfigurationOptions configurationOptions, string filename, string extension, params string[] subSections);
+        ConfigurationBuildResult MergeConfiguration(string defaultFileContent, string currentFileContent, string destinationPath);
+        string ToRawSection(string fileContent, params string[] subSections);
         SectionType Deserialize<SectionType>(string fileContent);
-        string BuildRawSection(string fileContent, params string[] subSections);
     }
 }
