@@ -17,7 +17,7 @@ namespace BenTools.Helpers.FileSystem
         /// <summary>
         /// => C:\Sources\SolutionName\ProjectName
         /// </summary>
-        public static string ExecutingAssemblyPath => Path.Combine(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path), "..", "..");
+        public static string ExecutingAssemblyPath => AppDomain.CurrentDomain.BaseDirectory;
 
         /// <summary>
         /// => C:\Sources\SolutionName\ProjectName\Configurations
