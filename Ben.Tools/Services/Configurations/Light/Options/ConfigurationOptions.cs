@@ -17,7 +17,7 @@ namespace BenTools.Services.Configurations.Options
         public ConfigurationOptions(string configurationDirectory = "Configurations", bool mergeConfigurationFiles = true, string directoryEnvironment = null)
         {
             MergeConfigurationFiles = mergeConfigurationFiles;
-            ConfigurationPath = Path.Combine(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path), "..", configurationDirectory);
+            ConfigurationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configurationDirectory);
             DirectoryEnvironment = directoryEnvironment;     
         }
         #endregion

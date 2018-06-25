@@ -15,6 +15,7 @@ namespace BenTools.Services.Configurations.Light
     /// - Light : 
     ///     + Vous devez référencer seulement Newtonsoft.json.
     ///     + ToClass() : convertit votre fichier de configuration en permet de définir des champs requis avec [JsonProperty(Required = Required.Always)] et des champs privée avec [JsonProperty] pour sa version Json.
+    ///                   vous pouvez récupérer des sous sections de configurations avec le paramètres subSections.  
     /// - Normal :
     ///     + Vous devez référencer Newtonsoft.Json, System.Extensions.Configuration.Json et Microsoft.Extensions.Configuration.Binder.
     ///     + Donne accès à toutes les intéractions de sa version light.
