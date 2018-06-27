@@ -15,10 +15,11 @@ namespace BenTools.Helpers.BaseTypes
 
         public static IEnumerable<char> BuildAllAccents() => "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç".ToCharArray();
 
-        public static string BuildAllCharactersString(bool containsNumbers = false, bool containsLowers = true, bool containsUppers = false, bool containsAccents = false)
+        public static string BuilldAllCharactersOfTypes(bool containsNumbers = false, bool containsLowers = true, bool containsUppers = false, bool containsAccents = false)
         {
             var allCharacters = string.Empty;
 
+            // PASSER PAR UN STRINGBUILDER.
             if (containsNumbers) allCharacters += BuildAllDigits();
             if (containsLowers) allCharacters += BuildAllLowers();
             if (containsUppers) allCharacters += BuildAllUppers();
@@ -35,7 +36,7 @@ namespace BenTools.Helpers.BaseTypes
         }
 
         public static string GenerateRandomString(int length = 6, bool containsNumbers = false, bool containsLowers = true, bool containsUppers = false, bool containsAccents = false) =>
-            new string(Enumerable.Repeat(BuildAllCharactersString(containsNumbers, containsLowers, containsUppers, containsAccents), length)
+            new string(Enumerable.Repeat(BuilldAllCharactersOfTypes(containsNumbers, containsLowers, containsUppers, containsAccents), length)
                 .Select(chars => chars[new Random().Next(chars.Length)])
                 .ToArray());
     }
