@@ -1,4 +1,5 @@
-﻿using BenTools.Services.Configurations.Builder;
+﻿using System.Collections.Generic;
+using BenTools.Services.Configurations.Builder;
 using BenTools.Services.Configurations.Options;
 using System.IO;
 
@@ -45,16 +46,15 @@ namespace BenTools.Services.Configurations.Light
     {
         #region Field(s)
         protected readonly IConfigurationBuilder Builder;
-        protected readonly IConfigurationOptions Options;
+        protected IConfigurationOptions Options;
         #endregion
 
         #region Constructor(s)
         public ALightConfigurationService(IConfigurationBuilder builder, IConfigurationOptions options)
         {
             Builder = builder;
-            Options = options;
 
-            Options.BuildOptions(BuildEnvironments);
+            RefreshOptions(options);
         }
         #endregion
 
@@ -62,11 +62,18 @@ namespace BenTools.Services.Configurations.Light
         /// <summary>
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
-        public SectionType ToClass<SectionType>(string filename, params string[] subSections) =>
+        public SectionType ToClass<SectionType>(string filename, IEnumerable<string> subSections = null) =>
             Builder.Deserialize<SectionType>(Builder.BuildConfiguration(Options, filename, Extension, subSections).FileContent);
 
         public void UpdateCurrentEnvironment(string currentEnvironment) =>
             Options.ConfigurationEnvironments.Current = currentEnvironment;
+
+        public void RefreshOptions(IConfigurationOptions options)
+        {
+            Options = options;
+
+            Options.BuildOptions(BuildEnvironments);
+        }
         #endregion
 
         #region Abstract Behaviour(s)

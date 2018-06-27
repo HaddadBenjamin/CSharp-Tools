@@ -166,6 +166,7 @@
     <Compile Include="Helpers\Streams\ImageHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\VideoHelper.cs" />
+    <Compile Include="Managers\Configurations\AConfigurationManager.cs" />
     <Compile Include="Services\Configurations\ConfigurationEnvironments.cs" />
     <Compile Include="Services\Configurations\Light\ALightConfigurationService.cs" />
     <Compile Include="Services\Configurations\Light\Builder\AConfigurationBuilder.cs" />

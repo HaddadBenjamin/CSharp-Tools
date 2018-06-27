@@ -26,7 +26,7 @@ namespace Ben.Tools.Tests.Tests.Configurations
             Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
             Assert.AreEqual("overrided", configurationClass.OverrideField);
 
-            var configurationSubSection = new JsonLightConfigurationService().ToClass<Class>("configurationSample", "SubSection", "Class");
+            var configurationSubSection = new JsonLightConfigurationService().ToClass<Class>("configurationSample", new [] {"SubSection", "Class"});
             Assert.AreEqual("String", configurationSubSection.String);
 
             var optionsWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false);

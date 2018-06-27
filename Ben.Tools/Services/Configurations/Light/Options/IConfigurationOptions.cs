@@ -7,7 +7,7 @@ namespace BenTools.Services.Configurations.Options
         ConfigurationEnvironments ConfigurationEnvironments { get; set; }
         bool MergeConfigurationFiles { get; set; }
         string ConfigurationPath { get; set; }
-        string DirectoryEnvironment { get; set; }
+        string EnvironmentDirectory { get; set; }
 
         void BuildOptions(Func<ConfigurationEnvironments> getConfigurationEnvironments);
         ConfigurationPathsResult BuildPaths(string filename, string extension);

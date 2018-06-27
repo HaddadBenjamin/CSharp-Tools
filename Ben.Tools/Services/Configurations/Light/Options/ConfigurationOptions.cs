@@ -10,7 +10,7 @@ namespace BenTools.Services.Configurations.Options
         public ConfigurationEnvironments ConfigurationEnvironments { get; set; }
         public bool MergeConfigurationFiles { get; set; }
         public string ConfigurationPath { get; set; }
-        public string DirectoryEnvironment { get; set; }
+        public string EnvironmentDirectory { get; set; }
         #endregion
 
         #region Constructor(s)
@@ -18,14 +18,14 @@ namespace BenTools.Services.Configurations.Options
         {
             MergeConfigurationFiles = mergeConfigurationFiles;
             ConfigurationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configurationDirectory);
-            DirectoryEnvironment = directoryEnvironment;     
+            EnvironmentDirectory = directoryEnvironment;     
         }
         #endregion
 
-        #region Public Behvaiour(s)
+        #region Public Behaviour(s)
         public void BuildOptions(Func<ConfigurationEnvironments> getConfigurationEnvironments)
         {
-            bool forceEnvironment = !string.IsNullOrWhiteSpace(DirectoryEnvironment);
+            bool forceEnvironment = !string.IsNullOrWhiteSpace(EnvironmentDirectory);
 
             if (!forceEnvironment)
                 ConfigurationEnvironments = getConfigurationEnvironments();
@@ -35,11 +35,11 @@ namespace BenTools.Services.Configurations.Options
                 if (!MergeConfigurationFiles)
                     ConfigurationEnvironments = new ConfigurationEnvironments()
                     {
-                        Current = DirectoryEnvironment,
-                        Default = DirectoryEnvironment
+                        Current = EnvironmentDirectory,
+                        Default = EnvironmentDirectory
                     };
 
-                ConfigurationEnvironments.Current = DirectoryEnvironment;
+                ConfigurationEnvironments.Current = EnvironmentDirectory;
             }
         }
 

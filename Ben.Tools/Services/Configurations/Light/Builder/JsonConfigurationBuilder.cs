@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace BenTools.Services.Configurations.Builder
             return new ConfigurationBuildResult(destinationPath, defaultJObject.ToString());
         }
 
-        public override string ToRawSection(string fileContent, params string[] subSections)
+        public override string ToRawSection(string fileContent, IEnumerable<string> subSections)
         {
             if (subSections == null || !subSections.Any())
                 return fileContent;
