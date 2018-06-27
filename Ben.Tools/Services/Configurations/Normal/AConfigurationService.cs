@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using BenTools.Services.Configurations.Light;
-using BenTools.Services.Configurations.Options;
+using BenTools.Services.Configurations.Light.Options;
 using Microsoft.Extensions.Configuration;
-using IConfigurationBuilder = BenTools.Services.Configurations.Builder.IConfigurationBuilder;
+using IConfigurationBuilder = BenTools.Services.Configurations.Light.Builder.IConfigurationBuilder;
 
 namespace BenTools.Services.Configurations.Normal
 {

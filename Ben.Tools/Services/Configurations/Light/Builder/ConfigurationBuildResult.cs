@@ -1,4 +1,4 @@
-﻿namespace BenTools.Services.Configurations.Builder
+﻿namespace BenTools.Services.Configurations.Light.Builder
 {
     public class ConfigurationBuildResult
     {

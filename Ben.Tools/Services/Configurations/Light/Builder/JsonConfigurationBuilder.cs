@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 
-namespace BenTools.Services.Configurations.Builder
+namespace BenTools.Services.Configurations.Light.Builder
 {
     public class JsonConfigurationBuilder : AConfigurationBuilder
     {

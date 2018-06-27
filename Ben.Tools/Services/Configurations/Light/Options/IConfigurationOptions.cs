@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BenTools.Services.Configurations.Options
+namespace BenTools.Services.Configurations.Light.Options
 {
     public interface IConfigurationOptions
     {

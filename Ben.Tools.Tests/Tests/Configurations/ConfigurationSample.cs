@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Ben.Tools.Tests.Tests.Configurations
+namespace BenTools.Tests.Tests.Configurations
 {
     public class ConfigurationSample
     {

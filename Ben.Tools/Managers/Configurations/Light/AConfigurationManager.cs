@@ -2,7 +2,7 @@
 using System.Linq;
 using BenTools.Managers.Configurations.Options;
 using BenTools.Services.Configurations.Light;
-using BenTools.Services.Configurations.Options;
+using BenTools.Services.Configurations.Light.Options;
 
 namespace BenTools.Managers.Configurations.Light
 {

@@ -1,10 +1,9 @@
 ﻿using System;
-using Ben.Tools.Tests.Tests.Configurations;
 using BenTools.Managers.Configurations.Light;
 using BenTools.Managers.Configurations.Options;
 using BenTools.Services.Configurations.Light;
+using BenTools.Services.Configurations.Light.Options;
 using BenTools.Services.Configurations.Normal;
-using BenTools.Services.Configurations.Options;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 
@@ -111,7 +110,6 @@ namespace BenTools.Tests.Tests.Configurations
 
                 Assert.AreEqual("forced environment", notMergedAndForcedEnvironmentConfiguration.OverrideField);
             });
-          
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using BenTools.Services.Configurations.Builder;
-using BenTools.Services.Configurations.Options;
 using System.IO;
+using BenTools.Services.Configurations.Light.Builder;
+using BenTools.Services.Configurations.Light.Options;
 
 namespace BenTools.Services.Configurations.Light
 {

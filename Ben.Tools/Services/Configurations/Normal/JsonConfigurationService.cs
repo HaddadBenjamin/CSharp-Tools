@@ -1,5 +1,5 @@
-﻿using BenTools.Services.Configurations.Builder;
-using BenTools.Services.Configurations.Options;
+﻿using BenTools.Services.Configurations.Light.Builder;
+using BenTools.Services.Configurations.Light.Options;
 using Microsoft.Extensions.Configuration;
 
 namespace BenTools.Services.Configurations.Normal

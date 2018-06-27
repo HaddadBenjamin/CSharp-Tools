@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace BenTools.Services.Configurations.Options
+namespace BenTools.Services.Configurations.Light.Options
 {
     public class ConfigurationOptions : IConfigurationOptions
     {
