@@ -1,5 +1,6 @@
 # BenTools
-<u>**Année du développement de ce projet :**<u/> 2018.
+**Langage de programmation :** C#.</br>
+**Année du développement de ce projet :** 2018.</br>
 
 Voici une partie de ma boîte à outils qui permet d'étendre les fonctionnalités du langage C# tout en facilitant et réduisant son écriture. 
 
