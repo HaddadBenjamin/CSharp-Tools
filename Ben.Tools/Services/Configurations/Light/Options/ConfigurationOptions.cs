@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 
 namespace BenTools.Services.Configurations.Options
 {
@@ -14,11 +13,11 @@ namespace BenTools.Services.Configurations.Options
         #endregion
 
         #region Constructor(s)
-        public ConfigurationOptions(string configurationDirectory = "Configurations", bool mergeConfigurationFiles = true, string directoryEnvironment = null)
+        public ConfigurationOptions(string configurationDirectory = "Configurations", bool mergeConfigurationFiles = true, string environmentDirectory = null)
         {
             MergeConfigurationFiles = mergeConfigurationFiles;
             ConfigurationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configurationDirectory);
-            EnvironmentDirectory = directoryEnvironment;     
+            EnvironmentDirectory = environmentDirectory;     
         }
         #endregion
 

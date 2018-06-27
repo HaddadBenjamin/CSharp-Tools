@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using BenTools.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace BenTools.Tests.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class FlowExecutionTests
     {
-        [TestMethod]
+        [Test]
         public void Ternaries_Tests()
         {
             Assert.AreEqual(5, FlowExecutionHelper.Ternaries(
@@ -25,7 +25,7 @@ namespace BenTools.Tests.Tests
                 (true, 10)));
         }
 
-        [TestMethod]
+        [Test]
         public void IfsTree_Tests()
         {
             var value = 0;
@@ -84,7 +84,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(10, value);
         }
 
-        [TestMethod]
+        [Test]
         public void ElseIf_Test()
         {
             var value = 0;
@@ -98,7 +98,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(2, value);
         }
 
-        [TestMethod]
+        [Test]
         public void Else_Test()
         {
             var value = 0;
@@ -112,7 +112,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(3, value);
         }
 
-        [TestMethod]
+        [Test]
         public void Do_False_Test()
         {
             var sequence = new List<int>();
@@ -122,7 +122,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(1, sequence.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void Do_True_Test()
         {
             var sequence = new List<int>();
@@ -132,7 +132,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(20, sequence.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void For_Test()
         {
             var sequence = new List<int>();

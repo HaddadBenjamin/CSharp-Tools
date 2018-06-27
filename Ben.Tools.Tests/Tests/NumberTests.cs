@@ -1,13 +1,13 @@
 ﻿using BenTools.Extensions.BaseTypes;
 using BenTools.Helpers.BaseTypes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace BenTools.Tests.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class NumberTests
     {
-        [TestMethod]
+        [Test]
         public void TestNumbers()
         {
             Assert.AreEqual(true, IntExtension.IsBetween(36, 25, 50));

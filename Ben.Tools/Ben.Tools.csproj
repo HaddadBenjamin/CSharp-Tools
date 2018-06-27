@@ -166,7 +166,11 @@
     <Compile Include="Helpers\Streams\ImageHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\VideoHelper.cs" />
-    <Compile Include="Managers\Configurations\AConfigurationManager.cs" />
+    <Compile Include="Managers\Configurations\Light\AConfigurationManager.cs" />
+    <Compile Include="Managers\Configurations\Light\JsonConfigurationManager.cs" />
+    <Compile Include="Managers\Configurations\Options\ConfigurationManagerOptions.cs" />
+    <Compile Include="Managers\Configurations\Light\IConfigurationManager.cs" />
+    <Compile Include="Managers\Configurations\Options\IConfigurationManagerOptions.cs" />
     <Compile Include="Services\Configurations\ConfigurationEnvironments.cs" />
     <Compile Include="Services\Configurations\Light\ALightConfigurationService.cs" />
     <Compile Include="Services\Configurations\Light\Builder\AConfigurationBuilder.cs" />

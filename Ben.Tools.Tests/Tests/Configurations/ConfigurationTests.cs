@@ -1,16 +1,19 @@
-﻿using BenTools.Services.Configurations.Light;
+﻿using System;
+using Ben.Tools.Tests.Tests.Configurations;
+using BenTools.Managers.Configurations.Light;
+using BenTools.Managers.Configurations.Options;
+using BenTools.Services.Configurations.Light;
 using BenTools.Services.Configurations.Normal;
 using BenTools.Services.Configurations.Options;
 using Microsoft.Extensions.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using NUnit.Framework;
 
-namespace Ben.Tools.Tests.Tests.Configurations
+namespace BenTools.Tests.Tests.Configurations
 {
-    [TestClass]
-    public class ConfigurationServiceTests
+    [TestFixture]
+    public class ConfigurationTests
     {
-        [TestMethod]
+        [TestCase]
         public void Light_Service_Complete_Test()
         {
             // La classe de configuration permet l'utilisation de champs requis ou privée et d'écrire et d'utiliser verbeusement vos configurations.
@@ -26,7 +29,7 @@ namespace Ben.Tools.Tests.Tests.Configurations
             Assert.AreEqual(true, configurationClass.FieldThatDontExistInDefaultConfiguration != null);
             Assert.AreEqual("overrided", configurationClass.OverrideField);
 
-            var configurationSubSection = new JsonLightConfigurationService().ToClass<Class>("configurationSample", new [] {"SubSection", "Class"});
+            var configurationSubSection = new JsonLightConfigurationService().ToClass<Class>("configurationSample", new[] { "SubSection", "Class" });
             Assert.AreEqual("String", configurationSubSection.String);
 
             var optionsWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false);
@@ -34,12 +37,12 @@ namespace Ben.Tools.Tests.Tests.Configurations
 
             Assert.AreEqual("not overrided", configurationClassNotMerged.OverrideField);
 
-            var optionsForceEnvironmentWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false, directoryEnvironment: "Development");
+            var optionsForceEnvironmentWithoutMerge = new ConfigurationOptions(mergeConfigurationFiles: false, environmentDirectory: "Development");
             var configurationClassNotMergedForcedEnvironment = new JsonLightConfigurationService(optionsForceEnvironmentWithoutMerge).ToClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
             Assert.AreEqual("forced environment", configurationClassNotMergedForcedEnvironment.OverrideField);
         }
 
-        [TestMethod]
+        [Test]
         public void Normal_Service_Configuration_Root_Complete_Test()
         {
             // La racine de configuration permet d'éviter de définir une classe de mappage à votre fichier de configuration pour utiliser votre configuration rapidement.
@@ -59,11 +62,56 @@ namespace Ben.Tools.Tests.Tests.Configurations
             Assert.AreEqual(true, configurationRoot["SubSection:Class:String"] != "not overrided");
         }
 
-        [TestMethod, ExpectedException(typeof(Newtonsoft.Json.JsonSerializationException))]
+        [Test]
         public void Configuration_Service_Is_Requiered_Test()
         {
-            // Ce test montre l'efficacité de la contrainte sur les champs requis.
-            var emptyConfiguration = new JsonConfigurationService().ToClass<ConfigurationSample>("emptyConfigurationSample");
+            Assert.Throws<Newtonsoft.Json.JsonSerializationException>(() =>
+            {
+                new JsonConfigurationService().ToClass<ConfigurationSample>("emptyConfigurationSample");
+            });
+        }
+
+        [Test]
+        public void Configuration_Manager_Test()
+        {
+            Assert.DoesNotThrow(() =>
+            {
+                var configurationManager = new JsonConfigurationManager(
+                    new ConfigurationManagerOptions("configurationSample"),
+                    new ConfigurationManagerOptions("configurationSample")
+                    {
+                        SubSections = new[] { "SubSection", "Class" },
+                        ConfigurationKey = "Sample With Sub Sections"
+                    },
+                    new ConfigurationManagerOptions("notMergedConfigurationSample")
+                    {
+                        MergeConfigurationFiles = false
+                    },
+                    new ConfigurationManagerOptions("notMergedConfigurationSample")
+                    {
+                        MergeConfigurationFiles = false,
+                        ConfigurationKey = "Not Merged And Force Development Environment",
+                        EnvironmentDirectory = "Development"
+                    });
+
+                
+                var configurationSample = configurationManager.GetConfigurationClass<ConfigurationSample>("configurationSample");
+
+                Assert.AreEqual("overrided", configurationSample.OverrideField);
+
+                var subSectionConfiguration = configurationManager.GetConfigurationClass<Class>("Sample With Sub Sections");
+
+                Assert.AreEqual("String", subSectionConfiguration.String);
+
+                var notMergedConfiguration = configurationManager.GetConfigurationClass<NotMergedConfigurationSample>("notMergedConfigurationSample");
+
+                Assert.AreEqual("not overrided", notMergedConfiguration.OverrideField);
+
+                var notMergedAndForcedEnvironmentConfiguration = configurationManager.GetConfigurationClass<NotMergedConfigurationSample>("Not Merged And Force Development Environment");
+
+                Assert.AreEqual("forced environment", notMergedAndForcedEnvironmentConfiguration.OverrideField);
+            });
+          
         }
     }
 }

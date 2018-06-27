@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using BenTools.Extensions.BaseTypes;
 using BenTools.Extensions.Sequences;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace BenTools.Tests.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ShitTests
     {
         class Pet
@@ -26,7 +26,7 @@ namespace BenTools.Tests.Tests
             private int a = 2;
         }
 
-        [TestMethod]
+        [Test]
         public void ShitTest()
         {
             var collectionA = new[] {1, 2, 3};

@@ -65,9 +65,6 @@ namespace BenTools.Services.Configurations.Light
         public SectionType ToClass<SectionType>(string filename, IEnumerable<string> subSections = null) =>
             Builder.Deserialize<SectionType>(Builder.BuildConfiguration(Options, filename, Extension, subSections).FileContent);
 
-        public void UpdateCurrentEnvironment(string currentEnvironment) =>
-            Options.ConfigurationEnvironments.Current = currentEnvironment;
-
         public void RefreshOptions(IConfigurationOptions options)
         {
             Options = options;
@@ -87,8 +84,10 @@ namespace BenTools.Services.Configurations.Light
 
             if (!File.Exists(environmentsFilePath))
                 throw new FileNotFoundException(environmentsFilePath);
-           
-            return Builder.Deserialize<ConfigurationEnvironments>(File.ReadAllText(environmentsFilePath));
+
+            var environmentsFileContent = File.ReadAllText(environmentsFilePath);
+
+            return Builder.Deserialize<ConfigurationEnvironments>(environmentsFileContent);
         }
         #endregion
     }

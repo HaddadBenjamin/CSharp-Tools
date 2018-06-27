@@ -4,7 +4,7 @@ using System.Linq;
 using BenTools.Extensions.BaseTypes;
 using BenTools.Extensions.Sequences;
 using BenTools.Helpers.Enumerations;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace BenTools.Tests.Tests
 {
@@ -18,10 +18,10 @@ namespace BenTools.Tests.Tests
         E = 16
     }
 
-    [TestClass]
+    [TestFixture]
     public class EnumerationFlagTest
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             var sevenEnum = TestEnumeration.A | TestEnumeration.B | TestEnumeration.C;

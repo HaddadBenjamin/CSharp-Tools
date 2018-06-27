@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using BenTools.Extensions.Sequences;
 using BenTools.Utilities.Date.DateInterval;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace BenTools.Tests.Tests
 {
@@ -12,10 +12,10 @@ namespace BenTools.Tests.Tests
     /// Du fait GrouppedDateIntervals.MergeWithIntervals() retourne un type anonymes.
     /// Les types anonymes sont internal à l'assembly, c'est à dire que d'autres projets ne peuvent pas y avoir accès.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class DateIntervalTests
     {
-        [TestMethod] 
+        [Test] 
         public void ContainsAny()
         {
             var enumerable = new[] {1, 2, 3};
@@ -25,7 +25,8 @@ namespace BenTools.Tests.Tests
             var x = enumerable.ToList().AddElements(elements);
             var array = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("my name is pierre");
         }
-        [TestMethod]
+
+        [Test]
         public void GrouppedMergeDayOneForDayOneAndTwoForDayTwo()
         {
             var dateTime = new DateTime(2015, 1, 1, 0, 0, 0);
@@ -46,7 +47,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(2, groups[1].Values.Count());
         }
 
-        [TestMethod]
+        [Test]
         public void GrouppedMergeYearFourTwoFirstYearOneSecondYear()
         {
             var dateTime = new DateTime(2015, 1, 1, 0, 0, 0);
@@ -67,7 +68,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(1, groups[1].Values.Count());
         }
 
-        [TestMethod]
+        [Test]
         public void GrouppedMergeDayOfWeekOneForMondayAndTwoForFriday()
         {
             var dateTime = new DateTime(1, 1, 1, 0, 0, 0);
