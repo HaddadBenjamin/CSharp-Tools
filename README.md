@@ -1,5 +1,5 @@
 # BenTools
-<u></b>Année du développement de ce projet :</b></u> 2018.
+<u>**Année du développement de ce projet :**<u/> 2018.
 
 Voici une partie de ma boîte à outils qui permet d'étendre les fonctionnalités du langage C# tout en facilitant et réduisant son écriture. 
 
