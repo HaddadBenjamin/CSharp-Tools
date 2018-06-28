@@ -143,6 +143,7 @@
     <Compile Include="Extensions\Streams\BitmapExtension.cs" />
     <Compile Include="Extensions\Streams\ImageExtension.cs" />
     <Compile Include="Extensions\Streams\StreamExtension.cs" />
+    <Compile Include="Helpers\BaseTypes\CharHelper.cs" />
     <Compile Include="Helpers\BaseTypes\DoubleHelper.cs" />
     <Compile Include="Helpers\BaseTypes\FloatHelper.cs" />
     <Compile Include="Helpers\BaseTypes\IntHelper.cs" />

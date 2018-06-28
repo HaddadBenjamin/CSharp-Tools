@@ -1,43 +1,89 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using BenTools.Extensions.BaseTypes;
 
 namespace BenTools.Helpers.BaseTypes
 {
     public static class StringHelper
     {
-        public static IEnumerable<char> BuildAllDigits() => "0123456789".ToCharArray();
+        private static Random Random = new Random();
 
-        public static IEnumerable<char> BuildAllLowers() => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        #region All Characters Types
+        public static readonly string AllDigits = "0123456789";
 
-        public static IEnumerable<char> BuildAllUppers() => "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+        public static readonly string AllLowerLettersWithoutAccents = "abcdefghijklmnopqrstuvwxyz";
 
-        public static IEnumerable<char> BuildAllAccents() => "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç".ToCharArray();
+        public static readonly string AllUpperLettersWithoutAccents = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        public static string BuilldAllCharactersOfTypes(bool containsNumbers = false, bool containsLowers = true, bool containsUppers = false, bool containsAccents = false)
+        public static readonly string AllLettersWithoutAccents = AllLowerLettersWithoutAccents + AllUpperLettersWithoutAccents;
+
+        public static readonly string AllLowerLettersWithAccents = "àáâãäåòóôõöøèéêëìíîïùúûüÿñç";
+
+        public static readonly string AllUpperLettersWithAccents = "ÀÁÂÃÄÅÒÓÔÕÖØÈÉÊËÌÍÎÏÙÚÛÜÑÇ"; // manque le Y
+
+        public static readonly string AllLettersWithAccents = AllLowerLettersWithAccents + AllUpperLettersWithAccents;
+
+        public static readonly string AllLowersLetters = AllLowerLettersWithoutAccents + AllLowerLettersWithAccents;
+
+        public static readonly string AllUppersLetters = AllUpperLettersWithoutAccents + AllUpperLettersWithAccents;
+
+        public static readonly string AllLetters = AllLettersWithoutAccents + AllLettersWithAccents;
+        #endregion
+
+        #region Build All Characters Types
+        public static IEnumerable<char> BuildAllDigits() => AllDigits.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLowerLettersWithoutAccents() => AllLowerLettersWithoutAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllUpperLettersWithoutAccents() => AllUpperLettersWithoutAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLettersWithoutAccents() => AllLettersWithoutAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLowerLettersWithAccents() => AllLowerLettersWithAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllUpperLettersWithAccents() => AllUpperLettersWithAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLettersWithAccents() => AllLettersWithAccents.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLowersLetters() => AllLowersLetters.ToCharArray();
+
+        public static IEnumerable<char> BuildAllUppersLetters() => AllUppersLetters.ToCharArray();
+
+        public static IEnumerable<char> BuildAllLetters() => AllLetters.ToCharArray();
+
+        public static string BuilldAllCharactersOfTypes(
+            bool withDigits = false, 
+            bool withLowerLettersWithoutAccent = false,
+            bool withUpperLettersWithoutAccent = false,
+            bool withLowerLettersWithAccent = false,
+            bool withUpperLettersWithAccent = false)
         {
-            var allCharacters = string.Empty;
+            var allCharacters = new StringBuilder();
 
-            // PASSER PAR UN STRINGBUILDER.
-            if (containsNumbers) allCharacters += BuildAllDigits();
-            if (containsLowers) allCharacters += BuildAllLowers();
-            if (containsUppers) allCharacters += BuildAllUppers();
+            if (withDigits)                     allCharacters.Append(AllDigits);
+            if (withLowerLettersWithoutAccent)  allCharacters.Append(AllLowerLettersWithoutAccents);
+            if (withUpperLettersWithoutAccent)  allCharacters.Append(AllUpperLettersWithoutAccents);
+            if (withLowerLettersWithAccent)     allCharacters.Append(AllLowerLettersWithAccents);
+            if (withUpperLettersWithAccent)     allCharacters.Append(AllUpperLettersWithAccents);
 
-            if (containsAccents)
-            {
-                var allAccents = BuildAllAccents();
-
-                if (containsLowers) allCharacters += allAccents.Where(@char => @char.IsLower());
-                if (containsUppers) allCharacters += allAccents.Where(@char => @char.IsUpper());
-            }
-
-            return allCharacters;
+            return allCharacters.ToString();
         }
 
-        public static string GenerateRandomString(int length = 6, bool containsNumbers = false, bool containsLowers = true, bool containsUppers = false, bool containsAccents = false) =>
-            new string(Enumerable.Repeat(BuilldAllCharactersOfTypes(containsNumbers, containsLowers, containsUppers, containsAccents), length)
-                .Select(chars => chars[new Random().Next(chars.Length)])
+        /// <summary>
+        /// Permet de générer une string aléatoires d'une taille définit tout en utilisant les types de charactères définits : chiffres, lettres minuscules ou majuscules avec et sans accents.
+        /// </summary>
+        public static string BuildRandomString(
+            int length = 6,
+            bool withDigits = false,
+            bool withLowerLettersWithoutAccent = false,
+            bool withUpperLettersWithoutAccent = false,
+            bool withLowerLettersWithAccent = false,
+            bool withUpperLettersWithAccent = false) =>
+            new string(Enumerable.Repeat(BuilldAllCharactersOfTypes(withDigits, withLowerLettersWithoutAccent, withUpperLettersWithoutAccent, withLowerLettersWithAccent, withUpperLettersWithAccent), length)
+                .Select(chars => chars[Random.Next(chars.Length)])
                 .ToArray());
+        #endregion
     }
 }
