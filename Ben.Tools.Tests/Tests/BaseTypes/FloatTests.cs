@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BenTools.Extensions.BaseTypes;
+using BenTools.Helpers.BaseTypes;
 using NUnit.Framework;
 
 namespace SomeTests
