@@ -1,26 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BenTools.Extensions.BaseTypes
 {
     public static class ObjectExtension
     {
-        public static bool DefaulEquals<ComparedType>(
-            this object left,
-            object right)
-        {
-            if (ReferenceEquals(null, right) ||
-                left.GetType() != right.GetType())
-                return false;
-
-            if (ReferenceEquals(left, right))
-                return true;
-
-            return left.Equals((ComparedType) right);
-        }
-        
+        #region Copy & Clone
         public static ObjectType DeepCopy<ObjectType>(this ObjectType objectToCopy) =>
             (ObjectType)DeepCopyAlgorithm(objectToCopy);
 
@@ -67,6 +57,41 @@ namespace BenTools.Extensions.BaseTypes
                 throw new ArgumentException("Unknown type");
         }
 
+        public static ObjectType Clone<ObjectType>(this ObjectType objectToCopy)
+        {
+            if (!typeof(ObjectType).IsSerializable)
+                throw new ArgumentException("The type must be serializable.", "objectToCopy");
+
+            if (ReferenceEquals(objectToCopy, null))
+                return default(ObjectType);
+
+            var binaryFormatter = new BinaryFormatter();
+            var memoryStream = new MemoryStream();
+
+            using (memoryStream)
+            {
+                binaryFormatter.Serialize(memoryStream, objectToCopy);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                return (ObjectType)binaryFormatter.Deserialize(memoryStream);
+            }
+        }
+        #endregion
+
+        public static bool DefaulEquals<ComparedType>(
+            this object left,
+            object right)
+        {
+            if (ReferenceEquals(null, right) ||
+                left.GetType() != right.GetType())
+                return false;
+
+            if (ReferenceEquals(left, right))
+                return true;
+
+            return left.Equals((ComparedType) right);
+        }
+        
         public static bool IsNull(this object anObject) => anObject is null;
         
         /// <summary>
