@@ -90,15 +90,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\BaseTypes\DoubleTests.cs" />
+    <Compile Include="Tests\BaseTypes\FloatTests.cs" />
+    <Compile Include="Tests\BaseTypes\IntegerTests.cs" />
+    <Compile Include="Tests\BaseTypes\StringTexts.cs" />
     <Compile Include="Tests\Configurations\ConfigurationSample.cs" />
     <Compile Include="Tests\Configurations\ConfigurationTests.cs" />
     <Compile Include="Tests\DateIntervalTests.cs" />
     <Compile Include="Tests\FlowExecutionTests.cs" />
     <Compile Include="Tests\ShitTests.cs" />
-    <Compile Include="Tests\NumberTests.cs" />
+    <Compile Include="Tests\BaseTypes\NumberTests.cs" />
     <Compile Include="Tests\EnumerationFlagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\TextTests.cs" />
+    <Compile Include="Tests\BaseTypes\TextTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

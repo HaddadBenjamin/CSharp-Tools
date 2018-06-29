@@ -165,5 +165,20 @@ namespace BenTools.Extensions.BaseTypes
 
 	    public static string ReplaceMultipleSpacesBySingleSpace(this string text) =>
 	        SeveralSpacesRegex.Replace(text, " ");
-	}
+
+	    public static IEnumerable<int> FindAllTextOccurenceIndices(this string text, string searchText)
+	    {
+	        var indices = new List<int>();
+
+	        for (int index = 0; ; index += searchText.Length)
+	        {
+	            index = text.IndexOf(searchText, index);
+
+	            if (index == -1)
+	                return indices;
+
+	            indices.Add(index);
+	        }
+	    }
+    }
 }

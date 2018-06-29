@@ -7,6 +7,33 @@ namespace BenTools.Extensions.BaseTypes
 {
     public static class DoubleExtension
     {
+        #region Find > Single Element
+        private static double FindNearestNumberAlgorithm(this double @double, IEnumerable<double> numbers, double valueIfNotFound, Func<IEnumerable<double>, IEnumerable<double>> ordonnedFunction, Func<double, double, bool> comparator)
+        {
+            var ordonnedNumbers = ordonnedFunction(numbers);
+
+            return ordonnedNumbers.Any(number => comparator(number, @double)) ?
+                ordonnedNumbers.LastOrDefault(number => comparator(number, @double)) :
+                valueIfNotFound;
+        }
+
+        public static double FindNearestNumber(this double @double, IEnumerable<double> numbers, double valueIfNotFound = 0) =>
+            @double.FindNearestNumberAlgorithm(numbers, valueIfNotFound, (elements) => numbers.OrderBy(number => Math.Abs(@double - number)), (number, @int) => true);
+
+        public static double FindNearestNumberButLower(this double @double, IEnumerable<double> numbers, double valueIfNotFound = 0) =>
+            @double.FindNearestNumberAlgorithm(numbers, valueIfNotFound, (elements) => elements.OrderBy(number => number), (number, @int) => number < @double);
+
+        public static double FindNearestNumberButLowerOrEqual(this double @double, IEnumerable<double> numbers, double valueIfNotFound = 0) =>
+            @double.FindNearestNumberAlgorithm(numbers, valueIfNotFound, (elements) => elements.OrderBy(number => number), (number, @int) => number <= @double);
+
+        public static double FindNearestNumberButGreater(this double @double, IEnumerable<double> numbers, double valueIfNotFound = 0) =>
+            @double.FindNearestNumberAlgorithm(numbers, valueIfNotFound, (elements) => elements.OrderByDescending(number => number), (number, @int) => number > @double);
+
+        public static double FindNearestNumberButGreaterOrEqual(this double @double, IEnumerable<double> numbers, double valueIfNotFound = 0) =>
+            @double.FindNearestNumberAlgorithm(numbers, valueIfNotFound, (elements) => elements.OrderByDescending(number => number), (number, @int) => number >= @double);
+        #endregion
+        
+        #region Equality Comparer
         public static bool NearlyEquals(this double left, double right, double epsilon = Double.Epsilon) => Math.Abs(left - right) <= epsilon;
 
         public static bool IsBetween(this double number, double minimum, double maximum) => number > minimum && number < maximum;
@@ -17,6 +44,7 @@ namespace BenTools.Extensions.BaseTypes
             number.IsBetween(minimum, maximum) ||
             number.NearlyEquals(minimum, epsilon) ||
             number.NearlyEquals(maximum, epsilon);
+        #endregion
 
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.

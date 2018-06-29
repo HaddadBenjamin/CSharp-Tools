@@ -7,12 +7,26 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class IntHelper
     {
+        #region Generate
+        public static IEnumerable<int> GenerateNumbers(int startNumber = 0, int endNumber = 10, int addNumber = 1, Func<int, int, bool> comparator = null)
+        {
+            comparator = comparator ?? ((start, end) => start <= end);
+
+            var numbers = new List<int>();
+
+            for (; comparator(startNumber, endNumber); startNumber += addNumber)
+                numbers.Add(startNumber);
+
+            return numbers;
+        }
+
         public static int GenerateUniqueInteger(bool positive = true)
         {
             var uniqueInteger = Guid.NewGuid().GetHashCode();
 
             return positive ? Math.Abs(uniqueInteger) : uniqueInteger;
         }
+        #endregion
 
         public static Func<int, int, bool> OperatorComparerFunction(EComparerOperator comparerOperator, int epsilon = default(int))
         {
@@ -32,6 +46,7 @@ namespace BenTools.Helpers.BaseTypes
 
             return comparer;
         }
+
         /// <summary>
         /// If you use Sql, use @@Entity or Scope_entity() to generate a new unique Id.
         /// - { 5, 4, 3, 2, 1, 0 7, 7, 7 } => 6

@@ -7,6 +7,24 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class DoubleHelper
     {
+        #region Generate
+        public static IEnumerable<double> GenerateNumbers(double startNumber = 0, double endNumber = 10, double addNumber = 1, Func<double, double, bool> comparator = null)
+        {
+            comparator = comparator ?? ((start, end) => start <= end);
+
+            var numbers = new List<double>();
+
+            for (; comparator(startNumber, endNumber); startNumber += addNumber)
+                numbers.Add(startNumber);
+
+            return numbers;
+        }
+
+        public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
+            Enumerable.Repeat<Func<double>>(new Random().NextDouble, numberOfElements)
+                .Select(generateValueFunction => generateValueFunction());
+        #endregion
+
         public static Func<double, double, bool> OperatorComparerFunction(EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
         {
             Func<double, double, bool> comparer;
@@ -28,9 +46,5 @@ namespace BenTools.Helpers.BaseTypes
 
             return comparer;
         }
-        
-        public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
-            Enumerable.Repeat<Func<double>>(new Random().NextDouble, numberOfElements)
-                      .Select(generateValueFunction => generateValueFunction());
     }
 }
