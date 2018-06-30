@@ -19,9 +19,9 @@ namespace BenTools.Helpers.BaseTypes
 
         public static readonly string AllLettersWithoutAccents = AllLowerLettersWithoutAccents + AllUpperLettersWithoutAccents;
 
-        public static readonly string AllLowerLettersWithAccents = "àáâãäåòóôõöøèéêëìíîïùúûüÿñç";
+        public static readonly string AllLowerLettersWithAccents = "Ã Ã¡Ã¢Ã£Ã¤Ã¥Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã¹ÃºÃ»Ã¼Ã¿Ã±Ã§";
 
-        public static readonly string AllUpperLettersWithAccents = "ÀÁÂÃÄÅÒÓÔÕÖØÈÉÊËÌÍÎÏÙÚÛÜÑÇ"; // manque le Y
+        public static readonly string AllUpperLettersWithAccents = "Ã€ÃÃ‚ÃƒÃ„Ã…Ã’Ã“Ã”Ã•Ã–Ã˜ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃÃ™ÃšÃ›ÃœÃ‘Ã‡"; // manque le Y
 
         public static readonly string AllLettersWithAccents = AllLowerLettersWithAccents + AllUpperLettersWithAccents;
 
@@ -32,7 +32,7 @@ namespace BenTools.Helpers.BaseTypes
         public static readonly string AllLetters = AllLettersWithoutAccents + AllLettersWithAccents;
         #endregion
 
-        #region Build All Characters Types
+        #region Build All Characters Types & String
         public static IEnumerable<char> BuildAllDigits() => AllDigits.ToCharArray();
 
         public static IEnumerable<char> BuildAllLowerLettersWithoutAccents() => AllLowerLettersWithoutAccents.ToCharArray();
@@ -72,7 +72,7 @@ namespace BenTools.Helpers.BaseTypes
         }
 
         /// <summary>
-        /// Permet de générer une string aléatoires d'une taille définit tout en utilisant les types de charactères définits : chiffres, lettres minuscules ou majuscules avec et sans accents.
+        /// Permet de gÃ©nÃ©rer une string alÃ©atoires d'une taille dÃ©finit tout en utilisant les types de charactÃ¨res dÃ©finits : chiffres, lettres minuscules ou majuscules avec et sans accents.
         /// </summary>
         public static string BuildRandomString(
             int length = 6,
