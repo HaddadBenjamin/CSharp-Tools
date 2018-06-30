@@ -22,7 +22,7 @@ namespace BenTools.Helpers.BaseTypes
 
         public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
             Enumerable.Repeat<Func<double>>(new Random().NextDouble, numberOfElements)
-                .Select(generateValueFunction => generateValueFunction());
+                      .Select(generateValueFunction => generateValueFunction());
         #endregion
 
         public static Func<double, double, bool> OperatorComparerFunction(EComparerOperator comparerOperator, double epsilon = Double.Epsilon)
