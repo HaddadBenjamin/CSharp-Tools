@@ -7,6 +7,8 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class DoubleHelper
     {
+        private static readonly Random Random = new Random();
+        
         #region Generate
         public static IEnumerable<double> GenerateNumbers(double startNumber = 0, double endNumber = 10, double addNumber = 1, Func<double, double, bool> comparator = null)
         {
@@ -21,7 +23,7 @@ namespace BenTools.Helpers.BaseTypes
         }
 
         public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
-            Enumerable.Repeat<Func<double>>(new Random().NextDouble, numberOfElements)
+            Enumerable.Repeat<Func<double>>(Random.NextDouble, numberOfElements)
                       .Select(generateValueFunction => generateValueFunction());
         #endregion
 
