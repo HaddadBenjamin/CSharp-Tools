@@ -59,12 +59,6 @@ namespace BenTools.Extensions.BaseTypes
 
         public static ObjectType Clone<ObjectType>(this ObjectType objectToCopy)
         {
-            if (!typeof(ObjectType).IsSerializable)
-                throw new ArgumentException("The type must be serializable.", "objectToCopy");
-
-            if (ReferenceEquals(objectToCopy, null))
-                return default(ObjectType);
-
             var binaryFormatter = new BinaryFormatter();
             var memoryStream = new MemoryStream();
 
