@@ -149,6 +149,7 @@
     <Compile Include="Helpers\BaseTypes\IntHelper.cs" />
     <Compile Include="Helpers\BaseTypes\StringHelper.cs" />
     <Compile Include="Helpers\Communications\InterProcessCommunicationHelper.cs" />
+    <Compile Include="Helpers\FileSystem\NewtonsoftHelper.cs" />
     <Compile Include="Helpers\FlowExecutionHelper.cs" />
     <Compile Include="Helpers\Sequences\SortHelper.cs" />
     <Compile Include="Helpers\Date\DaysOfWeekHelper.cs" />
