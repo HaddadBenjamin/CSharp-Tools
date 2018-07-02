@@ -2,7 +2,7 @@
 using BenTools.Helpers.BaseTypes;
 using NUnit.Framework;
 
-namespace BenTools.Tests.Tests
+namespace BenTools.Tests.Tests.BaseTypes
 {
     [TestFixture]
     public class NumberTests

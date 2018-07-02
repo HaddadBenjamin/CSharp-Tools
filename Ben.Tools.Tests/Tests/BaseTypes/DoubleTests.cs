@@ -3,9 +3,8 @@ using System.Linq;
 using BenTools.Extensions.BaseTypes;
 using BenTools.Helpers.BaseTypes;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
-namespace SomeTests
+namespace BenTools.Tests.Tests.BaseTypes
 {
     [TestFixture]
     public class DoubleTests

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using BenTools.Extensions.BaseTypes;
 using BenTools.Helpers.BaseTypes;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
-using BenTools.Helpers.BaseTypes;
 
-namespace BenTools.Tests.Tests
+namespace BenTools.Tests.Tests.BaseTypes
 {
     [TestFixture]
     public class TextTests

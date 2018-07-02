@@ -3,7 +3,7 @@ using System.Linq;
 using BenTools.Extensions.BaseTypes;
 using NUnit.Framework;
 
-namespace SomeTests
+namespace BenTools.Tests.Tests.BaseTypes
 {
     [TestFixture]
     public class StringTexts
