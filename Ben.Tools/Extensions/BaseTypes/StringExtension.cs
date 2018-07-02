@@ -15,13 +15,44 @@ namespace BenTools.Extensions.BaseTypes
 	{
         private static readonly Regex SeveralSpacesRegex = new Regex(@"[ ]{2,}", RegexOptions.Compiled);
 
-	    public static byte[] EncodedPngBase64StringToBytes(this string pngEncodedText) => Convert.FromBase64String(pngEncodedText.Replace("data:image/png;base64,", ""));
+        #region Search & Text Occurence
+        public static IEnumerable<int> FindAllTextOccurenceIndices(this string text, string searchText)
+        {
+            var indices = new List<int>();
 
-        public static Bitmap EncodedPngBase64StringToBitmap(this string pngEncodedText) => BytesHelper.ToBitmap(pngEncodedText.EncodedPngBase64StringToBytes());
+            for (int index = 0; ; index += searchText.Length)
+            {
+                index = text.IndexOf(searchText, index);
 
-        public static string FirstLetterToUppercase(this string text) => Char.ToUpper(text[0]) + text.Substring(1);
+                if (index == -1)
+                    return indices;
 
-        public static string RemoveTextOccurence(this string text, string textToRemove) => text.Replace(textToRemove, String.Empty);
+                indices.Add(index);
+            }
+        }
+
+        public static int CountTextOccurences(this string text, string searchText) =>
+            text.FindAllTextOccurenceIndices(searchText)
+                .Count();
+        #endregion
+
+        #region Conversion & Utilities
+        public static int ToInteger(this string text) => Int32.Parse(text);
+
+        public static bool IsNumber(this string text) => Int32.TryParse(text, out _);
+
+	    public static byte[] PngBase64StringToBytes(this string pngEncodedText) => Convert.FromBase64String(pngEncodedText.Replace("data:image/png;base64,", ""));
+
+	    public static Bitmap PngBase64StringToBitmap(this string pngEncodedText) => BytesHelper.ToBitmap(pngEncodedText.PngBase64StringToBytes());
+
+        private static char[] GetDistinctAccents(this string text) =>
+            text.Intersect(StringHelper.AllLettersWithAccents)
+                .Distinct()
+                .ToArray();
+        #endregion
+
+        #region Replace & Modify
+        public static string FirstLetterToUppercase(this string text) => char.ToUpper(text[0]) + text.Substring(1);
 
         /// <summary>
         /// "SalutCavaBienDeviendra" -> "Salut Cava Bien Deviendra"
@@ -33,83 +64,104 @@ namespace BenTools.Extensions.BaseTypes
         /// </summary>
         public static string FirstWordLetterToUppercase(this string text) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
 
-        public static int ToInteger(this string text) => Int32.Parse(text);
-	    
-	    public static bool In(this string text, IEnumerable<string> collection) => collection.Contains(text);
+        public static string ReplaceAccentLettersByNoAccentLetters(this string text) =>
+            new string(text.Normalize(NormalizationForm.FormD)
+                    .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    .ToArray())
+                .Normalize(NormalizationForm.FormC);
+
+        public static string ToTitleCase(this string text) =>
+            CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(text.ToLower(CultureInfo.CurrentUICulture));
+
+        public static string ReplaceMultipleSpacesBySingleSpace(this string text) =>
+            SeveralSpacesRegex.Replace(text, " ");
+        #endregion
+
+        #region Remove
+        public static string RemoveTextOccurence(this string text, string textToRemove) => text.Replace(textToRemove, string.Empty);
 
         public static string RemoveNewLineAndCarriageReturn(this string text) =>
             text.Replace("\n", String.Empty)
                 .Replace("\r", String.Empty);
 
-	    public static bool IsNumber(this string text) => Int32.TryParse(text, out _);
+        public static string RemoveChar(this string text, char @char) =>
+            text.Replace(@char.ToString(), string.Empty);
+
+        public static string RemoveAccents(this string text) =>
+            String.Join(text, text.Split(text.GetDistinctAccents(), StringSplitOptions.RemoveEmptyEntries));
+        #endregion
+
+        #region Aggregation
+        public static bool In(this string text, IEnumerable<string> collection) => collection.Contains(text);
 
         #region Are Just Characters Of Type
-	    public static bool AreDigits(this string text) => text.All(@char => @char.IsDigit());
+        public static bool AreDigits(this string text) => text.All(@char => @char.IsDigit());
 
         public static bool AreLowerLettersWithoutAccent(this string text) => text.All(@char => @char.IsLowerLetterWithoutAccent());
 
-	    public static bool AreUpperLettersWithoutAccent(this string text) => text.All(@char => @char.IsUpperLetterWithoutAccent());
+        public static bool AreUpperLettersWithoutAccent(this string text) => text.All(@char => @char.IsUpperLetterWithoutAccent());
 
-	    public static bool AreLettersWithoutAccent(this string text) => text.All(@char => @char.IsLetterWithoutAccent());
+        public static bool AreLettersWithoutAccent(this string text) => text.All(@char => @char.IsLetterWithoutAccent());
 
-	    public static bool AreLowerLettersWithAccent(this string text) => text.All(@char => @char.IsLowerLetterWithAccent());
+        public static bool AreLowerLettersWithAccent(this string text) => text.All(@char => @char.IsLowerLetterWithAccent());
 
-	    public static bool AreUpperLettersWithAccent(this string text) => text.All(@char => @char.IsUpperLetterWithAccent());
+        public static bool AreUpperLettersWithAccent(this string text) => text.All(@char => @char.IsUpperLetterWithAccent());
 
-	    public static bool AreLettersWithAccent(this string text) => text.All(@char => @char.IsLetterWithAccent());
+        public static bool AreLettersWithAccent(this string text) => text.All(@char => @char.IsLetterWithAccent());
 
-	    public static bool AreLowerLetters(this string text) => text.All(@char => @char.IsLowerLetter());
+        public static bool AreLowerLetters(this string text) => text.All(@char => @char.IsLowerLetter());
 
-	    public static bool AreUpperLetters(this string text) => text.All(@char => @char.IsUpperLetter());
+        public static bool AreUpperLetters(this string text) => text.All(@char => @char.IsUpperLetter());
 
         public static bool AreLetters(this string text) => text.All(@char => @char.IsLetter());
+        #endregion
         #endregion
 
         #region Count Characters Of Types
         public class CharactersOfTypesCount
-	    {
-	        public int DigitCount;
-	        public int LowerLetterWithoutAccentCount;
-	        public int UpperLetterWithoutAccentCount;
-	        public int LetterWithoutAccentCount;
-	        public int LowerLetterWithAccentCount;
-	        public int UpperLetterWithAccentCount;
-	        public int LetterWithAccentCount;
-	        public int LowerLettersCount;
-	        public int UpperLettersCount;
-	        public int LettersCount;
-	        public int RemainingCharacterCount;
-	        public int TotalCharacterCount;
+        {
+            public int DigitCount;
+            public int LowerLetterWithoutAccentCount;
+            public int UpperLetterWithoutAccentCount;
+            public int LetterWithoutAccentCount;
+            public int LowerLetterWithAccentCount;
+            public int UpperLetterWithAccentCount;
+            public int LetterWithAccentCount;
+            public int LowerLettersCount;
+            public int UpperLettersCount;
+            public int LettersCount;
+            public int RemainingCharacterCount;
+            public int TotalCharacterCount;
 
             public CharactersOfTypesCount() { }
 
             public CharactersOfTypesCount(
-	            int digitCount,
-	            int lowerLetterWithoutAccentCount,
-	            int upperLetterWithoutAccentCount,
-	            int lowerLetterWithAccentCount,
-	            int upperLetterWithAccentCount,
-	            int remainingCharacterCount)
-	        {
-	            DigitCount = digitCount;
+                int digitCount,
+                int lowerLetterWithoutAccentCount,
+                int upperLetterWithoutAccentCount,
+                int lowerLetterWithAccentCount,
+                int upperLetterWithAccentCount,
+                int remainingCharacterCount)
+            {
+                DigitCount = digitCount;
 
-	            LowerLetterWithoutAccentCount = lowerLetterWithoutAccentCount;
-	            UpperLetterWithoutAccentCount = upperLetterWithoutAccentCount;
+                LowerLetterWithoutAccentCount = lowerLetterWithoutAccentCount;
+                UpperLetterWithoutAccentCount = upperLetterWithoutAccentCount;
                 LowerLetterWithAccentCount = lowerLetterWithAccentCount;
-	            UpperLetterWithAccentCount = upperLetterWithAccentCount;
+                UpperLetterWithAccentCount = upperLetterWithAccentCount;
 
-	            LetterWithoutAccentCount = lowerLetterWithoutAccentCount + upperLetterWithoutAccentCount;
-	            LetterWithAccentCount = lowerLetterWithAccentCount + upperLetterWithAccentCount;
+                LetterWithoutAccentCount = lowerLetterWithoutAccentCount + upperLetterWithoutAccentCount;
+                LetterWithAccentCount = lowerLetterWithAccentCount + upperLetterWithAccentCount;
 
-	            LowerLettersCount = LowerLetterWithoutAccentCount + LowerLetterWithAccentCount;
-	            UpperLettersCount = UpperLetterWithoutAccentCount + UpperLetterWithAccentCount;
+                LowerLettersCount = LowerLetterWithoutAccentCount + LowerLetterWithAccentCount;
+                UpperLettersCount = UpperLetterWithoutAccentCount + UpperLetterWithAccentCount;
 
-	            LettersCount = LowerLettersCount + UpperLettersCount;
+                LettersCount = LowerLettersCount + UpperLettersCount;
 
-	            RemainingCharacterCount = remainingCharacterCount;
+                RemainingCharacterCount = remainingCharacterCount;
 
-	            TotalCharacterCount = DigitCount + LettersCount;
-	        }
+                TotalCharacterCount = DigitCount + LettersCount;
+            }
         }
         /// <summary>
         /// Permet de compter les différents types de caractères d'une chaîne de caractères : minuscules, majuscules, chiffres, accents, etc..
@@ -137,48 +189,9 @@ namespace BenTools.Extensions.BaseTypes
                 else if (@char.IsUpperLetterWithAccent()) upperLetterWithAccentCount++;
                 else remainingCharacterCount++;
             }
-           
-	        return new CharactersOfTypesCount(digitCount, lowerLetterWithoutAccentCount, upperLetterWithoutAccentCount, lowerLetterWithAccentCount, upperLetterWithAccentCount, remainingCharacterCount);
-	    }
+
+            return new CharactersOfTypesCount(digitCount, lowerLetterWithoutAccentCount, upperLetterWithoutAccentCount, lowerLetterWithAccentCount, upperLetterWithAccentCount, remainingCharacterCount);
+        }
         #endregion
-
-        public static char[] GetDistinctAccents(this string text) =>
-	        text.Intersect(StringHelper.AllLettersWithAccents)
-	            .Distinct()
-	            .ToArray();
-
-	    public static string ReplaceAccentLettersByNoAccentLetters(this string text) =>
-	        new string(text.Normalize(NormalizationForm.FormD)
-	                       .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-	                       .ToArray())
-	            .Normalize(NormalizationForm.FormC);
-
-
-        public static string RemoveChar(this string text, char @char) =>
-	        text.Replace(@char.ToString(), string.Empty);
-           
-	    public static string RemoveAccents(this string text) =>
-	        String.Join(text, text.Split(text.GetDistinctAccents(), StringSplitOptions.RemoveEmptyEntries));
-
-        public static string ToTitleCase(this string text) =>
-	        CultureInfo.CurrentUICulture.TextInfo.ToTitleCase(text.ToLower(CultureInfo.CurrentUICulture));
-
-	    public static string ReplaceMultipleSpacesBySingleSpace(this string text) =>
-	        SeveralSpacesRegex.Replace(text, " ");
-
-	    public static IEnumerable<int> FindAllTextOccurenceIndices(this string text, string searchText)
-	    {
-	        var indices = new List<int>();
-
-	        for (int index = 0; ; index += searchText.Length)
-	        {
-	            index = text.IndexOf(searchText, index);
-
-	            if (index == -1)
-	                return indices;
-
-	            indices.Add(index);
-	        }
-	    }
     }
 }
