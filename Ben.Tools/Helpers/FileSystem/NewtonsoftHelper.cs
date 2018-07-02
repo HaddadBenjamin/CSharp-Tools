@@ -17,9 +17,6 @@ namespace BenTools.Helpers.FileSystem
 
         public static string ToRawJsonSection(string rawJson, params string[] subSections)
         {
-            if (subSections == null || !subSections.Any())
-                return rawJson;
-
             var jObject = JObject.Parse(rawJson);
 
             foreach (var subSection in subSections)
