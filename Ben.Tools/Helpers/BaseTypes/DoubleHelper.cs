@@ -22,7 +22,11 @@ namespace BenTools.Helpers.BaseTypes
             return numbers;
         }
 
-        public static IEnumerable<double> GenerateNormalizedValues(int numberOfElements) =>
+        public static IEnumerable<double> GenerateClampedNumbers(int numberOfElements = 10, double minimum = 0, double maximum = 1) =>
+            Enumerable.Repeat<Func<double>>(() => Random.NextDouble() * (maximum - minimum) + minimum, numberOfElements)
+                      .Select(generateValueFunction => generateValueFunction());
+
+        public static IEnumerable<double> GenerateNumbersBetweenZeroAndOne(int numberOfElements) =>
             Enumerable.Repeat<Func<double>>(Random.NextDouble, numberOfElements)
                       .Select(generateValueFunction => generateValueFunction());
         #endregion

@@ -7,6 +7,8 @@ namespace BenTools.Extensions.Sequences
 {
     public static class EnumerableExtension
     {
+        private static Random Random = new Random();
+
         #region Filters
         public static IEnumerable<ElementType> WhereWithIndex<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, int, bool> predicate) =>
             sequence.Select((element, index) => new { element, index })
@@ -82,6 +84,12 @@ namespace BenTools.Extensions.Sequences
         
         public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence) =>
             sequence.DeepCopy();
+
+        /// <summary>
+        /// Mélange une sequence.
+        /// </summary>
+        public static IEnumerable<ElementType> Shuffle<ElementType>(this IEnumerable<ElementType> sequence) =>
+            sequence.OrderBy(element => Guid.NewGuid());
         #endregion
 
         #region Element(s) Insert & Remove
@@ -118,28 +126,19 @@ namespace BenTools.Extensions.Sequences
             sequence.Any(elements.Contains);
         #endregion
 
-        #region Filters
-        /// <summary>
-        /// Mélange une sequence.
-        /// </summary>
-        public static IEnumerable<ElementType> Shuffle<ElementType>(this IEnumerable<ElementType> sequence) =>
-            sequence.OrderBy(element => Guid.NewGuid());
-
-        public static ElementType RandomElement<ElementType>(this IEnumerable<ElementType> sequence) =>
-            sequence.Shuffle()
-                    .FirstOrDefault();
-        #endregion
-
         #region Element(s) Generation
+        public static ElementType RandomElement<ElementType>(this IEnumerable<ElementType> sequence) =>
+            sequence.RandomElements(1)
+                    .Single();
+
         public static IEnumerable<ElementType> RandomElements<ElementType>(
             this IEnumerable<ElementType> sequence,
             int numbersOfElementsToGenerate = 10)
         {
-            var random = new Random();
             var sequenceCount = sequence.Count();
 
             return Enumerable.Repeat(sequence, numbersOfElementsToGenerate)
-                             .Select(element => sequence.ElementAt(random.Next(sequenceCount)));
+                             .Select(element => sequence.ElementAt(Random.Next(sequenceCount)));
         }
         #endregion
 

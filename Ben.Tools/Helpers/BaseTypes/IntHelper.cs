@@ -7,6 +7,8 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class IntHelper
     {
+        private static Random Random = new Random();
+        
         #region Generate
         public static IEnumerable<int> GenerateNumbers(int startNumber = 0, int endNumber = 10, int addNumber = 1, Func<int, int, bool> comparator = null)
         {
@@ -19,6 +21,10 @@ namespace BenTools.Helpers.BaseTypes
 
             return numbers;
         }
+
+        public static IEnumerable<int> GenerateClampedNumbers(int numberOfElements = 10, int minimum = 0, int maximum = 1) =>
+            Enumerable.Repeat<Func<int>>(() => Random.Next(minimum, maximum), numberOfElements)
+                      .Select(generateValueFunction => generateValueFunction());
 
         public static int GenerateUniqueInteger(bool positive = true)
         {
