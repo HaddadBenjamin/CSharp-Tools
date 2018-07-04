@@ -31,11 +31,17 @@ namespace Ben.Tools.Development
         public string GetText(string selectorJquery) =>
             GetElementsAsDynamic(selectorJquery, "text()");
 
+        public string GetValueAtPosition(WebElementPosition position) =>
+            GetElementsAtPositionAsDynamic(position, "val()");
+
         public string GetValue(string selectorJquery) =>
             GetElementsAsDynamic(selectorJquery, "val()");
 
         public void AddText(string selectorJquery, string addText) =>
             ExecuteCommand(selectorJquery, $"text('{GetText(selectorJquery)}{addText}')");
+
+        public void AddValueAtPosition(WebElementPosition position, string addText) =>
+            ExecuteCommandAtPosition($"val('{GetValueAtPosition(position)}{addText}')", position);
 
         public void AddValue(string selectorJquery, string addText) =>
             ExecuteCommand(selectorJquery, $"val('{GetValue(selectorJquery)}{addText}')");
@@ -43,14 +49,36 @@ namespace Ben.Tools.Development
         public void UpdateText(string selectorJquery, string newText) =>
             ExecuteCommand(selectorJquery, $"text('{newText}')");
 
-        public void UpdateText(WebElementPosition position, string newText) =>
-            ExecuteCommandAtPosition($"val('{newText}')", position);
-
         public void UpdateValue(string selectorJquery, string newText) =>
             ExecuteCommand(selectorJquery, $"val('{newText}')");
 
-        public void UpdateValue(WebElementPosition position, string newText) =>
+        public void UpdateValueAtPosition(WebElementPosition position, string newText) =>
             ExecuteCommandAtPosition($"val('{newText}')", position);
+
+        public void UpdateValueAtPosition(WebElementPosition position, string newText, int eachCharacterMilliseconds = 250)
+        {
+            var firstCharacter = true;
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            foreach (var @char in newText.ToCharArray())
+            {
+                if (firstCharacter)
+                {
+                    ExecuteCommandAtPosition($"val('{@char}')", position);
+                    firstCharacter = false;
+                }
+                else
+                {
+                    while (timer.ElapsedMilliseconds < eachCharacterMilliseconds) ;
+
+                    AddValueAtPosition(position, @char.ToString());
+
+                    timer.Restart();
+                }
+            }
+        }
 
         public void UpdateValue(string selectorJquery, string newText, int eachCharacterMilliseconds = 250)
         {
@@ -68,8 +96,11 @@ namespace Ben.Tools.Development
                 }
                 else
                 {
-                    while (timer.ElapsedMilliseconds > eachCharacterMilliseconds)
-                        AddValue(selectorJquery, @char.ToString());
+                    while (timer.ElapsedMilliseconds < eachCharacterMilliseconds);
+
+                    AddValue(selectorJquery, @char.ToString());
+
+                    timer.Restart();
                 }
             }
         }
@@ -95,6 +126,22 @@ namespace Ben.Tools.Development
         #endregion
 
         #region Get Elements
+        public string GetElementsAtPositionAsJson(WebElementPosition position, string jqueryCommand = null)
+        {
+            jqueryCommand = string.IsNullOrWhiteSpace(jqueryCommand) ? string.Empty : "." + jqueryCommand;
+
+            var command = "return $('body').find('*').filter(function() { return $(this).position().left >= " + (position.PosX - 1) +
+                          " && $(this).position().left <= " + (position.PosX + 1) +
+                          " && $(this).position().top >= " + (position.PosY - 1) +
+                          " && $(this).position().top <= " + position.PosY + 1 +
+                          "; })" + jqueryCommand;
+
+            return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
+        }
+
+        public dynamic GetElementsAtPositionAsDynamic(WebElementPosition position, string jqueryCommand = null) =>
+            JsonConvert.DeserializeObject<dynamic>(GetElementsAtPositionAsJson(position, jqueryCommand));
+
         public WebElementPosition GetElementsAsPosition(string jquerySelector)
         {
             var positionDynamic = GetElementsAsDynamic(jquerySelector, "position()");

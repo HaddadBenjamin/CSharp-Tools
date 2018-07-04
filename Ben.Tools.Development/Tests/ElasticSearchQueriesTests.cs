@@ -10,6 +10,7 @@ namespace Ben.Tools.Development
     {
         #region Field(s)
         private List<WebBrowserWrapper> WebBrowserWrappers;
+        private bool FirstTest = true;
         #endregion
 
         #region Callback(s)
@@ -46,19 +47,24 @@ namespace Ben.Tools.Development
         {
             WebBrowserWrappers.ForEach(WebBrowserWrapper =>
             {
-                WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
+                if (FirstTest)
+                {
+                    WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
 
-                WebBrowserWrapper.UpdateValue("#UserName", "suhji");
-                WebBrowserWrapper.UpdateValue("#Password", "123456");
+                    WebBrowserWrapper.UpdateValue("#UserName", "suhji", 250);
+                    WebBrowserWrapper.UpdateValue("#Password", "123456", 150);
 
-                WebBrowserWrapper.Click("span:contains(\"Connexion\")");
+                    WebBrowserWrapper.Click("span:contains(\"Connexion\")");
 
-                WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
+                    WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
+
+                    FirstTest = false;
+                }
 
                 var productNamePosition = WebBrowserWrapper.WaitElementAsPosition("#productName");
 
-                WebBrowserWrapper.UpdateValue(productNamePosition, productName);
-                WebBrowserWrapper.UpdateValue("#brandName", brandName);
+                WebBrowserWrapper.UpdateValueAtPosition(productNamePosition, productName);
+                WebBrowserWrapper.UpdateValue("#brandName", brandName, 80);
                 WebBrowserWrapper.UpdateValue("#productCreationDate", string.Empty);
                 WebBrowserWrapper.UpdateChecked("#MerchantCheckBox", false);
                 WebBrowserWrapper.UpdateValue("#merchantIds", "0");
