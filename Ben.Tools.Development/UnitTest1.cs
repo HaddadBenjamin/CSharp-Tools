@@ -32,20 +32,50 @@ namespace Ben.Tools.Development
             var dynam = GetElementsAsDynamic(WebDriver, "#Password", "position()");
 
             ExecuteCommand(WebDriver, null, "console.log('toto')");
-            ExecuteCommand(WebDriver, "body", "css('background-color', 'red')");
+
+            UpdateCssProperty(WebDriver, "body", "background-color", "red");
+            var backgroundColor = GetCssProperty(WebDriver, "body", "background-color");
 
             Click(WebDriver, "#loginBtn");
-            ReplaceInputText(WebDriver, "#Password", "123456");
+            UpdateValue(WebDriver, "#Password", "123456");
+            var value = GetValue(WebDriver, "#Password");
 
             var position = GetElementsAsPosition(WebDriver, "#UserName");
 
             ExecuteCommandAtPosition(WebDriver, "val('suhji')", position);
+            AddValue(WebDriver, "#UserName", "123456");
             //var div = GetElementAsJson(WebDriver, "div");
         }
 
-        public void ReplaceInputText(IWebDriver WebDriver, string selectorJquery, string newText) =>
-            ExecuteCommand(WebDriver, selectorJquery, $"val('{newText}')");
+        #region CSS
+        public dynamic GetCssProperty(IWebDriver WebDriver, string selectorJquery, string cssPropertyName) =>
+            GetElementsAsDynamic(WebDriver, selectorJquery, $"css('{cssPropertyName}')");
 
+        public void UpdateCssProperty<CSSPropertyType>(IWebDriver WebDriver, string selectorJquery, string cssPropertyName, CSSPropertyType cssPopertyValue) =>
+            ExecuteCommand(WebDriver, selectorJquery, $"css('{cssPropertyName}', '{cssPopertyValue}')");
+        #endregion
+
+        #region Text & Val
+        public string GetText(IWebDriver WebDriver, string selectorJquery) =>
+            GetElementsAsDynamic(WebDriver, selectorJquery, "text()");
+
+        public string GetValue(IWebDriver WebDriver, string selectorJquery) =>
+            GetElementsAsDynamic(WebDriver, selectorJquery, "val()");
+
+        public void AddText(IWebDriver WebDriver, string selectorJquery, string addText) =>
+            ExecuteCommand(WebDriver, selectorJquery, $"text('{GetText(WebDriver, selectorJquery)}{addText}')");
+
+        public void AddValue(IWebDriver WebDriver, string selectorJquery, string addText) =>
+            ExecuteCommand(WebDriver, selectorJquery, $"val('{GetValue(WebDriver, selectorJquery)}{addText}')");
+
+        public void UpdateText(IWebDriver WebDriver, string selectorJquery, string newText) =>
+            ExecuteCommand(WebDriver, selectorJquery, $"text('{newText}')");
+
+        public void UpdateValue(IWebDriver WebDriver, string selectorJquery, string newText) =>
+            ExecuteCommand(WebDriver, selectorJquery, $"val('{newText}')");
+        #endregion
+
+        #region Click
         public void Click(IWebDriver WebDriver, WebElementPosition position) =>
             Click(WebDriver, position.PosX, position.PosY);
 
@@ -54,7 +84,9 @@ namespace Ben.Tools.Development
 
         public void Click(IWebDriver WebDriver, string selectorJquery) =>
             ExecuteCommand(WebDriver, selectorJquery, "click()");
+        #endregion
 
+        #region Get Elements
         public WebElementPosition GetElementsAsPosition(IWebDriver WebDriver, string jquerySelector)
         {
             var positionDynamic = GetElementsAsDynamic(WebDriver, jquerySelector, "position()");
@@ -83,7 +115,9 @@ namespace Ben.Tools.Development
 
             return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
+        #endregion
 
+        #region Execute Command
         public void ExecuteCommand(IWebDriver WebDriver, string jquerySelector = null, string jqueryCommand = null)
         {
             if (string.IsNullOrWhiteSpace(jquerySelector) && string.IsNullOrWhiteSpace(jqueryCommand))
@@ -111,6 +145,7 @@ namespace Ben.Tools.Development
 
             ((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
+        #endregion
     }
 
     //public abstract class ASeleniumWrapper : IDisposable
