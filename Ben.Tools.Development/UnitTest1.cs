@@ -14,12 +14,25 @@ namespace Ben.Tools.Development
         public double PosY { get; set; }
     }
 
+    public class ProductsData
+    {
+        public string ProductName { get; set; } = "";
+        public string BrandName { get; set; } = "";
+    }
+
     [TestFixture]
     public class WebBrowserActionsTests
     {
         [Test]
         public void Actions()
         {
+            var products = new[]
+            {
+                new ProductsData {ProductName = "iPhone 2"},
+                new ProductsData {ProductName = "iPhone 2", BrandName = "APPLE"},
+                new ProductsData {BrandName = "WHIRLPOOL"},
+            };
+
             var chromeOptions = new ChromeOptions();
 
             chromeOptions.AddArguments("--start-maximized");
@@ -35,7 +48,17 @@ namespace Ben.Tools.Development
 
             WebDriver.Navigate().GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
 
-            get
+            var productNamePosition = WaitElementAsPosition(WebDriver, "#productName");
+
+            foreach (var product in products)
+            {
+                UpdateValue(WebDriver, productNamePosition, product.ProductName);
+                UpdateValue(WebDriver, "#brandName", product.BrandName);
+
+                //Click(WebDriver, ".search_product");
+
+                var numberOfProducts = WaitElementAsDynamic(WebDriver, "#products_table tr:visible", "length", 15000);
+            }
             // productName
             //
             // click
@@ -66,8 +89,14 @@ namespace Ben.Tools.Development
         public void UpdateText(IWebDriver WebDriver, string selectorJquery, string newText) =>
             ExecuteCommand(WebDriver, selectorJquery, $"text('{newText}')");
 
+        public void UpdateText(IWebDriver WebDriver, WebElementPosition position, string newText) =>
+            ExecuteCommandAtPosition(WebDriver, $"val('{newText}')", position);
+
         public void UpdateValue(IWebDriver WebDriver, string selectorJquery, string newText) =>
             ExecuteCommand(WebDriver, selectorJquery, $"val('{newText}')");
+
+        public void UpdateValue(IWebDriver WebDriver, WebElementPosition position, string newText) =>
+            ExecuteCommandAtPosition(WebDriver, $"val('{newText}')", position);
         #endregion
 
         #region Click
@@ -174,7 +203,11 @@ namespace Ben.Tools.Development
             if (string.IsNullOrWhiteSpace(jqueryCommand))
                 throw new ArgumentException(nameof(jqueryCommand), "jqueryCommand is empty");
 
-            var command = $"$(document.elementFromPoint({posX}, {posY})).{jqueryCommand}";
+            var command = "$('body').find('*').filter(function() { return $(this).position().left >= " + (posX - 1) +
+                          " && $(this).position().left <= " + (posX + 1) +
+                          " && $(this).position().top >= " + (posY - 1) +
+                          " && $(this).position().top <= " + posY + 1 + 
+                          "; })." + jqueryCommand;
 
             ((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
@@ -318,92 +351,6 @@ namespace Ben.Tools.Development
     //                Assert.That(products.Count(), Is.GreaterThan(2));
     //            };
     //        }
-    //    }
-    //}
-
-    //public static class WebDriverExtension
-    //{
-    //    public static IWebDriver ExecuteJQuery(this IWebDriver webDriver, string selectorJQuery, string commandJQuery = null)
-    //    {
-    //        var command = string.Empty;
-
-    //        if (string.IsNullOrWhiteSpace(selectorJQuery))
-    //            throw new ArgumentException(nameof(selectorJQuery), "Jquery selector is empty.");
-
-    //        command += string.Format("$('{0}')", selectorJQuery);
-
-    //        if (!string.IsNullOrWhiteSpace(commandJQuery))
-    //            command += string.Format(".{0}", commandJQuery);
-
-    //        return webDriver.ExecuteJavascriptCommand(command);
-    //    }
-
-    //    public static ReturnType GetResultFromJqueryCommand<ReturnType>(this IWebDriver webDriver, string selectorJQuery = null, string commandJQuery = null)
-    //    {
-    //        var command = "return ";
-
-    //        if (!string.IsNullOrWhiteSpace(selectorJQuery))
-    //            command += string.Format("$('{0}')", selectorJQuery);
-
-    //        if (string.IsNullOrWhiteSpace(commandJQuery))
-    //            throw new ArgumentException(nameof(commandJQuery), "Jquery command is empty.");
-
-    //        command += string.Format(".{0}", commandJQuery);
-
-    //        var jsExecutor = (IJavaScriptExecutor)webDriver;
-
-    //        return (ReturnType)jsExecutor.ExecuteScript(command);
-    //    }
-
-    //    public static IWebDriver ExecuteJavascriptCommand(this IWebDriver webDriver, string commandJQuery)
-    //    {
-    //        //commandJQuery = commandJQuery.Replace("\"", string.Empty);
-
-    //        var jsExecutor = (IJavaScriptExecutor)webDriver;
-
-    //        jsExecutor.ExecuteScript(commandJQuery);
-
-    //        return webDriver;
-    //    }
-
-    //    public static JQuerySelector WaitUntiJQuerySelector(this IWebDriver webDriver, string selectorJQuery, long timeToWaitMilliseconds)
-    //    {
-    //        var stopwatch = new Stopwatch();
-
-    //        stopwatch.Start();
-
-    //        while (stopwatch.ElapsedMilliseconds < timeToWaitMilliseconds)
-    //        {
-    //            var jquerySelector = By.JQuerySelector(selectorJQuery);
-
-    //            if (webDriver.ContainsElements(jquerySelector.GetSelector()))
-    //                return jquerySelector;
-    //        }
-
-    //        return null;
-    //    }
-
-    //    public static bool ContainsElements(this IWebDriver webDriver, string jquerySelector)
-    //    {
-    //        return webDriver.GetResultFromJqueryCommand<Int64>(jquerySelector, "length") > 0;
-    //    }
-
-    //    public static IWebElement GetJqueryWebElement(this IWebDriver webDriver, string jquerySelector)
-    //    {
-    //        return webDriver.ExecuteJavaScript<IWebElement>("return $('" + jquerySelector + "')[0];");
-    //    }
-    //}
-
-    //public static class ByExtension
-    //{
-    //    public static bool ContainsElements(this OpenQA.Selenium.By bySelector, IWebDriver webDriver)
-    //    {
-    //        return webDriver.ContainsElements(bySelector.GetSelector());
-    //    }
-
-    //    public static string GetSelector(this OpenQA.Selenium.By bySelector)
-    //    {
-    //        return bySelector.ToString().Substring(bySelector.ToString().IndexOf(":") + 1);
     //    }
     //}
 }
