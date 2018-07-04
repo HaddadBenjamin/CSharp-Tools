@@ -33,7 +33,11 @@ namespace Ben.Tools.Development
 
             Click(WebDriver, "span:contains(\"Connexion\")");
 
-            //"a:contains(\"Produits\")"
+            WebDriver.Navigate().GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
+
+            get
+            // productName
+            //
             // click
             // wait until avialable et tester.
         }
@@ -107,9 +111,9 @@ namespace Ben.Tools.Development
             return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
 
-        public WebElementPosition GetElementUntilItBecomeAvailableAsPosition(IWebDriver WebDriver, string jquerySelector, int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
+        public WebElementPosition WaitElementAsPosition(IWebDriver WebDriver, string jquerySelector, int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
         {
-            var positionDynamic = GetElementUntilItBecomeAvailableAsDynamic(WebDriver, jquerySelector, "position()", timeOutMilliseconds, waitTimeMilliseconds);
+            var positionDynamic = WaitElementAsDynamic(WebDriver, jquerySelector, "position()", timeOutMilliseconds, waitTimeMilliseconds);
 
             return new WebElementPosition()
             {
@@ -118,13 +122,16 @@ namespace Ben.Tools.Development
             };
         }
 
-        public dynamic GetElementUntilItBecomeAvailableAsDynamic(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500) =>
-            JsonConvert.DeserializeObject<dynamic>(GetElementUntilItBecomeAvailableAsJson(WebDriver, jquerySelector, jqueryCommand, timeOutMilliseconds, waitTimeMilliseconds));
+        public dynamic WaitElementAsDynamic(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500) =>
+            JsonConvert.DeserializeObject<dynamic>(WaitElementAsJson(WebDriver, jquerySelector, jqueryCommand, timeOutMilliseconds, waitTimeMilliseconds));
 
-        public string GetElementUntilItBecomeAvailableAsJson(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
+        public string WaitElementAsJson(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
         {
             var timeOutTimer = new Stopwatch();
             var waitTimer = new Stopwatch();
+
+            timeOutTimer.Start();
+            waitTimer.Start();
 
             while (timeOutTimer.ElapsedMilliseconds < timeOutMilliseconds)
             {
@@ -135,7 +142,7 @@ namespace Ben.Tools.Development
                     if (!string.IsNullOrWhiteSpace(rawJson))
                         return rawJson;
 
-                    waitTimer.Reset();
+                    waitTimer.Restart();
                 }
             }
             
