@@ -51,6 +51,28 @@ namespace Ben.Tools.Development
 
         public void UpdateValue(WebElementPosition position, string newText) =>
             ExecuteCommandAtPosition($"val('{newText}')", position);
+
+        public void UpdateValue(string selectorJquery, string newText, int eachCharacterMilliseconds = 250)
+        {
+            var firstCharacter = true;
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            foreach (var @char in newText.ToCharArray())
+            {
+                if (firstCharacter)
+                {
+                    ExecuteCommand(selectorJquery, $"val('{@char}')");
+                    firstCharacter = false;
+                }
+                else
+                {
+                    while (timer.ElapsedMilliseconds > eachCharacterMilliseconds)
+                        AddValue(selectorJquery, @char.ToString());
+                }
+            }
+        }
         #endregion
 
         #region Checked
@@ -167,6 +189,15 @@ namespace Ben.Tools.Development
             }
 
             throw new TimeoutException(nameof(timeOutMilliseconds));
+        }
+
+        public void Wait(int timeToWaitMilliseconds)
+        {
+            var timer = new Stopwatch();
+
+            timer.Start();
+
+            while (timer.ElapsedMilliseconds < timeToWaitMilliseconds) ;
         }
         #endregion
 

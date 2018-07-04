@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
+using OpenQA.Selenium.Firefox;
 
 namespace Ben.Tools.Development
 {
@@ -8,56 +9,56 @@ namespace Ben.Tools.Development
     public class ElasticSearchQueriesTests
     {
         #region Field(s)
-        private IEnumerable<ProductsData> Products;
-        private WebBrowserWrapper WebBrowserWrapper;
+        private List<WebBrowserWrapper> WebBrowserWrappers;
         #endregion
 
         #region Callback(s)
         [OneTimeSetUp]
         public void OnInitializeAllTests()
         {
-            var products = new[]
-            {
-                new ProductsData {ProductName = "iPhone 2"},
-                new ProductsData {ProductName = "iPhone 2", BrandName = "APPLE"},
-                new ProductsData {BrandName = "WHIRLPOOL"},
-            };
+            WebBrowserWrappers = new List<WebBrowserWrapper>();
 
             var chromeOptions = new ChromeOptions();
+            //var firefoxOptions = new FirefoxOptions();
 
             chromeOptions.AddArguments("--start-maximized");
+            //firefoxOptions.AddArguments("--start-maximized");
 
-            var WebDriver = new ChromeDriver(chromeOptions);
+            var chromeDriver = new ChromeDriver(chromeOptions);
+            //var firefoxDriver = new FirefoxDriver(firefoxOptions);
 
-            WebBrowserWrapper = new WebBrowserWrapper(WebDriver);
+            WebBrowserWrappers.Add(new WebBrowserWrapper(chromeDriver));
+            //WebBrowserWrappers.Add(new WebBrowserWrapper(firefoxDriver));
         }
 
         [OneTimeTearDown]
         public void OnFinishAllTests()
         {
-            WebBrowserWrapper.Dispose();
+            WebBrowserWrappers.ForEach(WebBrowserWrapper => WebBrowserWrapper.Dispose());
         }
         #endregion
 
         #region Test(s)
-        [Test]
-        public void ElasticSearchProductQueries()
+        [TestCase("", "WHIRLPOOL")]
+        [TestCase("iPhone 2", "")]
+        [TestCase("iPhone 2", "APPLE")]
+        public void ElasticSearchProductQueries(string productName, string brandName)
         {
-            WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
-
-            WebBrowserWrapper.UpdateValue("#UserName", "suhji");
-            WebBrowserWrapper.UpdateValue("#Password", "123456");
-
-            WebBrowserWrapper.Click("span:contains(\"Connexion\")");
-
-            WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
-
-            foreach (var product in Products)
+            WebBrowserWrappers.ForEach(WebBrowserWrapper =>
             {
+                WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
+
+                WebBrowserWrapper.UpdateValue("#UserName", "suhji");
+                WebBrowserWrapper.UpdateValue("#Password", "123456");
+
+                WebBrowserWrapper.Click("span:contains(\"Connexion\")");
+
+                WebBrowserWrapper.GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
+
                 var productNamePosition = WebBrowserWrapper.WaitElementAsPosition("#productName");
 
-                WebBrowserWrapper.UpdateValue(productNamePosition, product.ProductName);
-                WebBrowserWrapper.UpdateValue("#brandName", product.BrandName);
+                WebBrowserWrapper.UpdateValue(productNamePosition, productName);
+                WebBrowserWrapper.UpdateValue("#brandName", brandName);
                 WebBrowserWrapper.UpdateValue("#productCreationDate", string.Empty);
                 WebBrowserWrapper.UpdateChecked("#MerchantCheckBox", false);
                 WebBrowserWrapper.UpdateValue("#merchantIds", "0");
@@ -65,52 +66,8 @@ namespace Ben.Tools.Development
                 WebBrowserWrapper.Click(".search_product");
 
                 WebBrowserWrapper.WaitCondition("#products_table tr:visible", "length", numberOfProducts => numberOfProducts > 2, 150000);
-            }
+            });
         }
         #endregion
     }
-
-
-    //public abstract class ASeleniumWrapper : IDisposable
-    //{
-    //    protected List<RemoteWebDriver> WebDrivers { get; set; }
-
-    //    public ASeleniumWrapper()
-    //    {
-    //        WebDrivers = InitializeWebDrivers();
-    //    }
-
-    //[TestFixture]
-    //public class ProductsTests : ASeleniumWrapper
-    //{
-    //    protected override List<RemoteWebDriver> InitializeWebDrivers()
-    //    {
-    //        var webDrivers = new List<RemoteWebDriver>();
-
-    //        var chromeOptions = new ChromeOptions();
-
-    //        //chromeOptions.AddArguments("--headless");
-    //        chromeOptions.AddArguments("--start-maximized");
-
-    //        webDrivers.Add(new ChromeDriver(chromeOptions));
-
-    //        var firefoxOptions = new FirefoxOptions();
-
-    //        //firefoxOptions.AddArguments("--headless");
-    //        firefoxOptions.AddArguments("--start-maximized");
-
-    //        webDrivers.Add(new FirefoxDriver(firefoxOptions));
-
-    //        //var ieOptions = new InternetExplorerOptions();
-
-    //        //webDrivers.Add(new InternetExplorerDriver(ieOptions));
-
-    //        return webDrivers;
-    //    }
-
-    //    [OneTimeTearDown]
-    //    public void FinishTests()
-    //    {
-    //        base.Dispose();
-    //    }
 }
