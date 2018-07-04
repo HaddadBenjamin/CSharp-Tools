@@ -3,6 +3,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Ben.Tools.Development
 {
@@ -26,25 +28,14 @@ namespace Ben.Tools.Development
 
             WebDriver.Navigate().GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
 
-            System.Threading.Thread.Sleep(2000);
-
-            var divs = GetElementsAsJson(WebDriver, "#UserName", "position()");
-            var dynam = GetElementsAsDynamic(WebDriver, "#Password", "position()");
-
-            ExecuteCommand(WebDriver, null, "console.log('toto')");
-
-            UpdateCssProperty(WebDriver, "body", "background-color", "red");
-            var backgroundColor = GetCssProperty(WebDriver, "body", "background-color");
-
-            Click(WebDriver, "#loginBtn");
+            UpdateValue(WebDriver, "#UserName", "suhji");
             UpdateValue(WebDriver, "#Password", "123456");
-            var value = GetValue(WebDriver, "#Password");
 
-            var position = GetElementsAsPosition(WebDriver, "#UserName");
+            Click(WebDriver, "span:contains(\"Connexion\")");
 
-            ExecuteCommandAtPosition(WebDriver, "val('suhji')", position);
-            AddValue(WebDriver, "#UserName", "123456");
-            //var div = GetElementAsJson(WebDriver, "div");
+            //"a:contains(\"Produits\")"
+            // click
+            // wait until avialable et tester.
         }
 
         #region CSS
@@ -114,6 +105,41 @@ namespace Ben.Tools.Development
                 $"return JSON.stringify({jqueryCommand})";
 
             return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
+        }
+
+        public WebElementPosition GetElementUntilItBecomeAvailableAsPosition(IWebDriver WebDriver, string jquerySelector, int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
+        {
+            var positionDynamic = GetElementUntilItBecomeAvailableAsDynamic(WebDriver, jquerySelector, "position()", timeOutMilliseconds, waitTimeMilliseconds);
+
+            return new WebElementPosition()
+            {
+                PosX = positionDynamic.left.Value,
+                PosY = positionDynamic.top.Value,
+            };
+        }
+
+        public dynamic GetElementUntilItBecomeAvailableAsDynamic(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500) =>
+            JsonConvert.DeserializeObject<dynamic>(GetElementUntilItBecomeAvailableAsJson(WebDriver, jquerySelector, jqueryCommand, timeOutMilliseconds, waitTimeMilliseconds));
+
+        public string GetElementUntilItBecomeAvailableAsJson(IWebDriver WebDriver, string jquerySelector, string jqueryCommand = "", int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
+        {
+            var timeOutTimer = new Stopwatch();
+            var waitTimer = new Stopwatch();
+
+            while (timeOutTimer.ElapsedMilliseconds < timeOutMilliseconds)
+            {
+                if (waitTimer.ElapsedMilliseconds > waitTimeMilliseconds)
+                {
+                    var rawJson = GetElementsAsJson(WebDriver, jquerySelector, jqueryCommand);
+
+                    if (!string.IsNullOrWhiteSpace(rawJson))
+                        return rawJson;
+
+                    waitTimer.Reset();
+                }
+            }
+            
+            throw new TimeoutException(nameof(timeOutMilliseconds));
         }
         #endregion
 
