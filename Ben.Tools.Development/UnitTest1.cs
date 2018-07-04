@@ -55,7 +55,8 @@ namespace Ben.Tools.Development
                 UpdateValue(WebDriver, productNamePosition, product.ProductName);
                 UpdateValue(WebDriver, "#brandName", product.BrandName);
                 UpdateValue(WebDriver, "#productCreationDate", string.Empty);
-                UpdateChecked(WebDriver, "#MerchantCheckBox");
+                UpdateChecked(WebDriver, "#MerchantCheckBox", false);
+                UpdateValue(WebDriver, "#merchantIds", "0");
 
                 Click(WebDriver, ".search_product");
 
@@ -326,68 +327,4 @@ namespace Ben.Tools.Development
     //    {
     //        base.Dispose();
     //    }
-
-    //    private void GoToProductsTab(RemoteWebDriver WebDriver)
-    //    {
-    //        WebDriver.Navigate().GoToUrl("http://bo-preprod.apreslachat.com/accueil-administrateur");
-
-    //        IncludeNotDefinedJQuery(WebDriver);
-
-    //        // Si l'utilisateur n'est pas encore loggé alors on l'identifie.
-    //        if (WebDriver.ContainsElements("input#UserName"))
-    //        {
-    //            WebDriver.ExecuteJQuery("input#UserName", "val('suhji')");
-    //            WebDriver.ExecuteJQuery("input#Password", "val('123456')");
-    //            WebDriver.ExecuteJQuery(".main_button", "click()");
-
-    //            WebDriver.FindElement(WebDriver.WaitUntiJQuerySelector("a[href=\"/produits/recherche\"]:contains(\"Produits\")", 5000)).Click();
-    //        }
-    //    }
-
-    //    public class ElasticSearchQuertTestData
-    //    {
-    //        public string ProductName = "";
-    //        public string BrandName = "";
-    //        public int MaxTimeToWaitBeforeGetResult = 5000;
-    //    }
-
-    //    [Test]
-    //    public void ElasticSearchQueries_Test()
-    //    {
-    //        var datas = new List<ElasticSearchQuertTestData>()
-    //        {
-    //            new ElasticSearchQuertTestData()
-    //            {
-    //                BrandName = "Whirlpool",
-    //                MaxTimeToWaitBeforeGetResult = 15000
-    //            },
-    //            new ElasticSearchQuertTestData()
-    //            {
-    //                ProductName = "iPhone 2",
-    //                BrandName = "APPLE"
-    //            },
-    //            new ElasticSearchQuertTestData()
-    //            {
-    //                ProductName = "iPhone 2",
-    //            }
-    //        };
-
-    //        foreach (var data in datas)
-    //        {
-    //            foreach (var WebDriver in WebDrivers)
-    //            {
-    //                GoToProductsTab(WebDriver);
-
-    //                WebDriver.ExecuteJavascriptCommand("$('#productName').val('" + data.ProductName + "')");
-    //                WebDriver.ExecuteJavascriptCommand("$('#brandName').val('" + data.BrandName + "')");
-    //                WebDriver.ExecuteJQuery("#MerchantCheckBox", "prop('checked', true)");
-    //                WebDriver.ExecuteJQuery(".a_margin_bottom input[type=\"submit\"]", "click()");
-
-    //                var products = WebDriver.FindElements(WebDriver.WaitUntiJQuerySelector("#products_table tr:visible", data.MaxTimeToWaitBeforeGetResult));
-
-    //                Assert.That(products.Count(), Is.GreaterThan(2));
-    //            };
-    //        }
-    //    }
-    //}
 }
