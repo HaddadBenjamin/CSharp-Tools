@@ -22,3 +22,5 @@
 /Ben.Tools.Tests/obj/Debug
 /.vs/Ben.Tools/v15/Server/sqlite3
 /.vs/config
+/Ben.Tools.Development/obj/Debug
+/Ben.Tools.Development/bin/Debug
