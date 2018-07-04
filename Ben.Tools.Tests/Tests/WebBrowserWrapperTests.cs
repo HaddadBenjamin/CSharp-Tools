@@ -1,12 +1,11 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
-using OpenQA.Selenium.Firefox;
 
 namespace Ben.Tools.Development
 {
     [TestFixture]
-    public class ElasticSearchQueriesTests
+    public class WebBrowserWrapperTests
     {
         #region Field(s)
         private List<WebBrowserWrapper> WebBrowserWrappers;
