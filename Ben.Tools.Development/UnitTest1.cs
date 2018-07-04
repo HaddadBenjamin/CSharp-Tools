@@ -48,21 +48,21 @@ namespace Ben.Tools.Development
 
             WebDriver.Navigate().GoToUrl("http://bo-preprod.apreslachat.com/produits/recherche");
 
-            var productNamePosition = WaitElementAsPosition(WebDriver, "#productName");
-
             foreach (var product in products)
             {
+                var productNamePosition = WaitElementAsPosition(WebDriver, "#productName");
+
                 UpdateValue(WebDriver, productNamePosition, product.ProductName);
                 UpdateValue(WebDriver, "#brandName", product.BrandName);
+                UpdateValue(WebDriver, "#productCreationDate", string.Empty);
+                UpdateChecked(WebDriver, "#MerchantCheckBox");
 
-                //Click(WebDriver, ".search_product");
+                Click(WebDriver, ".search_product");
 
-                var numberOfProducts = WaitElementAsDynamic(WebDriver, "#products_table tr:visible", "length", 15000);
+                WaitCondition(WebDriver, "#products_table tr:visible", "length", numberOfProducts => numberOfProducts > 2, 150000);
             }
-            // productName
-            //
-            // click
-            // wait until avialable et tester.
+
+            WebDriver.Quit();
         }
 
         #region CSS
@@ -97,6 +97,14 @@ namespace Ben.Tools.Development
 
         public void UpdateValue(IWebDriver WebDriver, WebElementPosition position, string newText) =>
             ExecuteCommandAtPosition(WebDriver, $"val('{newText}')", position);
+        #endregion
+
+        #region Checked
+        public void UpdateChecked(IWebDriver WebDriver, string jquerySelector, bool toCheck = true) =>
+            ExecuteCommand(WebDriver, jquerySelector, $"prop('checked', {toCheck.ToString().ToLower()})");
+
+        public bool IsChecked(IWebDriver WebDriver, string jquerySelector) =>
+            GetElementsAsDynamic(WebDriver, jquerySelector, $"prop('checked')") == true;
         #endregion
 
         #region Click
@@ -175,6 +183,35 @@ namespace Ben.Tools.Development
                 }
             }
             
+            throw new TimeoutException(nameof(timeOutMilliseconds));
+        }
+
+        public void WaitCondition(IWebDriver WebDriver, string jquerySelector, string jqueryCommand, Func<dynamic, bool> condition, int timeOutMilliseconds = 5000, int waitTimeMilliseconds = 500)
+        {
+            var timeOutTimer = new Stopwatch();
+            var waitTimer = new Stopwatch();
+
+            timeOutTimer.Start();
+            waitTimer.Start();
+
+            while (timeOutTimer.ElapsedMilliseconds < timeOutMilliseconds)
+            {
+                if (waitTimer.ElapsedMilliseconds > waitTimeMilliseconds)
+                {
+                    var rawJson = GetElementsAsJson(WebDriver, jquerySelector, jqueryCommand);
+
+                    if (!string.IsNullOrWhiteSpace(rawJson))
+                    {
+                        var dynamicReply = JsonConvert.DeserializeObject<dynamic>(rawJson);
+
+                        if (condition(dynamicReply))
+                            return;
+                    }
+
+                    waitTimer.Restart();
+                }
+            }
+
             throw new TimeoutException(nameof(timeOutMilliseconds));
         }
         #endregion
