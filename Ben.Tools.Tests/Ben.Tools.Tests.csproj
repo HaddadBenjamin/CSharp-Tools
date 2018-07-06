@@ -102,6 +102,7 @@
     <Compile Include="Tests\Configurations\ConfigurationSample.cs" />
     <Compile Include="Tests\Configurations\ConfigurationTests.cs" />
     <Compile Include="Tests\DateIntervalTests.cs" />
+    <Compile Include="Tests\TimerTest.cs" />
     <Compile Include="Tests\WebBrowserWrapperTests.cs" />
     <Compile Include="Tests\FlowExecutionTests.cs" />
     <Compile Include="Tests\ShitTests.cs" />
