@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BenTools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.DateAndTime.DateInterval
 {
      
     public class MergedInterval<Element, IntervalType>

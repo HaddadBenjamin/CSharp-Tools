@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Development
+﻿namespace BenTools.Wrappers.Models
 {
     public class WebElementPosition
     {

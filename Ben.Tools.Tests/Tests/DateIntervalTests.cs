@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using BenTools.Extensions.Sequences;
-using BenTools.Utilities.Date.DateInterval;
+using BenTools.Utilities.DateAndTime.DateInterval;
 using NUnit.Framework;
 
 namespace BenTools.Tests.Tests

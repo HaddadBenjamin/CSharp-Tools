@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using BenTools.Wrappers;
+using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using System.Collections.Generic;
 
-namespace Ben.Tools.Development
+namespace BenTools.Tests.Tests
 {
     [TestFixture]
     public class WebBrowserWrapperTests

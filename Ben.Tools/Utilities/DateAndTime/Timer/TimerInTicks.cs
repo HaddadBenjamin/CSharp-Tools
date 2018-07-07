@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ben.Tools.Development
+namespace BenTools.Utilities.DateAndTime.Timer
 {
     public sealed class TimerInTicks : ATimer
     {

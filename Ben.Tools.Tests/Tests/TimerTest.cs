@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using BenTools.Utilities.DateAndTime.Timer;
+using NUnit.Framework;
 
-namespace Ben.Tools.Development
+namespace BenTools.Tests.Tests
 {
     [TestFixture]
     public class TimerTest

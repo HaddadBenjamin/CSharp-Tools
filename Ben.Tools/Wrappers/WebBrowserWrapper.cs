@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using BenTools.Wrappers.Models;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 
-namespace Ben.Tools.Development
+namespace BenTools.Wrappers
 {
     public class WebBrowserWrapper : IDisposable
     {

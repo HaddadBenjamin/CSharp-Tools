@@ -1,4 +1,4 @@
-namespace BenTools.Utilities.Simplify
+namespace BenTools.Utilities
 {
     public static class Utilities
     {

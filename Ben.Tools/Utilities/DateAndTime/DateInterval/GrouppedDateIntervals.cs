@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BenTools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.DateAndTime.DateInterval
 {
      
     public class GrouppedDateIntervals : ADateIntervals<DateTime>

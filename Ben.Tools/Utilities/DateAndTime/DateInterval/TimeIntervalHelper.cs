@@ -1,7 +1,7 @@
 using System;
 using BenTools.Extensions.Date;
 
-namespace BenTools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.DateAndTime.DateInterval
 {
      
     public static class TimeIntervalHelper

@@ -1,4 +1,4 @@
-namespace BenTools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.DateAndTime.DateInterval
 {
      
     public enum ETimeInterval

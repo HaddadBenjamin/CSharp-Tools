@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Ben.Tools.Development
+namespace BenTools.Utilities.DateAndTime.Timer
 {
     public abstract class ATimer
     {

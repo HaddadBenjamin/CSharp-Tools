@@ -2,7 +2,7 @@
 using BenTools.Extensions.Date;
 using BenTools.Helpers.Enumerations;
 
-namespace BenTools.Utilities.Date.DateInterval
+namespace BenTools.Utilities.DateAndTime.DateInterval
 {
      
     public static class GrouppedTimeIntervalHelper
