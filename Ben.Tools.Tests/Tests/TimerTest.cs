@@ -16,7 +16,7 @@ namespace Ben.Tools.Development
                 var remainigTime = Timer.ReaminingTime;
                 var elaspedTime = Timer.ElapsedTime;
                 var percent = Timer.Percent;
-                var ratio = Timer.RatioNormalized;
+                var ratio = Timer.Ratio;
             }
         }
     }

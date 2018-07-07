@@ -17,9 +17,9 @@ namespace Ben.Tools.Development
 
         public double ReaminingTime => Alarm - ElapsedTime;
 
-        public double RatioNormalized => ElapsedTime / Alarm;
+        public double Ratio => ElapsedTime / Alarm;
 
-        public double Percent => RatioNormalized * 100;
+        public double Percent => Ratio * 100;
         #endregion
 
         #region Constructor(s)

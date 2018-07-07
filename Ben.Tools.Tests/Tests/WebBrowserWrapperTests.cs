@@ -60,9 +60,12 @@ namespace Ben.Tools.Development
                     FirstTest = false;
                 }
 
-                var productNamePosition = WebBrowserWrapper.WaitElementAsPosition("#productName");
+                WebBrowserWrapper.WaitElement("#productName");
 
-                WebBrowserWrapper.UpdateValueAtPosition(productNamePosition, productName);
+                var position = WebBrowserWrapper.GetElementPosition("#productName");
+                var selector = WebBrowserWrapper.GetUniqueJQuerySelector(position);
+
+                WebBrowserWrapper.UpdateValue("#productName", productName);
                 WebBrowserWrapper.UpdateValue("#brandName", brandName, 80);
                 WebBrowserWrapper.UpdateValue("#productCreationDate", string.Empty);
                 WebBrowserWrapper.UpdateChecked("#MerchantCheckBox", false);
