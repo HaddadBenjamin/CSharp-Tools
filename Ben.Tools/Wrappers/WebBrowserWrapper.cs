@@ -11,9 +11,9 @@ namespace BenTools.Wrappers
         #region Field(s)
         public readonly IWebDriver WebDriver;
 
-        private const string StringifyQuery = "var simpleObject = { }; for (var prop in obj {" +
-        "if (!obj.hasOwnProperty(prop) || typeof(obj[prop]) == 'object') || typeof(obj[prop]) == 'function')" +
-        "continue; simpleObject[prop] = obj[prop]; } return JSON.stringify(simpleObject)";
+        //private const string StringifyQuery = "var simpleObject = { }; for (var prop in obj {" +
+        //"if (!obj.hasOwnProperty(prop) || typeof(obj[prop]) == 'object') || typeof(obj[prop]) == 'function')" +
+        //"continue; simpleObject[prop] = obj[prop]; } return JSON.stringify(simpleObject)";
         #endregion
 
         #region Constructor(s)
@@ -113,10 +113,11 @@ namespace BenTools.Wrappers
             if (string.IsNullOrWhiteSpace(jquerySelector) && string.IsNullOrWhiteSpace(jqueryCommand))
                 throw new ArgumentException(nameof(jquerySelector), "jquerySelector et jqueryCommand are empties");
 
-            if (!string.IsNullOrWhiteSpace(jqueryCommand) && !string.IsNullOrWhiteSpace(jquerySelector))
-                jqueryCommand = "." + jqueryCommand;
+            jqueryCommand = !string.IsNullOrWhiteSpace(jqueryCommand) && !string.IsNullOrWhiteSpace(jquerySelector) ?
+                "." + jqueryCommand :
+                string.Empty;
 
-            var command = $"var obj = $(\'{jquerySelector}\');{StringifyQuery}{(!string.IsNullOrWhiteSpace(jquerySelector) ? jqueryCommand : string.Empty)}";
+            var command = "$(\'{jquerySelector}\')" + jqueryCommand;//$"var obj = $(\'{jquerySelector}\');{StringifyQuery}{(!string.IsNullOrWhiteSpace(jquerySelector) ? jqueryCommand : string.Empty)}";
 
             return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
