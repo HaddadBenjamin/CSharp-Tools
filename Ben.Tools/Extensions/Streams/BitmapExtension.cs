@@ -8,7 +8,7 @@ namespace BenTools.Extensions.Streams
 {
     public static class BitmapExtension
     {
-        public static Bitmap ChangePixelFormat(
+        public static Bitmap UpdatePixelFormat(
             this Bitmap bitmap,
             PixelFormat pixelFormat,
             bool disposeBitmap = true)
@@ -25,16 +25,13 @@ namespace BenTools.Extensions.Streams
             return newBitmap;
         }
 
-        public static Bitmap GetBlackAndWhiteBitmap(this Bitmap bitmap)
+        public static Bitmap ToBlackAndWhite(this Bitmap bitmap)
         {
-            int rgbRatio;
-            Color pixelColor;
-
             for (var pixelColumn = 0; pixelColumn < bitmap.Height; pixelColumn++)
             for (var pixelLine = 0; pixelLine < bitmap.Width; pixelLine++)
             {
-                pixelColor = bitmap.GetPixel(pixelLine, pixelColumn);
-                rgbRatio = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
+                var pixelColor = bitmap.GetPixel(pixelLine, pixelColumn);
+                var rgbRatio = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
 
                 bitmap.SetPixel(pixelLine, pixelColumn, Color.FromArgb(rgbRatio, rgbRatio, rgbRatio));
             }
