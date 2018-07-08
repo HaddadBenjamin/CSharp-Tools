@@ -8,6 +8,9 @@ namespace Ben.Tools.Development
     [TestFixture]
     public class ImageRecognitionTests
     {
+        /// <summary>
+        /// Ne fonctionne pas !!!
+        /// </summary>
         [TestCase(@"C:\Users\hadda\Desktop\Benjamin HADDAD (5).jpg", @"C:\Users\hadda\Desktop\Profile2.jpg", @"C:\Users\hadda\Desktop\imageRecognitionResult.jpeg")]
         public void RotateAndScale(string sourceImagePath, string testImagePath, string destinationImagePath)
         {

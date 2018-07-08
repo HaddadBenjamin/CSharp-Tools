@@ -11,6 +11,9 @@ using Emgu.CV.Util;
 
 namespace Ben.Tools.Development
 {
+    /// <summary>
+    /// Ne fonctionne pas !!!
+    /// </summary>
     public class ForgeImageRecognitionService : IImageRecognitionService
     {
         public IEnumerable<ImageRecognitionMatch> FindMatches(
