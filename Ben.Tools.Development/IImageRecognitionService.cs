@@ -15,8 +15,8 @@ namespace Ben.Tools.Development
 {
     public class ImageRecognitionPoint
     {
-        public float PositionX { get; set; }
-        public float PositionY { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
     }
 
     public class ImageRecognitionMatch
@@ -28,12 +28,12 @@ namespace Ben.Tools.Development
 
         public ImageRecognitionPoint MiddlePoint => new ImageRecognitionPoint()
         {
-            PositionX = (TopLeftPoint.PositionX + TopRightPoint.PositionX + BottomLeftPoint.PositionX + BottomRightPoint.PositionX) / 4,
-            PositionY = (TopLeftPoint.PositionY + TopRightPoint.PositionY + BottomLeftPoint.PositionY + BottomRightPoint.PositionY) / 4,
+            X = (TopLeftPoint.X + TopRightPoint.X + BottomLeftPoint.X + BottomRightPoint.X) / 4,
+            Y = (TopLeftPoint.Y + TopRightPoint.Y + BottomLeftPoint.Y + BottomRightPoint.Y) / 4,
         };
     }
 
-    public interface IImageRecognition
+    public interface IImageRecognitionService
     {
         //IEnumerable<ImageRecognitionMatch> FindMatches(
         //    Bitmap sourceBitmap,
@@ -46,21 +46,21 @@ namespace Ben.Tools.Development
         IEnumerable<ImageRecognitionMatch> FindMatches(
             string sourcePath,
             string testPath,
+            bool blackAndWhite,
             double precision,
             double scale,
-            bool stopAtFirstMatch,
-            bool blackAndWhite);
+            bool stopAtFirstMatch);
     }
 
-    public class ForgeImageRecognition : IImageRecognition
+    public class ForgeImageRecognitionService : IImageRecognitionService
     {
         public IEnumerable<ImageRecognitionMatch> FindMatches(
             string sourcePath,
             string testPath,
-            double precision,
-            double scale,
-            bool stopAtFirstMatch,
-            bool blackAndWhite)
+            bool blackAndWhite,
+            double precision = 0.99d,
+            double scale = 0.2d,
+            bool stopAtFirstMatch = true)
         {
             var matchesFound = new List<ImageRecognitionMatch>();
 
@@ -137,12 +137,19 @@ namespace Ben.Tools.Development
 
                                 points = CvInvoke.PerspectiveTransform(points, homography);
 
+                                float ClampPosition(float position) => position >= 0 ? position : 0;
+
+                                var minX = ClampPosition(points.Min(point => point.X));
+                                var maxX = ClampPosition(points.Max(point => point.X));
+                                var minY = ClampPosition(points.Min(point => point.Y));
+                                var maxY = ClampPosition(points.Max(point => point.Y));
+
                                 matchesFound.Add(new ImageRecognitionMatch()
                                 {
-                                    BottomLeftPoint = new ImageRecognitionPoint() { PositionX = points[0].X, PositionY = points[0].Y },
-                                    BottomRightPoint = new ImageRecognitionPoint() { PositionX = points[1].X, PositionY = points[1].Y },
-                                    TopRightPoint = new ImageRecognitionPoint() { PositionX = points[2].X, PositionY = points[2].Y },
-                                    TopLeftPoint = new ImageRecognitionPoint() { PositionX = points[3].X, PositionY = points[3].Y },
+                                    BottomLeftPoint = new ImageRecognitionPoint() { X = minX, Y = minY },
+                                    BottomRightPoint = new ImageRecognitionPoint() { X = maxX, Y = minY },
+                                    TopLeftPoint = new ImageRecognitionPoint() { X = maxX, Y = maxY },
+                                    TopRightPoint = new ImageRecognitionPoint() { X = maxX, Y = maxY },
                                 });
                             }
 
