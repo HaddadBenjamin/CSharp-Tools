@@ -1,4 +1,4 @@
-﻿namespace Ben.Tools.Development
+﻿namespace Ben.Tools.Development.Services.Models
 {
     public class ImageRecognitionPoint
     {

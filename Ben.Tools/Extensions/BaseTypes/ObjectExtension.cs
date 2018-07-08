@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BenTools.Extensions.BaseTypes
@@ -72,9 +71,8 @@ namespace BenTools.Extensions.BaseTypes
         }
         #endregion
 
-        public static bool DefaulEquals<ComparedType>(
-            this object left,
-            object right)
+        #region Utilities
+        public static bool DefaulEquals<ComparedType>(this object left, object right)
         {
             if (ReferenceEquals(null, right) ||
                 left.GetType() != right.GetType())
@@ -85,16 +83,20 @@ namespace BenTools.Extensions.BaseTypes
 
             return left.Equals((ComparedType) right);
         }
-        
+        #endregion
+
+        #region Null Method(s)
         public static bool IsNull(this object anObject) => anObject is null;
         
         /// <summary>
         /// ISNULL like Sql, return and set a value if an the object is null.
         /// </summary>
-        public static ObjectType IsNullGetSpecifiedValueIfNull<ObjectType>(this ObjectType anyObject, ObjectType valueIfNull)
+        public static ObjectType GetSpecifiedValueIfNull<ObjectType>(this ObjectType anyObject, ObjectType valueIfNull)
             where ObjectType : class =>
             anyObject ?? valueIfNull;
+        #endregion
 
+        #region Conversion
         public static IEnumerable<ElementType> ToEnumerable<ElementType>(this ElementType element)
         {
             yield return element;
@@ -115,5 +117,6 @@ namespace BenTools.Extensions.BaseTypes
         public static ValueType AsValueType<ValueType>(this Nullable<ValueType> nullable, ValueType defaultValue = default(ValueType))
             where ValueType : struct =>
             nullable.HasValue ? nullable.Value : defaultValue;
+        #endregion
     }
 }

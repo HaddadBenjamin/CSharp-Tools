@@ -4,9 +4,7 @@ namespace BenTools.Extensions.Streams
 {
     public static class StreamExtension
     {
-        public static void ToFile(
-            this Stream stream,
-            string filePath)
+        public static void ToFile(this Stream stream, string filePath)
         {
             using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 stream.CopyTo(fileStream);

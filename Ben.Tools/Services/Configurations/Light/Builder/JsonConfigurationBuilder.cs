@@ -31,8 +31,7 @@ namespace BenTools.Services.Configurations.Light.Builder
             return jObject.ToString();
         }
 
-        public override SectionType Deserialize<SectionType>(string fileContent) =>
-            JsonConvert.DeserializeObject<SectionType>(fileContent);
+        public override SectionType Deserialize<SectionType>(string fileContent) => JsonConvert.DeserializeObject<SectionType>(fileContent);
         #endregion
     }
 }

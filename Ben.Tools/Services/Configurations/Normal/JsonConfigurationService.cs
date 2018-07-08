@@ -15,8 +15,7 @@ namespace BenTools.Services.Configurations.Normal
         #region Override Behaviour(s)
         public override string Extension => ".json";
 
-        protected override Microsoft.Extensions.Configuration.IConfigurationBuilder AddFile(Microsoft.Extensions.Configuration.IConfigurationBuilder builder, string path) =>
-            builder.AddJsonFile(path);
+        protected override Microsoft.Extensions.Configuration.IConfigurationBuilder AddFile(Microsoft.Extensions.Configuration.IConfigurationBuilder builder, string path) => builder.AddJsonFile(path);
         #endregion
     }
 }

@@ -9,11 +9,8 @@ namespace BenTools.Utilities.DateAndTime.DateInterval
         private DateTime _startUtc;
         private DateTime _endUtc;
         private readonly EGrouppedTimeInterval _timeInterval;
-
-        public GrouppedDateIntervals(
-            DateTime startUtc,
-            DateTime endUtc,
-            EGrouppedTimeInterval grouppedTimeInterval)
+        
+        public GrouppedDateIntervals(DateTime startUtc, DateTime endUtc, EGrouppedTimeInterval grouppedTimeInterval)
         {
             _timeInterval = grouppedTimeInterval;
 

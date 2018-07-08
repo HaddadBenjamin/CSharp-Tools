@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using BenTools.Extensions.Sequences;
 using BenTools.Helpers.BaseTypes;
 using BenTools.Helpers.Streams;
 

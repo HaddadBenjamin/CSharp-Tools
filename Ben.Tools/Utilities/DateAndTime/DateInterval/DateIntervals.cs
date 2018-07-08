@@ -39,8 +39,7 @@ namespace BenTools.Utilities.DateAndTime.DateInterval
 
             return intervals;
         }
-        protected override bool IsBetweenInterval((DateTime intervalStartUtc, DateTime intervalEndUtc) interval, DateTime current) => 
-            current >= interval.intervalStartUtc && current < interval.intervalEndUtc;
+        protected override bool IsBetweenInterval((DateTime intervalStartUtc, DateTime intervalEndUtc) interval, DateTime current) => current >= interval.intervalStartUtc && current < interval.intervalEndUtc;
     }
     
 }

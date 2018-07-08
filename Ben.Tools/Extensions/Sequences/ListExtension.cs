@@ -7,8 +7,7 @@ namespace BenTools.Extensions.Sequences
     public static class ListExtension
     {
         #region Utilities
-        public static bool FastContains<ElementType>(this List<ElementType> list, ElementType elementToSearch) =>
-           list.BinarySearch(elementToSearch) >= 0;
+        public static bool FastContains<ElementType>(this List<ElementType> list, ElementType elementToSearch) => list.BinarySearch(elementToSearch) >= 0;
         #endregion
 
         #region Element(s) insertion
@@ -20,28 +19,21 @@ namespace BenTools.Extensions.Sequences
             return list;
         }
 
-        public static List<ElementType> AddElementsAtBegin<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd)
-            => list.AddElementsAt(sequenceToAdd, 0);
+        public static List<ElementType> AddElementsAtBegin<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd) => list.AddElementsAt(sequenceToAdd, 0);
         #endregion
 
         #region AddElement(s)Before
-        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, int index) =>
-            list.AddElementAt(element, index - 1);
+        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, int index) => list.AddElementAt(element, index - 1);
 
-        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) =>
-        list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate) - 1);
+        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate) - 1);
 
-        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) =>
-            list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch) - 1);
+        public static List<ElementType> AddElementBefore<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch) - 1);
 
-        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, int index) =>
-            list.AddElementsAt(sequenceToAdd, index - 1);
+        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, int index) => list.AddElementsAt(sequenceToAdd, index - 1);
 
-        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate) - 1);
+        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate) - 1);
 
-        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch) - 1);
+        public static List<ElementType> AddElementsBefore<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch) - 1);
         #endregion
 
         #region AddElement(s)At
@@ -57,11 +49,9 @@ namespace BenTools.Extensions.Sequences
             return list;
         }
 
-        public static List<ElementType> AddElementAt<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) =>
-            list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate));
+        public static List<ElementType> AddElementAt<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate));
 
-        public static List<ElementType> AddElementAt<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) =>
-           list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch));
+        public static List<ElementType> AddElementAt<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch));
 
         public static List<ElementType> AddElementsAt<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, int index)
         {
@@ -92,31 +82,23 @@ namespace BenTools.Extensions.Sequences
             return firstPartOfList;
         }
 
-        public static List<ElementType> AddElementsAt<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate));
+        public static List<ElementType> AddElementsAt<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate));
 
-        public static List<ElementType> AddElementsAt<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch));
+        public static List<ElementType> AddElementsAt<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch));
         #endregion
 
         #region AddElement(s)After
-        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, int index) =>
-            list.AddElementAt(element, index);
+        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, int index) => list.AddElementAt(element, index);
 
-        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) =>
-        list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate));
+        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, Func<ElementType, bool> predicate) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(predicate));
 
-        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) =>
-            list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch));
+        public static List<ElementType> AddElementAfter<ElementType>(this List<ElementType> list, ElementType element, ElementType elementToSearch) => list.AddElementAt(element, list.GetElementIndexOrMaxIntValue(elementToSearch));
 
-        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, int index) =>
-            list.AddElementsAt(sequenceToAdd, index);
+        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, int index) => list.AddElementsAt(sequenceToAdd, index);
+        
+        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate));
 
-        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, Func<ElementType, bool> predicate) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(predicate));
-
-        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) =>
-            list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch));
+        public static List<ElementType> AddElementsAfter<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd, ElementType elementToSearch) => list.AddElementsAt(sequenceToAdd, list.GetElementIndexOrMaxIntValue(elementToSearch));
         #endregion
 
         #region AddElement(s)AtEnd
@@ -127,8 +109,7 @@ namespace BenTools.Extensions.Sequences
             return list;
         }
 
-        public static List<ElementType> AddElementsAtEnd<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd)
-            => list.AddElementsAt(sequenceToAdd, int.MaxValue);
+        public static List<ElementType> AddElementsAtEnd<ElementType>(this List<ElementType> list, IEnumerable<ElementType> sequenceToAdd) => list.AddElementsAt(sequenceToAdd, int.MaxValue);
         #endregion
         #endregion
 

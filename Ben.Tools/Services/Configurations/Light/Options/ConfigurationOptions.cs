@@ -42,8 +42,8 @@ namespace BenTools.Services.Configurations.Light.Options
             }
         }
 
-        public ConfigurationPathsResult BuildPaths(string filename, string extension)
-            => new ConfigurationPathsResult(
+        public ConfigurationPathsResult BuildPaths(string filename, string extension) =>
+            new ConfigurationPathsResult(
                 @default: Path.Combine(ConfigurationPath, ConfigurationEnvironments.Default, $"{filename}{extension}"),
                 current: Path.Combine(ConfigurationPath, ConfigurationEnvironments.Current, $"{filename}{extension}"),
                 destination : Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}{extension}"));

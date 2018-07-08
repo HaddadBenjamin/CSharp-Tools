@@ -8,10 +8,7 @@ namespace BenTools.Extensions.Streams
 {
     public static class BitmapExtension
     {
-        public static Bitmap UpdatePixelFormat(
-            this Bitmap bitmap,
-            PixelFormat pixelFormat,
-            bool disposeBitmap = true)
+        public static Bitmap UpdatePixelFormat(this Bitmap bitmap, PixelFormat pixelFormat, bool disposeBitmap = true)
         {
             var newBitmap = new Bitmap(bitmap.Width, bitmap.Height, pixelFormat);
             newBitmap.SetResolution(bitmap.HorizontalResolution, bitmap.VerticalResolution);
@@ -39,12 +36,9 @@ namespace BenTools.Extensions.Streams
             return bitmap;
         }
 
-        public static Rectangle GetRectangle(this Bitmap bitmap) => 
-            new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+        public static Rectangle GetRectangle(this Bitmap bitmap) =>  new Rectangle(0, 0, bitmap.Width, bitmap.Height);
 
-        public static MemoryStream ToMemoryStream(
-            this Bitmap bitmap,
-            ImageFormat imageFormat)
+        public static MemoryStream ToMemoryStream(this Bitmap bitmap, ImageFormat imageFormat)
         {
             var memoryStream = new MemoryStream();
 
@@ -53,12 +47,9 @@ namespace BenTools.Extensions.Streams
             return memoryStream;
         }
 
-        public static MemoryStream ToMemoryStream(this Bitmap bitmap) => 
-            bitmap.ToMemoryStream(ImageFormat.Png);
+        public static MemoryStream ToMemoryStream(this Bitmap bitmap) => bitmap.ToMemoryStream(ImageFormat.Png);
 
-        public static byte[] ToBytes(
-            this Bitmap bitmap,
-            ImageFormat imageFormat)
+        public static byte[] ToBytes(this Bitmap bitmap, ImageFormat imageFormat)
         {
             using (var memoryStream = bitmap.ToMemoryStream(imageFormat))
                 return memoryStream.ToArray();

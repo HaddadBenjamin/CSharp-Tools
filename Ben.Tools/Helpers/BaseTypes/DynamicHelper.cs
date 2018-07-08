@@ -4,9 +4,7 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class DynamicHelper
     {
-        public static IEnumerable<TElement> ToEnumerable<TElement>(
-            dynamic dynamicObject,
-            bool isSubClass = false)
+        public static IEnumerable<TElement> ToEnumerable<TElement>(dynamic dynamicObject, bool isSubClass = false)
         {
             var collection = new List<TElement>();
 
@@ -19,9 +17,6 @@ namespace BenTools.Helpers.BaseTypes
             return collection;
         }
 
-        public static TDataType GetData<TDataType>(
-            dynamic dynamicObject,
-            bool getValue = true) => 
-            (TDataType)((getValue ? dynamicObject?.Value : dynamicObject) ?? default(TDataType));
+        public static TDataType GetData<TDataType>(dynamic dynamicObject, bool getValue = true) => (TDataType)((getValue ? dynamicObject?.Value : dynamicObject) ?? default(TDataType));
     }
 }

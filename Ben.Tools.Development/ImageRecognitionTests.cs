@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using NUnit.Framework;
@@ -11,6 +12,14 @@ namespace Ben.Tools.Development
         /// <summary>
         /// Ne fonctionne pas !!!
         /// </summary>
+        /// TODO:
+        /// installer le packet : emgu.cv
+        //scale,
+        //stop at first match
+        //greyscale
+        //    bitmap
+        //IEnumerable<string>
+        //    IEnumerable<Bitmap>
         [TestCase(@"C:\Users\hadda\Desktop\Benjamin HADDAD (5).jpg", @"C:\Users\hadda\Desktop\Profile2.jpg", @"C:\Users\hadda\Desktop\imageRecognitionResult.jpeg")]
         public void RotateAndScale(string sourceImagePath, string testImagePath, string destinationImagePath)
         {
@@ -25,6 +34,8 @@ namespace Ben.Tools.Development
             {
                 graphics.DrawRectangle(Pens.Aqua, new Rectangle((int)firstMatch.X, (int)firstMatch.Y, (int)firstMatch.Width, (int)firstMatch.Height));
                 newImage.Save(destinationImagePath, ImageFormat.Jpeg);
+
+                Process.Start(destinationImagePath);
             }
         }
     }

@@ -26,9 +26,11 @@ namespace BenTools.Helpers.BaseTypes
             Enumerable.Repeat<Func<double>>(() => Random.NextDouble() * (maximum - minimum) + minimum, numberOfElements)
                       .Select(generateValueFunction => generateValueFunction());
 
-        public static IEnumerable<double> GenerateNumbersBetweenZeroAndOne(int numberOfElements) =>
+        public static IEnumerable<double> GenerateNormalizedNumbers(int numberOfElements) =>
             Enumerable.Repeat<Func<double>>(Random.NextDouble, numberOfElements)
                       .Select(generateValueFunction => generateValueFunction());
+
+        public static double GenerateClampedNumber(double minimum, double maximum) => GenerateClampedNumbers(1, minimum, maximum).First();
         #endregion
 
         public static Func<double, double, bool> OperatorComparerFunction(EComparerOperator comparerOperator, double epsilon = Double.Epsilon)

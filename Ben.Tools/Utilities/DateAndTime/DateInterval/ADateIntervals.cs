@@ -24,12 +24,10 @@ namespace BenTools.Utilities.DateAndTime.DateInterval
         /// <summary>
         /// Permet de corréler les intervales de temps avec une collection de données.
         /// </summary>
-        public virtual IEnumerable<MergedInterval<TElement, TInterval>> MergeWithIntervals<TElement>(
-            IEnumerable<TElement> enumerable,
-            Func<TElement, DateTime> getDateUtcFunction) => 
+        public virtual IEnumerable<MergedInterval<TElement, TInterval>> MergeWithIntervals<TElement>(IEnumerable<TElement> enumerable, Func<TElement, DateTime> getDateUtcFunction) => 
             _intervals.Select(interval => new MergedInterval<TElement, TInterval>(
-            interval: interval,
-            values: enumerable.Where(element => IsBetweenInterval(interval, getDateUtcFunction(element)))));
+                interval: interval,
+                values: enumerable.Where(element => IsBetweenInterval(interval, getDateUtcFunction(element)))));
 
         protected abstract IEnumerable<TInterval> GenerateIntervals();
 

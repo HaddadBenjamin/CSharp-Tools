@@ -62,8 +62,7 @@ namespace BenTools.Services.Configurations.Light
         /// <summary>
         /// La classe de configuration permet l'utilisation de champs requis ou privés et d'écrire et d'utiliser verbeusement vos configurations.
         /// </summary>
-        public SectionType ToClass<SectionType>(string filename, IEnumerable<string> subSections = null) =>
-            Builder.Deserialize<SectionType>(Builder.BuildConfiguration(Options, filename, Extension, subSections).FileContent);
+        public SectionType ToClass<SectionType>(string filename, IEnumerable<string> subSections = null) => Builder.Deserialize<SectionType>(Builder.BuildConfiguration(Options, filename, Extension, subSections).FileContent);
 
         public void RefreshOptions(IConfigurationOptions options)
         {

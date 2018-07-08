@@ -219,8 +219,7 @@ namespace BenTools.Wrappers
                 PosY = elementPositionDynamic.top.Value,
             };
 
-        private string BuildPositionQuery(string jqueryCommand, WebElementPosition elementPosition) =>
-            $"$(\'body\').find(\'*\').filter(function() {{ return $(this).position().left >= {(elementPosition.PosX - 1)} && $(this).position().left <= {(elementPosition.PosX + 1)} && $(this).position().top >= {(elementPosition.PosY - 1)} && $(this).position().top <= {elementPosition.PosY}{1}; }}).{jqueryCommand}";
+        private string BuildPositionQuery(string jqueryCommand, WebElementPosition elementPosition) => $"$(\'body\').find(\'*\').filter(function() {{ return $(this).position().left >= {(elementPosition.PosX - 1)} && $(this).position().left <= {(elementPosition.PosX + 1)} && $(this).position().top >= {(elementPosition.PosY - 1)} && $(this).position().top <= {elementPosition.PosY}{1}; }}).{jqueryCommand}";
         #endregion
 #endregion
     }

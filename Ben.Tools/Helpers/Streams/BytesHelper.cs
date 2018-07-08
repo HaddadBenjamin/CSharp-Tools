@@ -5,7 +5,6 @@ namespace BenTools.Helpers.Streams
 {
     public static class BytesHelper
     {
-         
         public static Bitmap ToBitmap(byte[] bytes)
         {
             using (var memoryStream = new MemoryStream(bytes))
@@ -13,7 +12,5 @@ namespace BenTools.Helpers.Streams
         }
         
         public static Stream Tostream(byte[] bytes) => new MemoryStream(bytes);
-
-        
     }
 }

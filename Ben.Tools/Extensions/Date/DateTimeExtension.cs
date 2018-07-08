@@ -21,13 +21,11 @@ namespace BenTools.Extensions.Date
         /// <summary>
         /// Paris => 1 because GMT+1.
         /// </summary>
-        public static DateTime ToLocalTime(this DateTime dateTime) => 
-            dateTime.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
+        public static DateTime ToLocalTime(this DateTime dateTime) =>  dateTime.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
 
         /// <summary>
         /// Paris => -1 because GMT+1.
         /// </summary>
-        public static DateTime ToUtc(this DateTime dateTime) => 
-            dateTime.AddHours(-TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
+        public static DateTime ToUtc(this DateTime dateTime) =>  dateTime.AddHours(-TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Hours);
     }
 }

@@ -45,7 +45,7 @@ namespace BenTools.Tests.Tests
             Assert.AreEqual(true, shits.NullIfAllEqual() != null);
             Assert.AreEqual(true, nulls.NullIfAllEqual() == null);
 
-            Assert.AreEqual(true, shit.IsNullGetSpecifiedValueIfNull(new Shit()) != null);
+            Assert.AreEqual(true, shit.GetSpecifiedValueIfNull(new Shit()) != null);
         }
     }
 }

@@ -32,23 +32,19 @@ namespace BenTools.Extensions.Sequences
         #endregion
 
         #region Count Method(s)
-        public static bool CountAtLeast<ElementType>(this IEnumerable<ElementType> sequence, int numberOfElements) =>
-            sequence.Count() >= numberOfElements;
+        public static bool CountAtLeast<ElementType>(this IEnumerable<ElementType> sequence, int numberOfElements) => sequence.Count() >= numberOfElements;
 
-        public static bool CountAtMost<ElementType>(this IEnumerable<ElementType> sequence, int numberOfElements) =>
-            sequence.Count() <= numberOfElements;
+        public static bool CountAtMost<ElementType>(this IEnumerable<ElementType> sequence, int numberOfElements) => sequence.Count() <= numberOfElements;
 
-        public static bool CountIsBetween<ElementType>(this IEnumerable<ElementType> sequence, int minimum, int maximum) =>
-            sequence.Count() >= minimum && sequence.Count() <= maximum;
+        public static bool CountIsBetween<ElementType>(this IEnumerable<ElementType> sequence, int minimum, int maximum) => sequence.Count() >= minimum && sequence.Count() <= maximum;
 
-        public static bool CountCompare<ElementType>(this IEnumerable<ElementType> sequence, IEnumerable<ElementType> otherSequence) =>
-            sequence.Count() == otherSequence.Count();
+        public static bool CountCompare<ElementType>(this IEnumerable<ElementType> sequence, IEnumerable<ElementType> otherSequence) => sequence.Count() == otherSequence.Count();
         #endregion
 
         #region Utilities
         public static void Consume<ElementType>(this IEnumerable<ElementType> sequence)
         {
-            foreach (var element in sequence) ;
+            foreach (var element in sequence);
         }
 
         public static void Foreach<ElementType>(
@@ -82,14 +78,12 @@ namespace BenTools.Extensions.Sequences
         public static int IndexOf<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate, IEqualityComparer<ElementType> comparer = default(IEqualityComparer<ElementType>)) =>
             sequence.IndexOf(sequence.FirstOrDefault(predicate), comparer);
         
-        public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence) =>
-            sequence.DeepCopy();
+        public static IEnumerable<ElementType> CopySequence<ElementType>(this IEnumerable<ElementType> sequence) => sequence.DeepCopy();
 
         /// <summary>
         /// Mélange une sequence.
         /// </summary>
-        public static IEnumerable<ElementType> Shuffle<ElementType>(this IEnumerable<ElementType> sequence) =>
-            sequence.OrderBy(element => Guid.NewGuid());
+        public static IEnumerable<ElementType> Shuffle<ElementType>(this IEnumerable<ElementType> sequence) => sequence.OrderBy(element => Guid.NewGuid());
         #endregion
 
         #region Element(s) Insert & Remove
@@ -110,20 +104,13 @@ namespace BenTools.Extensions.Sequences
             where ElementType : class =>
             sequence.Where(element => element != null);
 
-        public static IEnumerable<ElementType> RemoveElements<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate) =>
-            sequence.Except(sequence.Where(predicate));
+        public static IEnumerable<ElementType> RemoveElements<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate) => sequence.Except(sequence.Where(predicate));
         #endregion
 
         #region Predicate
-        public static bool ContainsAll<ElementType>(
-            this IEnumerable<ElementType> sequence,
-            IEnumerable<ElementType> elements) =>
-            sequence.All(elements.Contains);
+        public static bool ContainsAll<ElementType>(this IEnumerable<ElementType> sequence, IEnumerable<ElementType> elements) => sequence.All(elements.Contains);
 
-        public static bool ContainsAny<ElementType>(
-            this IEnumerable<ElementType> sequence,
-            IEnumerable<ElementType> elements) =>
-            sequence.Any(elements.Contains);
+        public static bool ContainsAny<ElementType>(this IEnumerable<ElementType> sequence, IEnumerable<ElementType> elements) => sequence.Any(elements.Contains);
         #endregion
 
         #region Element(s) Generation

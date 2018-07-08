@@ -26,6 +26,8 @@ namespace BenTools.Helpers.BaseTypes
             Enumerable.Repeat<Func<int>>(() => Random.Next(minimum, maximum), numberOfElements)
                       .Select(generateValueFunction => generateValueFunction());
 
+        public static int GenerateClampedNumber(int minimum = 0, int maximum = 1) => GenerateClampedNumbers(1, minimum, maximum).First();
+
         public static int GenerateUniqueInteger(bool positive = true)
         {
             var uniqueInteger = Guid.NewGuid().GetHashCode();

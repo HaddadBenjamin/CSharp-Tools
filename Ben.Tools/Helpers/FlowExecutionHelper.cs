@@ -6,8 +6,7 @@ namespace BenTools.Helpers
 {
     public static class FlowExecutionHelper
     {
-        public static void IfsTree(IfTree root) =>
-            root.Execute();
+        public static void IfsTree(IfTree root) => root.Execute();
 
         public static ReturnType Ternaries<ReturnType>(params (bool condition, ReturnType result)[] ternaries)
         {
