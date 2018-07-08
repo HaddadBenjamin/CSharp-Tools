@@ -63,9 +63,6 @@ namespace BenTools.Tests.Tests
 
                 WebBrowserWrapper.WaitElement("#productName");
 
-                var position = WebBrowserWrapper.GetElementPosition("#productName");
-                var selector = WebBrowserWrapper.GetUniqueJQuerySelector(position);
-
                 WebBrowserWrapper.UpdateValue("#productName", productName);
                 WebBrowserWrapper.UpdateValue("#brandName", brandName, 80);
                 WebBrowserWrapper.UpdateValue("#productCreationDate", string.Empty);
@@ -75,6 +72,22 @@ namespace BenTools.Tests.Tests
                 WebBrowserWrapper.Click(".search_product");
 
                 WebBrowserWrapper.WaitCondition("#products_table tr:visible", "length", numberOfProducts => numberOfProducts > 2, 150000);
+            });          
+            }
+
+        [Test]
+        public void PortfolioTest()
+        {
+            WebBrowserWrappers.ForEach(WebBrowserWrapper =>
+            {
+                WebBrowserWrapper.GoToUrl("http://haddad-benjamin-portfolio.azurewebsites.net/");
+
+                WebBrowserWrapper.WaitElement(".go-to-page-top");
+
+                WebBrowserWrapper.ScrollBodyAndWait(".go-to-page-top");
+
+                //var position = WebBrowserWrapper.GetElementPosition(".go-to-page-top");
+                //var selector = WebBrowserWrapper.GetUniqueJQuerySelector(position);
             });
         }
         #endregion

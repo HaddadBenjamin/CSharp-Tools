@@ -10,6 +10,10 @@ namespace BenTools.Wrappers
     {
         #region Field(s)
         public readonly IWebDriver WebDriver;
+
+        private const string StringifyQuery = "var simpleObject = { }; for (var prop in obj {" +
+        "if (!obj.hasOwnProperty(prop) || typeof(obj[prop]) == 'object') || typeof(obj[prop]) == 'function')" +
+        "continue; simpleObject[prop] = obj[prop]; } return JSON.stringify(simpleObject)";
         #endregion
 
         #region Constructor(s)
@@ -75,6 +79,23 @@ namespace BenTools.Wrappers
         public void Click(string selectorJquery) => ExecuteQuery(selectorJquery, "click()");
         #endregion
 
+        #region Scroll
+
+        public void ScrollBodyAndWait(string scrollDestinationJquerySelector, int waitTimeMilliseconds = 500, int offsetY = -500) =>
+            ScrollAndWait("body", scrollDestinationJquerySelector, waitTimeMilliseconds, offsetY);
+
+        public void ScrollAndWait(string scrollSourceJquerySelector, string scrollDestinationJquerySelector, int waitTimeMilliseconds = 500, int offset = -500)
+        {
+            ExecuteQuery($"html, {scrollSourceJquerySelector}", $"animate({{scrollTop: $('{scrollDestinationJquerySelector}').offset().top + {offset}}}, {waitTimeMilliseconds});");
+
+            var waitTimer = new Stopwatch();
+
+            waitTimer.Start();
+
+            while (waitTimer.ElapsedMilliseconds < waitTimeMilliseconds) ;
+            //('html, body').animate({scrollTop: $("a:contains('Obtenir un tarif'):visible").offset().top - 500}, 500);
+        }
+
         #region Get Elements
         public string GetUniqueJQuerySelector(WebElementPosition position)
         {
@@ -95,9 +116,7 @@ namespace BenTools.Wrappers
             if (!string.IsNullOrWhiteSpace(jqueryCommand) && !string.IsNullOrWhiteSpace(jquerySelector))
                 jqueryCommand = "." + jqueryCommand;
 
-            var command = !string.IsNullOrWhiteSpace(jquerySelector) ?
-                $"return JSON.stringify($('{jquerySelector}'){jqueryCommand})" :
-                $"return JSON.stringify({jqueryCommand})";
+            var command = $"var obj = $(\'{jquerySelector}\');{StringifyQuery}{(!string.IsNullOrWhiteSpace(jquerySelector) ? jqueryCommand : string.Empty)}";
 
             return (string)((IJavaScriptExecutor)WebDriver).ExecuteScript(command);
         }
@@ -201,11 +220,8 @@ namespace BenTools.Wrappers
             };
 
         private string BuildPositionQuery(string jqueryCommand, WebElementPosition elementPosition) =>
-            "$('body').find('*').filter(function() { return $(this).position().left >= " + (elementPosition.PosX - 1) +
-                " && $(this).position().left <= " + (elementPosition.PosX + 1) +
-                " && $(this).position().top >= " + (elementPosition.PosY - 1) +
-                " && $(this).position().top <= " + elementPosition.PosY + 1 +
-                "; })." + jqueryCommand;
+            $"$(\'body\').find(\'*\').filter(function() {{ return $(this).position().left >= {(elementPosition.PosX - 1)} && $(this).position().left <= {(elementPosition.PosX + 1)} && $(this).position().top >= {(elementPosition.PosY - 1)} && $(this).position().top <= {elementPosition.PosY}{1}; }}).{jqueryCommand}";
         #endregion
+#endregion
     }
 }
