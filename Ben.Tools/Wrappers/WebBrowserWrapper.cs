@@ -80,7 +80,6 @@ namespace BenTools.Wrappers
         #endregion
 
         #region Scroll
-
         public void ScrollBodyAndWait(string scrollDestinationJquerySelector, int waitTimeMilliseconds = 500, int offsetY = -500) =>
             ScrollAndWait("body", scrollDestinationJquerySelector, waitTimeMilliseconds, offsetY);
 
