@@ -45,26 +45,19 @@ namespace BenTools.Wrappers
 
         public void UpdateValue(string selectorJquery, string newText, int eachCharacterMilliseconds = 250)
         {
-            var firstCharacter = true;
             var timer = new Stopwatch();
+            var firstCharacter = false;
 
             timer.Start();
 
-            foreach (var @char in newText.ToCharArray())
+            for (int charIndex = 0; charIndex < newText.Length; charIndex++)
             {
-                if (firstCharacter)
-                {
-                    ExecuteQuery(selectorJquery, $"val('{@char}')");
-                    firstCharacter = false;
-                }
-                else
-                {
-                    while (timer.ElapsedMilliseconds < eachCharacterMilliseconds);
+                if (!firstCharacter)
+                    while (timer.ElapsedMilliseconds < eachCharacterMilliseconds) ;
 
-                    AddValue(selectorJquery, @char.ToString());
+                ExecuteQuery(selectorJquery, string.Format("val('{0}')", newText.Substring(0, charIndex + 1)));
 
-                    timer.Restart();
-                }
+                timer.Restart();
             }
         }
         #endregion
