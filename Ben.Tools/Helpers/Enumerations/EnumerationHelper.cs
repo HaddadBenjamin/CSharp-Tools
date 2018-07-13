@@ -13,6 +13,10 @@ namespace BenTools.Helpers.Enumerations
         public static void Foreach<EnumerationType>(Action<EnumerationType> callback)
             where EnumerationType : struct, IConvertible => 
             ToEnumerations<EnumerationType>().Foreach(callback);
+        
+        public static bool In<EnumerationType>(EnumerationType enumerationSource, params EnumerationType[] enumerations)  
+            where EnumerationType : struct, IConvertible =>
+            enumerations.Contains(enumerationSource);
 
         public static IEnumerable<EnumerationType> ToEnumerations<EnumerationType>()
             where EnumerationType : struct, IConvertible => 
