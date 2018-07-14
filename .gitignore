@@ -24,3 +24,5 @@
 /.vs/config
 /Ben.Tools.Development/obj/Debug
 /Ben.Tools.Development/bin/Debug
+/Ben.Tools.Asp/obj
+/Ben.Tools.Asp/bin/Debug/netcoreapp2.0
