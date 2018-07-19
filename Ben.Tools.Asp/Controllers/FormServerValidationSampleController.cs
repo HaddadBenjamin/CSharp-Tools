@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Ben.Tools.Asp.Controllers;
 using Ben.Tools.Asp.Extensions;
 using Ben.Tools.Asp.Helpers;
 
 namespace Ben.Tools.Asp.Samples
 {
-    public class FormServerValidationSampleController : Controller
+    public class FormServerValidationSampleController : AController
     {
         [HttpGet]
         public ActionResult Index()
