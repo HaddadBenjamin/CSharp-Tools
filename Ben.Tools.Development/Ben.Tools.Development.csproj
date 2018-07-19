@@ -71,6 +71,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AImageRecognitionService.cs" />
+    <Compile Include="Extensions\BitmapExtension.cs" />
     <Compile Include="Services\ForgeImageRecognitionService.cs" />
     <Compile Include="Services\IImageRecognitionService.cs" />
     <Compile Include="ImageRecognitionTests.cs" />
