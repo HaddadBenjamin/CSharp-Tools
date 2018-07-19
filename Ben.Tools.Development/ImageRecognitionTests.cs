@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using NUnit.Framework;
 
@@ -9,33 +10,49 @@ namespace Ben.Tools.Development
     [TestFixture]
     public class ImageRecognitionTests
     {
-        /// <summary>
-        /// Ne fonctionne pas !!!
-        /// </summary>
         /// TODO:
-        /// installer le packet : emgu.cv
-        //scale,
-        //stop at first match
-        //greyscale
-        //    bitmap
-        //IEnumerable<string>
-        //    IEnumerable<Bitmap>
-        [TestCase(@"C:\Users\hadda\Desktop\Benjamin HADDAD (5).jpg", @"C:\Users\hadda\Desktop\Profile2.jpg", @"C:\Users\hadda\Desktop\imageRecognitionResult.jpeg")]
-        public void RotateAndScale(string sourceImagePath, string testImagePath, string destinationImagePath)
+        /// - installer le packet AForge.Net.
+        /// - stop at first match
+        [Test]
+        public void RotateAndScale()
         {
             var imageRecognition = new ForgeImageRecognitionService();
-            var firstMatch = imageRecognition.FindMatches(sourceImagePath, testImagePath)
-                                             .FirstOrDefault();
-
-            using (var sourceImage = new Bitmap(sourceImagePath))
-            using (var destinationImage = (Image)sourceImage.Clone())
-            using (var newImage = new Bitmap(destinationImage))
-            using (var graphics = Graphics.FromImage(newImage))
+            var testBitmaps = new[]
             {
-                graphics.DrawRectangle(Pens.Aqua, new Rectangle((int)firstMatch.X, (int)firstMatch.Y, (int)firstMatch.Width, (int)firstMatch.Height));
-                newImage.Save(destinationImagePath, ImageFormat.Jpeg);
+                Properties.Resources.imageRecognitionTest,
+                Properties.Resources.imageRecognitionTest2,
+                Properties.Resources.imageRecognitionTest3
+            };
 
-                Process.Start(destinationImagePath);
+            using (var sourceBitmap = Properties.Resources.imageRecognitionSource)
+            {
+                var index = 1;
+                foreach (var testBitmap in testBitmaps)
+                {
+                    using (var destinationImage = (Image)sourceBitmap.Clone())
+                    using (var newImage = new Bitmap(destinationImage))
+                    using (var graphics = Graphics.FromImage(newImage))
+                    {
+                        var resultImagePath = Path.Combine(Path.GetTempPath(), $"image_recognition_result_{index}.jpg");
+                        var firstMatch = imageRecognition.FindMatches(
+                                sourceBitmap: sourceBitmap,
+                                testBitmap: testBitmap,
+                                precision: 0.95d,
+                                scale: 0.25d,
+                                stopAtFirstMatch: true,
+                                blackAndWhite: true)
+                            .FirstOrDefault();
+
+                        graphics.DrawRectangle(Pens.Aqua, firstMatch);
+                        newImage.Save(resultImagePath, ImageFormat.Png);
+
+                        Process.Start(resultImagePath);
+                    }
+
+                    testBitmap.Dispose();
+
+                    index++;
+                }
             }
         }
     }
