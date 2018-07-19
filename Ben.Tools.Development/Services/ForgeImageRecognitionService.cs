@@ -22,8 +22,9 @@ namespace Ben.Tools.Development
         {
             using (var updatedSource = UpdateBitmap(sourceBitmap, scale, blackAndWhite))
             using (var updatedTest = UpdateBitmap(testBitmap, scale, blackAndWhite))
-                return new ExhaustiveTemplateMatching(Convert.ToSingle(precision))
+                return new ExhaustiveTemplateMatching()
                         .ProcessImage(sourceBitmap, testBitmap)
+                        .Where(matching => matching.Similarity >= Convert.ToSingle(precision))
                         .Select(match => match.Rectangle);
        
             // stopAtFirst (reprendre l'algorithme).

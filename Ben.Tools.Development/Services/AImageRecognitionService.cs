@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Ben.Tools.Development
 {
@@ -8,7 +10,7 @@ namespace Ben.Tools.Development
         protected Bitmap UpdateBitmap(Bitmap bitmap, double scale, bool blackAndWhite)
         {
             return bitmap.ToBlackAndWhite()
-                .Resize(scale);
+                         .Resize(scale);
         }
 
         public abstract IEnumerable<Rectangle> FindMatches(
@@ -31,5 +33,21 @@ namespace Ben.Tools.Development
             using (var testBitmap = new Bitmap(testImagePath))
                 return FindMatches(sourceBitmap, testBitmap, precision, scale, stopAtFirstMatch, blackAndWhite);
         }
+
+        public Rectangle FindFirstMatch(
+            Bitmap sourceBitmap, 
+            Bitmap testBitmap, 
+            double precision, 
+            double scale, 
+            bool blackAndWhite) =>
+                FindMatches(sourceBitmap, testBitmap, precision, scale, true, blackAndWhite).FirstOrDefault();
+
+        public Rectangle FindFirstMatch(
+            string sourceImagePath, 
+            string testImagePath, 
+            double precision, 
+            double scale,
+            bool blackAndWhite) =>
+                FindMatches(sourceImagePath, testImagePath, precision, scale, true, blackAndWhite).FirstOrDefault();
     }
 }

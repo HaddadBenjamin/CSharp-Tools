@@ -13,13 +13,26 @@ namespace Ben.Tools.Development
             bool stopAtFirstMatch,
             bool blackAndWhite);
 
-
         IEnumerable<Rectangle> FindMatches(
             string sourceImagePath,
             string testImagePath,
             double precision,
             double scale,
             bool stopAtFirstMatch,
+            bool blackAndWhite);
+
+        Rectangle FindFirstMatch(
+            Bitmap sourceBitmap,
+            Bitmap testBitmap,
+            double precision,
+            double scale,
+            bool blackAndWhite);
+
+        Rectangle FindFirstMatch(
+            string sourceImagePath,
+            string testImagePath,
+            double precision,
+            double scale,
             bool blackAndWhite);
     }
 }
