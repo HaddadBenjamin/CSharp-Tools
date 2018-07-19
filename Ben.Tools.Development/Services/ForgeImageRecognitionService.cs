@@ -8,6 +8,7 @@ using AForge.Imaging;
 namespace Ben.Tools.Development
 {
     /// <summary>
+    /// Uses AForge.Net package.
     /// Don't work correctly when the scale or the rotation are different.
     /// </summary>
     public class ForgeImageRecognitionService : AImageRecognitionService
@@ -27,7 +28,7 @@ namespace Ben.Tools.Development
                         .Where(matching => matching.Similarity >= Convert.ToSingle(precision))
                         .Select(match => match.Rectangle);
        
-            // stopAtFirst (reprendre l'algorithme).
+            // TODO : stopAtFirst (reprendre l'algorithme).
         }
     }
 }

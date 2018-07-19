@@ -21,6 +21,22 @@ namespace Ben.Tools.Development
             bool stopAtFirstMatch,
             bool blackAndWhite);
 
+        IEnumerable<ImageRecognitionMatch> FindMatches(
+            Bitmap sourceBitmap,
+            IEnumerable<Bitmap> testBitmaps,
+            double precision,
+            double scale,
+            bool stopAtFirstMatch,
+            bool blackAndWhite);
+
+        IEnumerable<ImageRecognitionMatch> FindMatches(
+            string sourceImagePath,
+            IEnumerable<string> testImagePaths,
+            double precision,
+            double scale,
+            bool stopAtFirstMatch,
+            bool blackAndWhite);
+
         Rectangle FindFirstMatch(
             Bitmap sourceBitmap,
             Bitmap testBitmap,
