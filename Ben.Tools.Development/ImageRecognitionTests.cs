@@ -20,8 +20,8 @@ namespace Ben.Tools.Development
             var testBitmaps = new[]
             {
                 Properties.Resources.imageRecognitionTest,
-                Properties.Resources.imageRecognitionTest2,
-                Properties.Resources.imageRecognitionTest3
+                Properties.Resources.imageRecognitionRotateTest,
+                Properties.Resources.imageRecognitionScaleTest
             };
 
             using (var sourceBitmap = Properties.Resources.imageRecognitionSource)
@@ -43,8 +43,8 @@ namespace Ben.Tools.Development
                                 blackAndWhite: true)
                             .FirstOrDefault();
 
-                        graphics.DrawRectangle(Pens.Aqua, firstMatch);
-                        newImage.Save(resultImagePath, ImageFormat.Png);
+                        graphics.DrawRectangle(Pens.Red, firstMatch);
+                        newImage.Save(resultImagePath, ImageFormat.Jpeg);
 
                         Process.Start(resultImagePath);
                     }

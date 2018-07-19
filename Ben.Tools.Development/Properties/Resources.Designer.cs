@@ -63,6 +63,26 @@ namespace Ben.Tools.Development.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imageRecognitionRotateTest {
+            get {
+                object obj = ResourceManager.GetObject("imageRecognitionRotateTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imageRecognitionScaleTest {
+            get {
+                object obj = ResourceManager.GetObject("imageRecognitionScaleTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imageRecognitionSource {
             get {
                 object obj = ResourceManager.GetObject("imageRecognitionSource", resourceCulture);
@@ -76,26 +96,6 @@ namespace Ben.Tools.Development.Properties {
         internal static System.Drawing.Bitmap imageRecognitionTest {
             get {
                 object obj = ResourceManager.GetObject("imageRecognitionTest", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imageRecognitionTest2 {
-            get {
-                object obj = ResourceManager.GetObject("imageRecognitionTest2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imageRecognitionTest3 {
-            get {
-                object obj = ResourceManager.GetObject("imageRecognitionTest3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
