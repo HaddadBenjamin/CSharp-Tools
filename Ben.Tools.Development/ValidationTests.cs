@@ -25,17 +25,13 @@ namespace Ben.Tools.Development
             Assert.Throws<ArgumentOutOfRangeException>(() => ValidationHelper.InRange(4, 1, 3, "value"));
 
         [Test]
-        public void LessOrEqual()
-        {
-            ValidationHelper.LessThanOrEqualTo(4, 5, "value");
-        }
-            //=> 
-            //Assert.Throws<ArgumentOutOfRangeException>(() => ValidationHelper.LessThanOrEqualTo(4, 5, "value"));
+        public void LessOrEqual() =>
+            Assert.Throws<ArgumentOutOfRangeException>(() => ValidationHelper.LessThanOrEqualTo(4, 5, "value"));
 
         [Test] public void GreaterOrEqual() =>
             Assert.Throws<ArgumentOutOfRangeException>(() => ValidationHelper.GreaterThanOrEqualTo(4, 3, "value"));
 
         [Test] public void True() =>
-            Assert.Throws<ArgumentOutOfRangeException>(() => ValidationHelper.IsTrue(false, "condition"));
+            Assert.Throws<ArgumentException>(() => ValidationHelper.IsTrue(false, "condition"));
     }
 }

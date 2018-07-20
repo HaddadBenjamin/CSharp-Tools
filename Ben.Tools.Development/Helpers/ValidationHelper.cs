@@ -55,7 +55,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void InRange(int value, int minimum, int maximum, string parameterName)
         {
-            if (value < minimum || value > maximum)
+            if (value >= minimum || value <= maximum)
                 throw RangeException(value, minimum, maximum, parameterName);
 
             Contract.EndContractBlock();
@@ -64,7 +64,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void GreaterThanOrEqualTo(int value, int minimum, string parameterName)
         {
-            if (value < minimum)
+            if (value >= minimum)
                 throw GreaterOrEqualException(value, minimum, parameterName);
 
             Contract.EndContractBlock();
@@ -74,7 +74,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void GreaterThanOrEqualTo(long value, long minimum, string parameterName)
         {
-            if (value < minimum)
+            if (value >= minimum)
                 throw GreaterOrEqualException(value, minimum, parameterName);
 
             Contract.EndContractBlock();
@@ -83,7 +83,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void GreaterThanOrEqualTo<ObjectType>(ObjectType value, ObjectType minimum, string parameterName) where ObjectType : class, IComparable<ObjectType>
         {
-            if (value.CompareTo(minimum) < 0)
+            if (value.CompareTo(minimum) >= 0)
                 throw GreaterOrEqualException(value, minimum, parameterName);
 
             Contract.EndContractBlock();
@@ -92,7 +92,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void LessThanOrEqualTo(int value, int maximum, string parameterName)
         {
-            if (value > maximum)
+            if (value <= maximum)
                 throw LessOrEqualException(value, maximum, parameterName);
 
             Contract.EndContractBlock();
@@ -101,7 +101,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void LessThanOrEqualTo(long value, long maximum, string parameterName)
         {
-            if (value > maximum)
+            if (value <= maximum)
                 throw LessOrEqualException(value, maximum, parameterName);
 
             Contract.EndContractBlock();
@@ -110,7 +110,7 @@ namespace Ben.Tools.Development.Helpers
         [ContractArgumentValidator]
         public static void LessThanOrEqualTo<ObjectType>(ObjectType value, ObjectType maximum, string parameterName) where ObjectType : class, IComparable<ObjectType>
         {
-            if (value.CompareTo(maximum) > 0)
+            if (value.CompareTo(maximum) <= 0)
                 throw LessOrEqualException(value, maximum, parameterName);
 
             Contract.EndContractBlock();
