@@ -50,5 +50,14 @@ namespace Ben.Tools.Development
             double precision,
             double scale,
             bool blackAndWhite);
+
+        void DrawMatches(
+            Bitmap sourceBitmap,
+            IEnumerable<Bitmap> testBitmaps,
+            double precision,
+            double scale,
+            bool stopAtFirstMatch,
+            bool blackAndWhite,
+            bool displayMatches);
     }
 }

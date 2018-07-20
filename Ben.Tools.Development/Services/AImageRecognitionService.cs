@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -84,5 +87,38 @@ namespace Ben.Tools.Development
             double scale,
             bool blackAndWhite) =>
                 FindMatches(sourceImagePath, testImagePath, precision, scale, true, blackAndWhite).FirstOrDefault();
+
+        public void DrawMatches(
+            Bitmap sourceBitmap, 
+            IEnumerable<Bitmap> testBitmaps, 
+            double precision, 
+            double scale,
+            bool stopAtFirstMatch, 
+            bool blackAndWhite, 
+            bool displayMatches)
+        {
+            var index = 1;
+            foreach (var testBitmap in testBitmaps)
+            {
+                using (var destinationImage = (Image)sourceBitmap.Clone())
+                using (var newImage = new Bitmap(destinationImage))
+                using (var graphics = Graphics.FromImage(newImage))
+                {
+                    var resultImagePath = Path.Combine(Path.GetTempPath(), $"image_recognition_result_{index}.jpg");
+                    var firstMatch = FindMatches(sourceBitmap, testBitmap, precision, scale, stopAtFirstMatch, blackAndWhite)
+                                                .FirstOrDefault();
+
+                    graphics.DrawRectangle(Pens.Red, firstMatch);
+                    newImage.Save(resultImagePath, ImageFormat.Jpeg);
+
+                    if (displayMatches)
+                        Process.Start(resultImagePath);
+                }
+
+                testBitmap.Dispose();
+
+                index++;
+            }
+        }
     }
 }
