@@ -79,6 +79,7 @@
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.0\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -93,6 +94,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\BaseTypes\DoubleTests.cs" />
     <Compile Include="Tests\BaseTypes\FloatTests.cs" />
     <Compile Include="Tests\BaseTypes\IntegerTests.cs" />
@@ -100,7 +106,9 @@
     <Compile Include="Tests\Configurations\ConfigurationSample.cs" />
     <Compile Include="Tests\Configurations\ConfigurationTests.cs" />
     <Compile Include="Tests\DateIntervalTests.cs" />
+    <Compile Include="Tests\ImageRecognitionTests.cs" />
     <Compile Include="Tests\TimerTest.cs" />
+    <Compile Include="Tests\ValidationTests.cs" />
     <Compile Include="Tests\WebBrowserWrapperTests.cs" />
     <Compile Include="Tests\FlowExecutionTests.cs" />
     <Compile Include="Tests\ShitTests.cs" />
@@ -139,6 +147,24 @@
       <Project>{39026DDE-083C-419D-B352-B2F462E4246F}</Project>
       <Name>Ben.Tools</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageRecognitionCrop.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageRecognitionRotate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageRecognitionScale.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageRecognitionSource.jpg" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

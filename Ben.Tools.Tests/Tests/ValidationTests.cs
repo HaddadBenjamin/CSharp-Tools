@@ -1,5 +1,5 @@
 ﻿using System;
-using Ben.Tools.Development.Helpers;
+using BenTools.Helpers;
 using NUnit.Framework;
 
 /// <summary>
@@ -7,7 +7,7 @@ using NUnit.Framework;
 /// - Localized String.
 /// - remove end contract ?
 /// </summary>
-namespace Ben.Tools.Development.Tests
+namespace BenTools.Tests.Tests
 {
     [TestFixture]
     public class ValidationTests

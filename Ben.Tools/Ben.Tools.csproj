@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -167,6 +176,11 @@
     <Compile Include="Managers\Configurations\Options\ConfigurationManagerOptions.cs" />
     <Compile Include="Managers\Configurations\Light\IConfigurationManager.cs" />
     <Compile Include="Managers\Configurations\Options\IConfigurationManagerOptions.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Configurations\ConfigurationEnvironments.cs" />
     <Compile Include="Services\Configurations\Light\ALightConfigurationService.cs" />
     <Compile Include="Services\Configurations\Light\Builder\AConfigurationBuilder.cs" />
@@ -181,6 +195,10 @@
     <Compile Include="Services\Configurations\Normal\AConfigurationService.cs" />
     <Compile Include="Services\Configurations\Normal\IConfigurationService.cs" />
     <Compile Include="Services\Configurations\Normal\JsonConfigurationService.cs" />
+    <Compile Include="Services\ImageRecognition\AImageRecognitionService.cs" />
+    <Compile Include="Services\ImageRecognition\ForgeImageRecognitionService.cs" />
+    <Compile Include="Services\ImageRecognition\IImageRecognitionService.cs" />
+    <Compile Include="Services\ImageRecognition\ImageRecognitionMatch.cs" />
     <Compile Include="Utilities\Architecture\ASingleton.cs" />
     <Compile Include="Utilities\DateAndTime\DateInterval\ADateIntervals.cs" />
     <Compile Include="Utilities\DateAndTime\DateInterval\DateIntervals.cs" />
@@ -204,6 +222,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ionic.Zip.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

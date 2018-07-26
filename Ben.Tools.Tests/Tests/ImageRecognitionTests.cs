@@ -1,7 +1,7 @@
-﻿using Ben.Tools.Development.Services;
+﻿using BenTools.Services.ImageRecognition;
 using NUnit.Framework;
 
-namespace Ben.Tools.Development.Tests
+namespace BenTools.Tests.Tests
 {
     [TestFixture]
     public class ImageRecognitionTests
@@ -16,9 +16,9 @@ namespace Ben.Tools.Development.Tests
             var sourceBitmap = Properties.Resources.imageRecognitionSource;
             var testBitmaps = new[]
             {
-                Properties.Resources.imageRecognitionTest,
-                Properties.Resources.imageRecognitionRotateTest,
-                Properties.Resources.imageRecognitionScaleTest
+                Properties.Resources.imageRecognitionCrop,
+                Properties.Resources.imageRecognitionRotate,
+                Properties.Resources.imageRecognitionScale
             };
 
             imageRecognitionService.DrawMatches(

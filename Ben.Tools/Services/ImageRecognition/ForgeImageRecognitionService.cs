@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using AForge.Imaging;
 
-namespace Ben.Tools.Development.Services
+namespace BenTools.Services.ImageRecognition
 {
     /// <summary>
     /// Uses AForge.Net package.

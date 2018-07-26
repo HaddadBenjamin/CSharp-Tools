@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using BenTools.Extensions.Streams;
 
-namespace Ben.Tools.Development.Services
+namespace BenTools.Services.ImageRecognition
 {
     public abstract class AImageRecognitionService : IImageRecognitionService
     {
         protected Bitmap UpdateBitmap(Bitmap bitmap, double scale, bool blackAndWhite) => 
-            bitmap.ToBlackAndWhite()
+            bitmap.BlackAndWhite()
                   .Resize(scale);
 
         public abstract IEnumerable<Rectangle> FindMatches(
