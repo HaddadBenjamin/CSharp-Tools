@@ -2,9 +2,7 @@
 **Langage de programmation :** C#.</br>
 **Année du développement de ce projet :** 2018.</br>
 
-Voici une partie de ma boîte à outils qui permet d'étendre les fonctionnalités du langage C# tout en facilitant et réduisant son écriture. 
-
-Je réutilise les éléments dont j'ai besoin lorsque je développe de nouveaux projets pour gagner du temps et de la productivité.
+Développement d'une boîte à outils qui étend les fonctionnalités du langage C# tout en facilitant et réduisant son écriture, ce qui me permet d'améliorer ma productivité lorsque je travail en réutilisant les éléments dont j'ai besoin.
 
 
 ![Alt text](https://i.imgur.com/JKA9kqS.png "Arborescence des fichiers de l'application.")
