@@ -141,6 +141,7 @@
     <Compile Include="Extensions\Date\DayOfWeekExtension.cs" />
     <Compile Include="Extensions\BaseTypes\ObjectExtension.cs" />
     <Compile Include="Extensions\Sequences\ListExtension.cs" />
+    <Compile Include="Extensions\Streams\BitArrayExtension.cs" />
     <Compile Include="Extensions\Streams\BitmapExtension.cs" />
     <Compile Include="Extensions\Streams\ImageExtension.cs" />
     <Compile Include="Extensions\Streams\StreamExtension.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Helpers\Mathematic\StatisticsHelper.cs" />
     <Compile Include="Helpers\RestWebService\RestRequestHelper.cs" />
     <Compile Include="Helpers\RestWebService\RestSharpHelper.cs" />
+    <Compile Include="Helpers\Streams\BitArrayHelper.cs" />
     <Compile Include="Helpers\Streams\BytesHelper.cs" />
     <Compile Include="Helpers\Streams\ImageHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />

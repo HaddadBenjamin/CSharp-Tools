@@ -46,6 +46,10 @@ namespace BenTools.Extensions.BaseTypes
             number.NearlyEqual(maximum, epsilon);
         #endregion
 
+        #region Converter
+        public static string ToBaseN(this int number, int baseN) => Convert.ToString(number, baseN);
+        #endregion
+
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.
         /// </summary>

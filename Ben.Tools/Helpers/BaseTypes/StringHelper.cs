@@ -9,8 +9,18 @@ namespace BenTools.Helpers.BaseTypes
     {
         private static Random Random = new Random();
 
+        #region Conversion
+        public static string ToString(IEnumerable<bool> booleans) =>
+            new string(booleans.Select(boolean => boolean ? '1' : '0')
+                               .ToArray());
+
+        public static string ToString(IEnumerable<int> integers) => string.Join(string.Empty, integers.Select(integer => integer.ToString()));
+
+        public static string ToString(IEnumerable<char> characters) => new string(characters.ToArray());
+        #endregion
+
         #region All Characters Types
-        public static readonly string AllDigits = "0123456789";
+    public static readonly string AllDigits = "0123456789";
 
         public static readonly string AllLowerLettersWithoutAccents = "abcdefghijklmnopqrstuvwxyz";
 
