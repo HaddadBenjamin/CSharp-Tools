@@ -52,7 +52,7 @@ namespace BenTools.Extensions.BaseTypes
             
         #region Mathematics
         // Détermine si le nombre est divisble que par 1 et lui même.
-        static bool IsPrime(int number) => 
+        public static bool IsPrime(int number) => 
             number > 1 && 
             Enumerable.Range(1, number)
                       .Where(numberToTest => number % numberToTest == 0)
