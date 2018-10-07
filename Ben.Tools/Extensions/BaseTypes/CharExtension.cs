@@ -26,5 +26,9 @@ namespace BenTools.Extensions.BaseTypes
 
         public static bool IsLetter(this char @char) => @char.IsLetterWithoutAccent() || @char.IsLetterWithAccent();
         #endregion
+
+        #region Conversion
+        public static int ToDigit(char character) => (int)(character - '0');
+        #endregion
     }
 }

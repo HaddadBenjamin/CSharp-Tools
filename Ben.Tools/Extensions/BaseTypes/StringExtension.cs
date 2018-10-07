@@ -38,7 +38,11 @@ namespace BenTools.Extensions.BaseTypes
         #region Conversion
 	    public static int ToInteger(this string text) => Int32.Parse(text);
 
-	    public static byte[] PngBase64StringToBytes(this string pngEncodedText) => Convert.FromBase64String(pngEncodedText.Replace("data:image/png;base64,", ""));
+	    public static float ToFloat(this string text) => float.Parse(text);
+
+	    public static double ToDouble(this string text) => double.Parse(text);
+
+        public static byte[] PngBase64StringToBytes(this string pngEncodedText) => Convert.FromBase64String(pngEncodedText.Replace("data:image/png;base64,", ""));
 
 	    public static Bitmap PngBase64StringToBitmap(this string pngEncodedText) => BytesHelper.ToBitmap(pngEncodedText.PngBase64StringToBytes());
 
@@ -55,7 +59,11 @@ namespace BenTools.Extensions.BaseTypes
         #endregion
 
         #region Utilities
-        public static bool IsNumber(this string text) => Int32.TryParse(text, out _);
+	    public static bool IsFloat(this string text) => float.TryParse(text, out _);
+
+	    public static bool IsDouble(this string text) => double.TryParse(text, out _);
+
+        public static bool IsInt(this string text) => Int32.TryParse(text, out _);
 
         private static char[] GetDistinctAccents(this string text) =>
             text.Intersect(StringHelper.AllLettersWithAccents)
