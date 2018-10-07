@@ -56,9 +56,8 @@ namespace BenTools.Extensions.BaseTypes
             number > 1 && 
             Enumerable.Range(1, number)
                       .Where(numberToTest => number % numberToTest == 0)
-                      .SequenceEqual(new[] { 1, numberToTest });
+                      .SequenceEqual(new[] { 1, number });
          #endregion
-
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.
         /// </summary>
