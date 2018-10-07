@@ -49,6 +49,15 @@ namespace BenTools.Extensions.BaseTypes
         #region Converter
         public static string ToBaseN(this int number, int baseN) => Convert.ToString(number, baseN);
         #endregion
+            
+        #region Mathematics
+        // Détermine si le nombre est divisble que par 1 et lui même.
+        static bool IsPrime(int number) => 
+            number > 1 && 
+            Enumerable.Range(1, number)
+                      .Where(numberToTest => number % numberToTest == 0)
+                      .SequenceEqual(new[] { 1, numberToTest });
+         #endregion
 
         /// <summary>
         /// SOME like Sql, return true if the values contains one element that verify the comparerOperator comparaison with the number.
