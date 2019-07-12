@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using BenTools.Extensions.Sequences;
 using NUnit.Framework;
-using Should;
+using Shouldly;
 
 namespace BenTools.Tests.Tests
 {
@@ -31,12 +31,12 @@ namespace BenTools.Tests.Tests
 
             var c = a.MergeBy(b, (element) => element.Id);
 
-            c.Count().ShouldBeSameAs(3);
+            c.Count().ShouldBe(3);
 
             var secondElement = c.Skip(1).First();
 
-            secondElement.Name.ShouldBeSameAs("new value");
-            secondElement.Id.ShouldBeSameAs(2);
+            secondElement.Name.ShouldBe("new value");
+            secondElement.Id.ShouldBe(2);
         }
 
     }
