@@ -86,7 +86,7 @@ namespace BenTools.Extensions.Sequences
         public static IEnumerable<ElementType> Shuffle<ElementType>(this IEnumerable<ElementType> sequence) => sequence.OrderBy(element => Guid.NewGuid());
         #endregion
 
-        #region Element(s) Insert & Remove
+        #region Element(s) Insert & Remove & Merge
         public static IEnumerable<ElementType> AddElements<ElementType>(
             this IEnumerable<ElementType> sequence,
             IEnumerable<ElementType> elementsToAdd)
@@ -105,6 +105,12 @@ namespace BenTools.Extensions.Sequences
             sequence.Where(element => element != null);
 
         public static IEnumerable<ElementType> RemoveElements<ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, bool> predicate) => sequence.Except(sequence.Where(predicate));
+        
+        public static IEnumerable<ElementType> MergeBy<ElementType, ElementKey>(this IEnumerable<ElementType> sequence, IEnumerable<ElementType> elementsToMerge, Func<ElementType, ElementKey> predicate) =>
+            sequence.Union(elementsToMerge)
+                    .Reverse()
+                    .GroupBy(predicate)
+                    .Select(element => element.First());
         #endregion
 
         #region Predicate
