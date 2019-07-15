@@ -14,9 +14,11 @@ namespace BenTools.Helpers.BaseTypes
             new string(booleans.Select(boolean => boolean ? '1' : '0')
                                .ToArray());
 
-        public static string ToString(IEnumerable<int> integers) => string.Join(string.Empty, integers.Select(integer => integer.ToString()));
+        public static string ToString(IEnumerable<int> integers) => string.Join(string.Empty, integers);
 
         public static string ToString(IEnumerable<char> characters) => new string(characters.ToArray());
+
+        public static string ToString(IEnumerable<Guid> guids) => string.Join(string.Empty, guids);
         #endregion
 
         #region All Characters Types

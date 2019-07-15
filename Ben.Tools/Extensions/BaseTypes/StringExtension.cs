@@ -56,10 +56,12 @@ namespace BenTools.Extensions.BaseTypes
 	                    text.ToCharArray()
 	                        .Select(c => Convert.ToString(c, 2)
 	                                            .PadLeft(numberOfBitsPerBytes, '0')));
+
+        public static IEnumerable<Guid> ToGuids(this string text) => Split(text, 36).Select(Guid.Parse);
         #endregion
 
         #region Utilities
-	    public static bool IsFloat(this string text) => float.TryParse(text, out _);
+        public static bool IsFloat(this string text) => float.TryParse(text, out _);
 
 	    public static bool IsDouble(this string text) => double.TryParse(text, out _);
 
@@ -69,6 +71,10 @@ namespace BenTools.Extensions.BaseTypes
             text.Intersect(StringHelper.AllLettersWithAccents)
                 .Distinct()
                 .ToArray();
+
+        public static IEnumerable<string> Split(this string text, int charCount) =>
+            Enumerable.Repeat(string.Empty, text.Length / charCount)
+                      .Select((element, index) => text.Substring(index * charCount, charCount));
         #endregion
 
         #region Replace & Modify
@@ -214,8 +220,4 @@ namespace BenTools.Extensions.BaseTypes
         }
         #endregion
     }
-
-
-
-
 }
