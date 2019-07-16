@@ -182,6 +182,17 @@ namespace BenTools.Extensions.Sequences
                 .AsParallel() // à retirer si le tableau en escalier possède peu d'éléments.
                 .SelectMany(row => row.Select((element, index) => new { value = element, index = index }))
                 .GroupBy(element => element.index, element => element.value, (index, value) => value);
+
+        /// <summary>
+        /// sequence : { Id : 1, C = 'A' }, { Id : 1, C = 'B' }, { Id : 2, C = 'C' }
+        /// keySelector : (element) => element.Id
+        /// 
+        /// ==> [1] {{{ Id : 1, C = 'A' }, { Id : 1, C = 'B' }}
+        ///     [2] { { Id : 2, C = 'C' }}
+        /// </summary>
+        public static Dictionary<KeyType, IEnumerable<ElementType>> GroupByKey<KeyType, ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, KeyType> keySelector) =>
+            sequence.GroupBy(keySelector)
+                    .ToDictionary(group => group.Key, group => group.AsEnumerable());
         #endregion
 
         #region Null Methods

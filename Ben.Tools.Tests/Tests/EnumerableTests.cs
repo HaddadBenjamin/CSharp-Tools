@@ -15,6 +15,23 @@ namespace BenTools.Tests.Tests
         }
 
         [Test]
+        public void GroupByKeyTest()
+        {
+            var sequence = new[]
+           {
+                new N() { Id = 1, Name = "A" },
+                new N() { Id = 1, Name = "B" },
+                new N() { Id = 2, Name = "C" },
+            };
+
+            var dictionary = sequence.GroupByKey((element) => element.Id);
+
+            dictionary.Count.ShouldBe(2);
+            dictionary[1].ShouldBe(sequence.Take(2), true);
+            dictionary[2].ShouldBe(sequence.Skip(2).Take(1), true);
+        }
+
+        [Test]
         public void MergeByTest()
         {
             var a = new [] 
