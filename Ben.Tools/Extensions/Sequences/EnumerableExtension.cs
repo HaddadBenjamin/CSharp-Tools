@@ -191,7 +191,7 @@ namespace BenTools.Extensions.Sequences
         ///     [2] { { Id : 2, C = 'C' }}
         ///     
         /// It's also possible to do :
-        /// - var x = sequence.GroupByKey(element => element.Id) 
+        /// - var x = sequence.ToLookUp(element => element.Id) 
         /// - var y = x[yourId].ToList();
         /// </summary>
         public static Dictionary<KeyType, IEnumerable<ElementType>> GroupByKey<KeyType, ElementType>(this IEnumerable<ElementType> sequence, Func<ElementType, KeyType> keySelector) =>
