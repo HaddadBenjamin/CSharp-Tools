@@ -8,8 +8,13 @@ namespace BenTools.Helpers.BaseTypes
     public static class IntHelper
     {
         private static Random Random = new Random();
-        
+
         #region Generate
+        /// <summary>
+        /// Le ToList() à la fin est important car autrement une nouvelle génération d'éléments se fera à chaque fois que vous allez parcourir votre séquence.
+        /// </summary>
+        public static List<int> Generate(int count = 10) => Enumerable.Range(0, count).Select(_ => Random.Next(int.MinValue, int.MaxValue)).ToList();
+
         public static IEnumerable<int> GenerateNumbers(int startNumber = 0, int endNumber = 10, int addNumber = 1, Func<int, int, bool> comparator = null)
         {
             comparator = comparator ?? ((start, end) => start <= end);

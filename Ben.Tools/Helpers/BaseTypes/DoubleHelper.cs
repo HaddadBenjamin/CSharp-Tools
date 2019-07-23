@@ -7,9 +7,14 @@ namespace BenTools.Helpers.BaseTypes
 {
     public static class DoubleHelper
     {
+        /// <summary>
+        /// Le ToList() à la fin est important car autrement une nouvelle génération d'éléments se fera à chaque fois que vous allez parcourir votre séquence.
+        /// </summary>
         private static readonly Random Random = new Random();
-        
+
         #region Generate
+        public static List<double> Generate(int count = 10) => Enumerable.Range(0, count).Select(_ => Random.NextDouble() * (float.MaxValue - float.MinValue) + float.MinValue).ToList();
+
         public static IEnumerable<double> GenerateNumbers(double startNumber = 0, double endNumber = 10, double addNumber = 1, Func<double, double, bool> comparator = null)
         {
             comparator = comparator ?? ((start, end) => start <= end);

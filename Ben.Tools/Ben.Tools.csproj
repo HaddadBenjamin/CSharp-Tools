@@ -148,6 +148,7 @@
     <Compile Include="Helpers\BaseTypes\CharHelper.cs" />
     <Compile Include="Helpers\BaseTypes\DoubleHelper.cs" />
     <Compile Include="Helpers\BaseTypes\FloatHelper.cs" />
+    <Compile Include="Helpers\BaseTypes\GuidHelper.cs" />
     <Compile Include="Helpers\BaseTypes\IntHelper.cs" />
     <Compile Include="Helpers\BaseTypes\StringHelper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />

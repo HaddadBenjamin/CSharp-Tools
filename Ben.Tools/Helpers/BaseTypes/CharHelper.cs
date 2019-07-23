@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BenTools.Helpers.BaseTypes
 {
@@ -27,5 +29,11 @@ namespace BenTools.Helpers.BaseTypes
 
         public static char RandomLetter() => StringHelper.AllLetters[Random.Next(StringHelper.AllLetters.Length)];
         #endregion
+
+        /// <summary>
+        /// Le ToList() à la fin est important car autrement une nouvelle génération d'éléments se fera à chaque fois que vous allez parcourir votre séquence.
+        /// </summary>
+        public static List<char> Generate(int count = 10) => Enumerable.Range(0, count).Select(_ => RandomLetter()).ToList();
+
     }
 }
