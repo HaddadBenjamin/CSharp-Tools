@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using BenTools.Extensions.Sequences;
+using BenTools.Utilities.Attributes;
 
 namespace BenTools.Helpers.Enumerations
 {
@@ -65,5 +68,28 @@ namespace BenTools.Helpers.Enumerations
         public static int ToInteger<EnumerationType>(string enumerationText)
             where EnumerationType : struct, IConvertible => 
             ToInteger(ToEnumeration<EnumerationType>(enumerationText));
+
+        /// <summary>
+        /// Return the enumeration element associated to the enumeration display value attribute.
+        /// </summary>
+        public static TEnumeration ConvertDisplayValueToEnumeration<TEnumeration>(string enumerationDisplayValue)
+            where TEnumeration : IComparable, IFormattable, IConvertible
+        {
+            var enumerations = Enum
+                .GetValues(typeof(TEnumeration))
+                .Cast<TEnumeration>()
+                .Where(enumeration => typeof(TEnumeration).GetMember(enumeration.ToString(CultureInfo.InvariantCulture))
+                                          .FirstOrDefault()
+                                          ?.GetCustomAttributes<EnumerationDisplayValueAttribute>(false)
+                                          ?.FirstOrDefault()
+                                          ?.DisplayValue
+                                          .Equals(enumerationDisplayValue, StringComparison.InvariantCulture) ?? false)
+                .ToList();
+
+            return enumerations.Any() ?
+                enumerations.First() : 
+                throw new Exception($"{enumerationDisplayValue} is not a valid {typeof(TEnumeration).Name}");
+        }
+
     }
 }

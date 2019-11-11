@@ -140,6 +140,8 @@
     <Compile Include="Extensions\Date\DateTimeExtension.cs" />
     <Compile Include="Extensions\Date\DayOfWeekExtension.cs" />
     <Compile Include="Extensions\BaseTypes\ObjectExtension.cs" />
+    <Compile Include="Utilities\Attributes\EnumerationDisplayValueAttribute.cs" />
+    <Compile Include="Extensions\Enums\EnumExtension.cs" />
     <Compile Include="Extensions\Sequences\ListExtension.cs" />
     <Compile Include="Extensions\Streams\BitArrayExtension.cs" />
     <Compile Include="Extensions\Streams\BitmapExtension.cs" />
@@ -232,5 +234,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

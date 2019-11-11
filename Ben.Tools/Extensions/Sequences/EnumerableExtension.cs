@@ -24,6 +24,18 @@ namespace BenTools.Extensions.Sequences
         public static IEnumerable<ElementType> WhereIndexIsAtMost<ElementType>(this IEnumerable<ElementType> sequence, int maximumIndex) =>
             sequence.WhereIndexIsBetween(0, maximumIndex);
 
+        public static IEnumerable<ElementType> WhereContains<ElementType>(this IEnumerable<ElementType> leftSequence, IEnumerable<ElementType> rightSequence) =>
+            leftSequence.Where(left => rightSequence.Contains(left));
+
+        public static IEnumerable<ElementType> WhereNotContains<ElementType>(this IEnumerable<ElementType> leftSequence, IEnumerable<ElementType> rightSequence) =>
+            leftSequence.Where(left => !rightSequence.Contains(left));
+
+        public static IEnumerable<ElementType1> WhereContains<ElementType1, ElementType2>(this IEnumerable<ElementType1> leftSequence, IEnumerable<ElementType2> rightSequence, Func<ElementType1, ElementType2, bool> predicate) =>
+            leftSequence.Where(left => rightSequence.Any(right => predicate(left, right)));
+
+        public static IEnumerable<ElementType1> WhereNotContains<ElementType1, ElementType2>(this IEnumerable<ElementType1> leftSequence, IEnumerable<ElementType2> rightSequence, Func<ElementType1, ElementType2, bool> predicate) =>
+            leftSequence.Where(left => !rightSequence.Any(right => predicate(left, right)));
+
         public static IEnumerable<ElementType> DistinctByColumn<ElementType, PredicateKey>(
             this IEnumerable<ElementType> sequence,
             Func<ElementType, PredicateKey> predicate) =>
