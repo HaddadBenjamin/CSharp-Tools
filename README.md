@@ -1,6 +1,7 @@
 # CSharp Tools
 **Langage de programmation :** C#.</br>
 **Année de développement :** 2018.</br>
+**Temps de réalisation :** 1 mois.</br>
 
 Développement d'une boîte à outils C# qui me permet de gagner du temps lorsque je développe.
 
