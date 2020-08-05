@@ -2,8 +2,7 @@
 **Langage de programmation :** C#.</br>
 **Année de développement :** 2018.</br>
 
-Développement d'une boîte à outils qui étend les fonctionnalités du langage C# tout en facilitant et réduisant son écriture, ce qui me permet d'améliorer ma productivité lorsque je travail en réutilisant les éléments dont j'ai besoin.
-
+Développement d'une boîte à outils C# qui me permet de gagner du temps lorsque je développe.
 
 ![Alt text](https://i.imgur.com/JKA9kqS.png "Arborescence des fichiers de l'application.")
 ![Alt text](https://i.imgur.com/CnSYcRC.png "Codes utilitaires que l'on retrouve dans l'application : Les séquences.")
