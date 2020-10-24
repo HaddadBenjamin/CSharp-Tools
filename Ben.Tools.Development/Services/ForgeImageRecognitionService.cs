@@ -13,20 +13,20 @@ namespace Ben.Tools.Development.Services
     public class ForgeImageRecognitionService : AImageRecognitionService
     {
         public override IEnumerable<Rectangle> FindMatches(
-            Bitmap sourceBitmap, 
-            Bitmap testBitmap, 
-            double precision, 
-            double scale, 
+            Bitmap sourceBitmap,
+            Bitmap testBitmap,
+            double precision,
+            double scale,
             bool stopAtFirstMatch,
             bool blackAndWhite)
         {
             using (var updatedSource = UpdateBitmap(sourceBitmap, scale, blackAndWhite))
             using (var updatedTest = UpdateBitmap(testBitmap, scale, blackAndWhite))
                 return new ExhaustiveTemplateMatching()
-                        .ProcessImage(sourceBitmap, testBitmap)
-                        .Where(matching => matching.Similarity >= Convert.ToSingle(precision))
-                        .Select(match => match.Rectangle);
-       
+                    .ProcessImage(sourceBitmap, testBitmap)
+                    .Where(matching => matching.Similarity >= Convert.ToSingle(precision))
+                    .Select(match => match.Rectangle);
+
             // TODO : stopAtFirst (reprendre l'algorithme).
         }
     }

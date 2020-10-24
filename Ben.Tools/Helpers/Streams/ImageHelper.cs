@@ -6,7 +6,7 @@ namespace BenTools.Helpers.Streams
 {
     public static class ImageHelper
     {
-        public static void DrawRectangles(Bitmap baseImageBitmap, string modifiedImagePath, Color color, params Rectangle[] rectangles) 
+        public static void DrawRectangles(Bitmap baseImageBitmap, string modifiedImagePath, Color color, params Rectangle[] rectangles)
         {
             using (var baseImage = (Image)baseImageBitmap.Clone())
             using (var newImage = new Bitmap(baseImage))

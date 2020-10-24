@@ -4,12 +4,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using BenTools.Extensions.Streams;
 
 namespace Ben.Tools.Development.Services
 {
     public abstract class AImageRecognitionService : IImageRecognitionService
     {
-        protected Bitmap UpdateBitmap(Bitmap bitmap, double scale, bool blackAndWhite) => 
+        protected Bitmap UpdateBitmap(Bitmap bitmap, double scale, bool blackAndWhite) =>
             bitmap.ToBlackAndWhite()
                   .Resize(scale);
 
@@ -22,9 +23,9 @@ namespace Ben.Tools.Development.Services
             bool blackAndWhite);
 
         public IEnumerable<Rectangle> FindMatches(
-            string sourceImagePath, 
-            string testImagePath, 
-            double precision, 
+            string sourceImagePath,
+            string testImagePath,
+            double precision,
             double scale,
             bool stopAtFirstMatch,
             bool blackAndWhite)
@@ -35,11 +36,11 @@ namespace Ben.Tools.Development.Services
         }
 
         public IEnumerable<ImageRecognitionMatch> FindMatches(
-            Bitmap sourceBitmap, 
-            IEnumerable<Bitmap> testBitmaps, 
-            double precision, 
+            Bitmap sourceBitmap,
+            IEnumerable<Bitmap> testBitmaps,
+            double precision,
             double scale,
-            bool stopAtFirstMatch, 
+            bool stopAtFirstMatch,
             bool blackAndWhite) =>
                 testBitmaps.Select((testBitmap, index) => new ImageRecognitionMatch()
                 {
@@ -72,28 +73,28 @@ namespace Ben.Tools.Development.Services
         }
 
         public Rectangle FindFirstMatch(
-            Bitmap sourceBitmap, 
-            Bitmap testBitmap, 
-            double precision, 
-            double scale, 
+            Bitmap sourceBitmap,
+            Bitmap testBitmap,
+            double precision,
+            double scale,
             bool blackAndWhite) =>
                 FindMatches(sourceBitmap, testBitmap, precision, scale, true, blackAndWhite).FirstOrDefault();
 
         public Rectangle FindFirstMatch(
-            string sourceImagePath, 
-            string testImagePath, 
-            double precision, 
+            string sourceImagePath,
+            string testImagePath,
+            double precision,
             double scale,
             bool blackAndWhite) =>
                 FindMatches(sourceImagePath, testImagePath, precision, scale, true, blackAndWhite).FirstOrDefault();
 
         public void DrawMatches(
-            Bitmap sourceBitmap, 
-            IEnumerable<Bitmap> testBitmaps, 
-            double precision, 
+            Bitmap sourceBitmap,
+            IEnumerable<Bitmap> testBitmaps,
+            double precision,
             double scale,
-            bool stopAtFirstMatch, 
-            bool blackAndWhite, 
+            bool stopAtFirstMatch,
+            bool blackAndWhite,
             bool displayMatches)
         {
             var index = 1;

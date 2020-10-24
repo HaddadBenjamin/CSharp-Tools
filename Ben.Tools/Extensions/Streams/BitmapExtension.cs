@@ -40,7 +40,7 @@ namespace BenTools.Extensions.Streams
             return destImage;
         }
 
-        public static Bitmap BlackAndWhite(this Bitmap bitmap)
+        public static Bitmap ToBlackAndWhite(this Bitmap bitmap)
         {
             for (var pixelColumn = 0; pixelColumn < bitmap.Height; pixelColumn++)
             for (var pixelLine = 0; pixelLine < bitmap.Width; pixelLine++)
@@ -82,7 +82,7 @@ namespace BenTools.Extensions.Streams
             return squareImage;
         }
 
-        public static Rectangle Rectangle(this Bitmap bitmap) =>  new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+        public static Rectangle Rectangle(this Bitmap bitmap) => new Rectangle(0, 0, bitmap.Width, bitmap.Height);
 
         public static Bitmap SetPixelFormat(this Bitmap bitmap, PixelFormat pixelFormat, bool disposeBitmap = true)
         {

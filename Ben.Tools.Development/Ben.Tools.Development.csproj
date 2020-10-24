@@ -66,15 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\ValidationHelper.cs" />
-    <Compile Include="Tests\ValidationTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\AImageRecognitionService.cs" />
-    <Compile Include="Extensions\BitmapExtension.cs" />
     <Compile Include="Services\ForgeImageRecognitionService.cs" />
     <Compile Include="Services\IImageRecognitionService.cs" />
     <Compile Include="Tests\ImageRecognitionTests.cs" />
@@ -86,7 +83,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="License-LGPL.txt" />
     <None Include="Resources\test3.jpg" />
     <None Include="Resources\test2.jpg" />
     <None Include="Resources\test.jpg" />
@@ -97,6 +93,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ben.Tools\Ben.Tools.csproj">
+      <Project>{39026dde-083c-419d-b352-b2f462e4246f}</Project>
+      <Name>Ben.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
